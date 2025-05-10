@@ -1,0 +1,32 @@
+mag 10, 2025 11:07:10 AM com.library.Main main
+INFORMAZIONI: Avvio del Sistema di Gestione Biblioteca
+mag 10, 2025 11:07:10 AM com.library.repository.MediaRepository <init>
+INFORMAZIONI: Inizializzazione del repository dei media
+mag 10, 2025 11:07:10 AM com.library.repository.FileStorageManager <init>
+INFORMAZIONI: Directory dei dati creata: /Users/giuseppegabrieledileo/Desktop/My_Works/Laurea | Epicode/OOP-final-assignment/data
+mag 10, 2025 11:07:10 AM com.library.repository.FileStorageManager loadMedia
+INFORMAZIONI: File dei media non trovato. Verrà creato un nuovo file al primo salvataggio.
+mag 10, 2025 11:07:10 AM com.library.repository.MediaRepository loadMediaFromStorage
+INFORMAZIONI: Media caricati dal file system: 0
+mag 10, 2025 11:07:10 AM com.library.service.MediaService <init>
+INFORMAZIONI: Inizializzazione del servizio media
+mag 10, 2025 11:07:18 AM com.library.service.MediaService findAllMedia
+INFORMAZIONI: Richiesta di tutti i media
+mag 10, 2025 11:08:51 AM com.library.service.MediaService saveMedia
+INFORMAZIONI: Richiesta di salvataggio media: Donna 2000
+mag 10, 2025 11:08:51 AM com.library.repository.FileStorageManager saveMedia
+INFORMAZIONI: Media salvati su file: data/media.dat
+mag 10, 2025 11:08:51 AM com.library.repository.MediaRepository saveMediaToStorage
+INFORMAZIONI: Media salvati sul file system
+mag 10, 2025 11:08:51 AM com.library.repository.MediaRepository save
+INFORMAZIONI: Media salvato con ID: 94dd35ef-ab0b-41a5-872c-144dba78e72f
+mag 10, 2025 11:08:51 AM com.library.ui.ConsoleUI addNewMagazine
+INFORMAZIONI: Nuova rivista aggiunta: 94dd35ef-ab0b-41a5-872c-144dba78e72f
+mag 10, 2025 11:09:12 AM com.library.service.MediaService findAllMedia
+INFORMAZIONI: Richiesta di tutti i media
+mag 10, 2025 11:09:35 AM com.library.service.MediaService findMediaByPublicationYear
+INFORMAZIONI: Ricerca media per anno di pubblicazione: 25
+mag 10, 2025 11:09:50 AM com.library.service.MediaService findMediaByPublicationYear
+INFORMAZIONI: Ricerca media per anno di pubblicazione: 2025
+mag 10, 2025 11:13:03 AM com.library.Main main
+INFORMAZIONI: Chiusura del Sistema di Gestione Biblioteca
