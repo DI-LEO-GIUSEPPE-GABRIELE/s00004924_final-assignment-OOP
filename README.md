@@ -42,7 +42,7 @@ Questo progetto implementa un sistema di gestione per una biblioteca, consentend
 Per eseguire l'applicazione:
 
 ```bash
-java -cp target/classes Main
+java -cp target/classes main.java.Main
 ```
 
 Per eseguire i test:

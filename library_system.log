@@ -30,3 +30,17 @@ mag 10, 2025 11:09:50 AM com.library.service.MediaService findMediaByPublication
 INFORMAZIONI: Ricerca media per anno di pubblicazione: 2025
 mag 10, 2025 11:13:03 AM com.library.Main main
 INFORMAZIONI: Chiusura del Sistema di Gestione Biblioteca
+mag 10, 2025 4:08:47 PM main.java.Main main
+INFORMAZIONI: Avvio del Sistema di Gestione Biblioteca
+mag 10, 2025 4:08:47 PM repository.MediaRepository <init>
+INFORMAZIONI: Inizializzazione del repository dei media
+mag 10, 2025 4:08:47 PM java.io.ObjectInputFilter$Config traceFilter
+MIGLIORE: Builtin factory: null -> new: null
+mag 10, 2025 4:08:47 PM repository.FileStorageManager loadMedia
+GRAVE: Errore durante il caricamento dei media da file: com.library.model.media.Magazine
+mag 10, 2025 4:08:47 PM repository.MediaRepository loadMediaFromStorage
+AVVERTENZA: Impossibile caricare i media dal file system: Errore durante il caricamento dei media: com.library.model.media.Magazine
+mag 10, 2025 4:08:47 PM service.MediaService <init>
+INFORMAZIONI: Inizializzazione del servizio media
+mag 10, 2025 4:09:02 PM main.java.Main main
+INFORMAZIONI: Chiusura del Sistema di Gestione Biblioteca
