@@ -42,13 +42,13 @@ Questo progetto implementa un sistema di gestione per una biblioteca, consentend
 Per eseguire l'applicazione:
 
 ```bash
-java -cp target/classes com.library.Main
+java -cp target/classes Main
 ```
 
 Per eseguire i test:
 
 ```bash
-java -cp target/classes com.library.test.MediaServiceTest
+java -cp target/classes test.MediaServiceTest
 ```
 
 ## Requisiti
