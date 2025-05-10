@@ -12,17 +12,15 @@ public class Magazine implements Media, Serializable {
     private static final long serialVersionUID = 2L;
     private final String id;
     private final String title;
-    private final String issn;
     private final LocalDate publicationDate;
     private final String publisher;
     private final int issue;
     private boolean available;
 
-    public Magazine(String id, String title, String issn, LocalDate publicationDate, 
+    public Magazine(String id, String title, LocalDate publicationDate, 
                    String publisher, int issue) {
         this.id = id;
         this.title = title;
-        this.issn = issn;
         this.publicationDate = publicationDate;
         this.publisher = publisher;
         this.issue = issue;
@@ -37,10 +35,6 @@ public class Magazine implements Media, Serializable {
     @Override
     public String getTitle() {
         return title;
-    }
-
-    public String getIssn() {
-        return issn;
     }
 
     @Override
@@ -68,8 +62,8 @@ public class Magazine implements Media, Serializable {
 
     @Override
     public String getDetails() {
-        return String.format("Rivista: %s, ISSN: %s, Pubblicato: %s, Editore: %s, Numero: %d, Disponibile: %s",
-                title, issn, publicationDate, publisher, issue, available ? "Sì" : "No");
+        return String.format("Rivista: %s, Pubblicato: %s, Editore: %s, Numero: %d, Disponibile: %s",
+                title, publicationDate, publisher, issue, available ? "Sì" : "No");
     }
 
     @Override

@@ -4,7 +4,6 @@ import exception.LibraryException;
 import exception.MediaNotFoundException;
 import factory.MediaFactory;
 import model.media.Book;
-import model.media.Magazine;
 import model.media.Media;
 import model.media.MediaCollection;
 import service.MediaService;
@@ -65,7 +64,6 @@ public class MediaServiceTest {
         Media book = MediaFactory.createBook(
                 "Il Nome della Rosa", 
                 "Umberto Eco", 
-                "978-8845278655", 
                 LocalDate.of(1980, 10, 15), 
                 "Bompiani", 
                 512);
@@ -76,7 +74,6 @@ public class MediaServiceTest {
         // Creazione e salvataggio di una rivista
         Media magazine = MediaFactory.createMagazine(
                 "Focus", 
-                "1234-5678", 
                 LocalDate.of(2023, 5, 10), 
                 "Mondadori", 
                 350);
@@ -145,7 +142,6 @@ public class MediaServiceTest {
         Media mediaToDelete = MediaFactory.createBook(
                 "Libro da eliminare", 
                 "Autore Test", 
-                "978-1234567890", 
                 LocalDate.now(), 
                 "Editore Test", 
                 100);
@@ -181,7 +177,6 @@ public class MediaServiceTest {
         Media bookForCollection = MediaFactory.createBook(
                 "Libro per collezione", 
                 "Autore Collezione", 
-                "978-9876543210", 
                 LocalDate.now(), 
                 "Editore Collezione", 
                 200);

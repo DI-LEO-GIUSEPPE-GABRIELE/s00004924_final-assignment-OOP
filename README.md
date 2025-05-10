@@ -1,65 +1,58 @@
-# Sistema di Gestione Biblioteca
+# Project Core - Library Management System
 
-Questo progetto implementa un sistema di gestione per una biblioteca, consentendo la gestione di libri, riviste e collezioni di media.
+This project implements a library management system, allowing for the management of books and magazines.
 
-## Caratteristiche
+## Characteristics
 
-- Gestione di libri e riviste
-- Creazione di collezioni di media
-- Ricerca per titolo, autore e anno di pubblicazione
-- Persistenza dei dati su file
-- Interfaccia utente a console
+- Books and magazines management
+- Search by title, author and publication year
+- Data persistence on file
+- UI user interface on console
 
-## Pattern di Design Implementati
+## Design Patterns
 
-- **Factory Pattern**: Utilizzato nella classe `MediaFactory` per la creazione di oggetti media
-- **Composite Pattern**: Implementato attraverso l'interfaccia `Media` e le classi `Book`, `Magazine` e `MediaCollection`
-- **Iterator Pattern**: Implementato attraverso l'interfaccia `MediaIterator` e la classe `MediaCollectionIterator`
-- **Singleton Pattern**: Utilizzato nelle classi `MediaRepository`, `MediaService` e `FileStorageManager`
-- **Exception Shielding**: Implementato attraverso la gerarchia di eccezioni personalizzate
+- Factory Pattern: Implemented in the MediaFactory class for the creation of media objects
+- Composite Pattern: Implemented through the Media interface and the MediaCollection, Book e Magazine classes
+- Iterator Pattern: Implemented through the MediaIterator interface and the the MediaCollectionIterator class
+- Singleton Pattern: Implemented in the MediaRepository, MediaService` and FileStorageManager classes
+- Exception Shielding: Implemented through the creation and nesting of custom exceptions
 
-## Tecnologie Core Utilizzate
+## Core Technologies
 
-- **Collections Framework**: Utilizzato per la gestione delle collezioni di media
-- **Generics**: Utilizzati nell'interfaccia `Repository` e nelle implementazioni
-- **Java I/O**: Utilizzato per la persistenza dei dati su file
-- **Logging**: Implementato attraverso la classe `LoggerManager`
+- Collections Framework: Used to manage media collections
+- Generics: Used in the Repository interface and its implementations
+- Java I/O: Used for data persistence on file
+- Logging: Implemented through the LoggerManager class
 
-## Struttura del Progetto
+## Project structure
 
-- **model**: Contiene le classi del modello dati
-- **repository**: Contiene le classi per la persistenza dei dati
-- **service**: Contiene i servizi per la logica di business
-- **factory**: Contiene le factory per la creazione degli oggetti
-- **iterator**: Contiene gli iteratori per le collezioni
-- **exception**: Contiene le eccezioni personalizzate
-- **ui**: Contiene l'interfaccia utente a console
-- **util**: Contiene le classi di utilità
-- **test**: Contiene le classi di test
+- model: Contains the classes of model data
+- repository: Contains the classes for data persistence
+- service: Contains the services for app logics
+- factory: Contains the factories for object creation
+- iterator: Contains the iterators for the collections
+- exception: Contains the custom exceptions
+- ui: Contains the ui for the user experience on console
+- util: Contains the classes for utilities
+- test: Contains the classes for tests
 
-## Come Eseguire
+## Run
 
-Per eseguire l'applicazione:
+To run the application, in console:
 
-```bash
-java -cp target/classes main.java.Main
-```
+`java -cp target/classes main.java.Main`
 
-Per eseguire i test:
+To run the tests, in console:
 
-```bash
-java -cp target/classes test.MediaServiceTest
-```
+`java -cp target/classes test.MediaServiceTest`
 
-## Requisiti
+## Requirements
 
-- Java 8 o superiore
-- Maven (per la compilazione)
+- Java 8 or higher
+- Maven (for building and packets management)
 
-## Compilazione
+## Compiling
 
-Per compilare il progetto:
+To compile project's files, in console:
 
-```bash
-mvn clean compile
-```
+`mvn clean compile`

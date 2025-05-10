@@ -45,12 +45,9 @@ public class ConsoleUI {
                         addNewMedia();
                         break;
                     case 2:
-                        createCollection();
-                        break;
-                    case 3:
                         viewAllMedia();
                         break;
-                    case 4:
+                    case 3:
                         searchMedia();
                         break;
                     case 0:
@@ -81,9 +78,8 @@ public class ConsoleUI {
     private void printMainMenu() {
         System.out.println("\nMENU PRINCIPALE");
         System.out.println("1. Aggiungi nuovo media");
-        System.out.println("2. Crea nuova collezione");
-        System.out.println("3. Visualizza tutti i media");
-        System.out.println("4. Cerca media");
+        System.out.println("2. Visualizza tutti i media");
+        System.out.println("3. Cerca media");
         System.out.println("0. Esci");
     }
 
@@ -114,12 +110,11 @@ public class ConsoleUI {
         
         String title = readStringInput("Titolo: ");
         String author = readStringInput("Autore: ");
-        String isbn = readIsbnInput();
         LocalDate publicationDate = readDateInput("Data di pubblicazione (dd/MM/yyyy): ");
         String publisher = readStringInput("Editore: ");
         int pages = readIntInput("Numero di pagine: ");
         
-        Media book = MediaFactory.createBook(title, author, isbn, publicationDate, publisher, pages);
+        Media book = MediaFactory.createBook(title, author, publicationDate, publisher, pages);
         
         mediaService.saveMedia(book);
         System.out.println("Libro aggiunto con successo: " + book.getDetails());
@@ -130,28 +125,15 @@ public class ConsoleUI {
         System.out.println("\nAGGIUNGI NUOVA RIVISTA");
         
         String title = readStringInput("Titolo: ");
-        String issn = readIssnInput();
         LocalDate publicationDate = readDateInput("Data di pubblicazione (dd/MM/yyyy): ");
         String publisher = readStringInput("Editore: ");
         int issue = readIntInput("Numero: ");
         
-        Media magazine = MediaFactory.createMagazine(title, issn, publicationDate, publisher, issue);
+        Media magazine = MediaFactory.createMagazine(title, publicationDate, publisher, issue);
         
         mediaService.saveMedia(magazine);
         System.out.println("Rivista aggiunta con successo: " + magazine.getDetails());
         LOGGER.info("Nuova rivista aggiunta: " + magazine.getId());
-    }
-
-    private void createCollection() throws LibraryException {
-        System.out.println("\nCREA NUOVA COLLEZIONE");
-        
-        String title = readStringInput("Titolo della collezione: ");
-        
-        MediaCollection collection = MediaFactory.createMediaCollection(title);
-        
-        mediaService.saveMedia(collection);
-        System.out.println("Collezione creata con successo: " + collection.getDetails());
-        LOGGER.info("Nuova collezione creata: " + collection.getId());
     }
 
     private String readStringInput(String prompt) {
@@ -164,30 +146,6 @@ public class ConsoleUI {
             }
         } while (!InputValidator.isValidString(input));
         return input;
-    }
-
-    private String readIsbnInput() {
-        String isbn;
-        do {
-            System.out.print("ISBN (formato: 978-3-16-148410-0): ");
-            isbn = scanner.nextLine().trim();
-            if (!InputValidator.isValidIsbn(isbn)) {
-                System.out.println("ISBN non valido. Riprova.");
-            }
-        } while (!InputValidator.isValidIsbn(isbn));
-        return isbn;
-    }
-
-    private String readIssnInput() {
-        String issn;
-        do {
-            System.out.print("ISSN (formato: 1234-5678): ");
-            issn = scanner.nextLine().trim();
-            if (!InputValidator.isValidIssn(issn)) {
-                System.out.println("ISSN non valido. Riprova.");
-            }
-        } while (!InputValidator.isValidIssn(issn));
-        return issn;
     }
 
     private int readIntInput(String prompt) {

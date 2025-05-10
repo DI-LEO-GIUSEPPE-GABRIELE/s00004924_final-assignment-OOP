@@ -13,18 +13,16 @@ public class Book implements Media, Serializable {
     private final String id;
     private final String title;
     private final String author;
-    private final String isbn;
     private final LocalDate publicationDate;
     private final String publisher;
     private final int pages;
     private boolean available;
 
-    public Book(String id, String title, String author, String isbn, 
+    public Book(String id, String title, String author, 
                 LocalDate publicationDate, String publisher, int pages) {
         this.id = id;
         this.title = title;
         this.author = author;
-        this.isbn = isbn;
         this.publicationDate = publicationDate;
         this.publisher = publisher;
         this.pages = pages;
@@ -43,10 +41,6 @@ public class Book implements Media, Serializable {
 
     public String getAuthor() {
         return author;
-    }
-
-    public String getIsbn() {
-        return isbn;
     }
 
     @Override
@@ -74,8 +68,8 @@ public class Book implements Media, Serializable {
 
     @Override
     public String getDetails() {
-        return String.format("Libro: %s di %s, ISBN: %s, Pubblicato: %s, Editore: %s, Pagine: %d, Disponibile: %s",
-                title, author, isbn, publicationDate, publisher, pages, available ? "Sì" : "No");
+        return String.format("Libro: %s di %s, Pubblicato: %s, Editore: %s, Pagine: %d, Disponibile: %s",
+                title, author, publicationDate, publisher, pages, available ? "Sì" : "No");
     }
 
     @Override

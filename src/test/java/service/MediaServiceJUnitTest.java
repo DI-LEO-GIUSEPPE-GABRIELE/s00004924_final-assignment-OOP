@@ -32,14 +32,12 @@ public class MediaServiceJUnitTest {
         testBook = MediaFactory.createBook(
                 "Test Book", 
                 "Test Author", 
-                "978-1234567890", 
                 LocalDate.now(), 
                 "Test Publisher", 
                 100);
         
         testMagazine = MediaFactory.createMagazine(
                 "Test Magazine", 
-                "1234-5678", 
                 LocalDate.now(), 
                 "Test Publisher", 
                 1);
@@ -123,7 +121,6 @@ public class MediaServiceJUnitTest {
         Media mediaToDelete = MediaFactory.createBook(
                 "Delete Test Book", 
                 "Delete Test Author", 
-                "978-0987654321", 
                 LocalDate.now(), 
                 "Delete Test Publisher", 
                 200);

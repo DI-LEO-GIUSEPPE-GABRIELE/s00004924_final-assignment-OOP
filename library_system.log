@@ -44,3 +44,81 @@ mag 10, 2025 4:08:47 PM service.MediaService <init>
 INFORMAZIONI: Inizializzazione del servizio media
 mag 10, 2025 4:09:02 PM main.java.Main main
 INFORMAZIONI: Chiusura del Sistema di Gestione Biblioteca
+mag 10, 2025 6:06:39 PM main.java.Main main
+INFORMAZIONI: Avvio del Sistema di Gestione Biblioteca
+mag 10, 2025 6:06:39 PM repository.MediaRepository <init>
+INFORMAZIONI: Inizializzazione del repository dei media
+mag 10, 2025 6:06:39 PM java.io.ObjectInputFilter$Config traceFilter
+MIGLIORE: Builtin factory: null -> new: null
+mag 10, 2025 6:06:39 PM repository.FileStorageManager loadMedia
+GRAVE: Errore durante il caricamento dei media da file: com.library.model.media.Magazine
+mag 10, 2025 6:06:39 PM repository.MediaRepository loadMediaFromStorage
+AVVERTENZA: Impossibile caricare i media dal file system: Errore durante il caricamento dei media: com.library.model.media.Magazine
+mag 10, 2025 6:06:39 PM service.MediaService <init>
+INFORMAZIONI: Inizializzazione del servizio media
+mag 10, 2025 6:06:44 PM service.MediaService findAllMedia
+INFORMAZIONI: Richiesta di tutti i media
+mag 10, 2025 6:07:58 PM service.MediaService saveMedia
+INFORMAZIONI: Richiesta di salvataggio media: llall
+mag 10, 2025 6:07:58 PM repository.FileStorageManager saveMedia
+INFORMAZIONI: Media salvati su file: data/media.dat
+mag 10, 2025 6:07:58 PM repository.MediaRepository saveMediaToStorage
+INFORMAZIONI: Media salvati sul file system
+mag 10, 2025 6:07:58 PM repository.MediaRepository save
+INFORMAZIONI: Media salvato con ID: 1742f474-1627-46a6-a107-027f76b29e38
+mag 10, 2025 6:07:58 PM ui.ConsoleUI addNewBook
+INFORMAZIONI: Nuovo libro aggiunto: 1742f474-1627-46a6-a107-027f76b29e38
+mag 10, 2025 6:08:02 PM service.MediaService findAllMedia
+INFORMAZIONI: Richiesta di tutti i media
+mag 10, 2025 6:09:33 PM main.java.Main main
+INFORMAZIONI: Chiusura del Sistema di Gestione Biblioteca
+mag 10, 2025 6:14:14 PM main.java.Main main
+INFORMAZIONI: Avvio del Sistema di Gestione Biblioteca
+mag 10, 2025 6:14:14 PM repository.MediaRepository <init>
+INFORMAZIONI: Inizializzazione del repository dei media
+mag 10, 2025 6:14:14 PM java.io.ObjectInputFilter$Config traceFilter
+MIGLIORE: Builtin factory: null -> new: null
+mag 10, 2025 6:14:14 PM repository.FileStorageManager loadMedia
+INFORMAZIONI: Media caricati da file: data/media.dat, numero di media: 1
+mag 10, 2025 6:14:14 PM repository.MediaRepository loadMediaFromStorage
+INFORMAZIONI: Media caricati dal file system: 1
+mag 10, 2025 6:14:14 PM service.MediaService <init>
+INFORMAZIONI: Inizializzazione del servizio media
+mag 10, 2025 6:15:15 PM service.MediaService saveMedia
+INFORMAZIONI: Richiesta di salvataggio media: asas
+mag 10, 2025 6:15:15 PM repository.FileStorageManager saveMedia
+INFORMAZIONI: Media salvati su file: data/media.dat
+mag 10, 2025 6:15:15 PM repository.MediaRepository saveMediaToStorage
+INFORMAZIONI: Media salvati sul file system
+mag 10, 2025 6:15:15 PM repository.MediaRepository save
+INFORMAZIONI: Media salvato con ID: b234ee49-987d-437f-8697-c4f902ac5671
+mag 10, 2025 6:15:15 PM ui.ConsoleUI addNewMagazine
+INFORMAZIONI: Nuova rivista aggiunta: b234ee49-987d-437f-8697-c4f902ac5671
+mag 10, 2025 6:15:19 PM service.MediaService findAllMedia
+INFORMAZIONI: Richiesta di tutti i media
+mag 10, 2025 6:15:45 PM service.MediaService saveMedia
+INFORMAZIONI: Richiesta di salvataggio media: Magazine
+mag 10, 2025 6:15:45 PM repository.FileStorageManager saveMedia
+INFORMAZIONI: Media salvati su file: data/media.dat
+mag 10, 2025 6:15:45 PM repository.MediaRepository saveMediaToStorage
+INFORMAZIONI: Media salvati sul file system
+mag 10, 2025 6:15:45 PM repository.MediaRepository save
+INFORMAZIONI: Media salvato con ID: 129d67a0-9381-421d-bfdb-5bff576fdd16
+mag 10, 2025 6:16:09 PM service.MediaService findAllMedia
+INFORMAZIONI: Richiesta di tutti i media
+mag 10, 2025 6:16:57 PM main.java.Main main
+INFORMAZIONI: Chiusura del Sistema di Gestione Biblioteca
+mag 10, 2025 6:18:35 PM main.java.Main main
+INFORMAZIONI: Avvio del Sistema di Gestione Biblioteca
+mag 10, 2025 6:18:35 PM repository.MediaRepository <init>
+INFORMAZIONI: Inizializzazione del repository dei media
+mag 10, 2025 6:18:35 PM java.io.ObjectInputFilter$Config traceFilter
+MIGLIORE: Builtin factory: null -> new: null
+mag 10, 2025 6:18:35 PM repository.FileStorageManager loadMedia
+INFORMAZIONI: Media caricati da file: data/media.dat, numero di media: 3
+mag 10, 2025 6:18:35 PM repository.MediaRepository loadMediaFromStorage
+INFORMAZIONI: Media caricati dal file system: 3
+mag 10, 2025 6:18:35 PM service.MediaService <init>
+INFORMAZIONI: Inizializzazione del servizio media
+mag 10, 2025 6:19:03 PM main.java.Main main
+INFORMAZIONI: Chiusura del Sistema di Gestione Biblioteca

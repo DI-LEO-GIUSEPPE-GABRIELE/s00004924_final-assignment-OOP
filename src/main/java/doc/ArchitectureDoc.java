@@ -26,7 +26,7 @@ package doc;
  * </p>
  * <pre>
  * // Esempio di utilizzo:
- * Media book = MediaFactory.createBook(title, author, isbn, publicationDate, publisher, pages);
+ * Media book = MediaFactory.createBook(title, author, publicationDate, publisher, pages);
  * </pre>
  * 
  * <h3>Composite Pattern</h3>
