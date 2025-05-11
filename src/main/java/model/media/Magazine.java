@@ -1,13 +1,9 @@
 package model.media;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-/**
- * Classe che rappresenta una rivista.
- * Implementa l'interfaccia Media come parte del pattern Composite.
- */
+// Magazine class implementing the Media interface as part of the Composite pattern
 public class Magazine implements Media, Serializable {
     private static final long serialVersionUID = 2L;
     private final String id;
@@ -62,7 +58,7 @@ public class Magazine implements Media, Serializable {
 
     @Override
     public String getDetails() {
-        return String.format("Rivista: %s, Pubblicato: %s, Editore: %s, Numero: %d, Disponibile: %s",
+        return String.format("Magazine: %s, Published: %s, Publisher: %s, Number: %d, Available: %s",
                 title, publicationDate, publisher, issue, available ? "Sì" : "No");
     }
 

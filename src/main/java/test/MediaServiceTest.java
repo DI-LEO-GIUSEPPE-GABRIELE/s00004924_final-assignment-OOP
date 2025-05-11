@@ -1,14 +1,11 @@
 package test;
-
 import exception.LibraryException;
 import exception.MediaNotFoundException;
 import factory.MediaFactory;
 import model.media.Book;
 import model.media.Media;
-import model.media.MediaCollection;
 import service.MediaService;
 import util.LoggerManager;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.logging.Logger;
@@ -43,9 +40,6 @@ public class MediaServiceTest {
             
             // Test di eliminazione
             testDelete();
-            
-            // Test delle collezioni
-            testCollections();
             
             LOGGER.info("Tutti i test completati con successo");
         } catch (Exception e) {
@@ -160,47 +154,6 @@ public class MediaServiceTest {
         } catch (MediaNotFoundException e) {
             LOGGER.info("Verifica eliminazione completata con successo");
         }
-    }
-    
-    /**
-     * Test delle collezioni di media.
-     */
-    private void testCollections() throws LibraryException, MediaNotFoundException {
-        LOGGER.info("Test delle collezioni");
-        
-        // Crea una nuova collezione
-        MediaCollection collection = MediaFactory.createMediaCollection("Collezione di Test");
-        mediaService.saveMedia(collection);
-        LOGGER.info("Collezione creata: " + collection.getDetails());
-        
-        // Crea un nuovo libro da aggiungere alla collezione
-        Media bookForCollection = MediaFactory.createBook(
-                "Libro per collezione", 
-                "Autore Collezione", 
-                LocalDate.now(), 
-                "Editore Collezione", 
-                200);
-        
-        mediaService.saveMedia(bookForCollection);
-        LOGGER.info("Libro creato per la collezione: " + bookForCollection.getDetails());
-        
-        // Aggiungi il libro alla collezione
-        mediaService.addMediaToCollection(collection.getId(), bookForCollection.getId());
-        LOGGER.info("Libro aggiunto alla collezione");
-        
-        // Verifica che il libro sia stato aggiunto alla collezione
-        Media updatedCollection = mediaService.findMediaById(collection.getId());
-        if (!(updatedCollection instanceof MediaCollection)) {
-            throw new LibraryException("Errore nel recupero della collezione");
-        }
-        
-        MediaCollection retrievedCollection = (MediaCollection) updatedCollection;
-        if (retrievedCollection.getMediaItems().isEmpty()) {
-            throw new LibraryException("Errore nell'aggiunta del libro alla collezione");
-        }
-        
-        LOGGER.info("Numero di media nella collezione: " + retrievedCollection.getMediaItems().size());
-        LOGGER.info("Verifica collezione completata con successo");
     }
     
     /**

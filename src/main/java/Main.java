@@ -1,24 +1,23 @@
 package main.java;
-
 import ui.ConsoleUI;
 import util.LoggerManager;
-
 import java.util.logging.Logger;
 
+// Main class of the application
 public class Main {
     private static final Logger LOGGER = LoggerManager.getLogger(Main.class.getName());
 
     public static void main(String[] args) {
-        LOGGER.info("Avvio del Sistema di Gestione Biblioteca");
+        LOGGER.info("Starting the Library Management System");
         
         try {
             ConsoleUI ui = new ConsoleUI();
             ui.start();
         } catch (Exception e) {
-            LOGGER.severe("Errore durante l'esecuzione dell'applicazione: " + e.getMessage());
-            System.out.println("Si è verificato un errore. Consultare i log per maggiori dettagli.");
+            LOGGER.severe("Error while running the application: " + e.getMessage());
+            System.out.println("An error occurred. See logs for more details.");
         }
         
-        LOGGER.info("Chiusura del Sistema di Gestione Biblioteca");
+        LOGGER.info("Closing of the Library Management System");
     }
 }

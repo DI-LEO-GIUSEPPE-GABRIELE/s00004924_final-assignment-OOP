@@ -1,9 +1,6 @@
 package exception;
 
-/**
- * Eccezione base per tutte le eccezioni della biblioteca.
- * Parte del pattern Exception Shielding.
- */
+// Base exception class for all library exceptions
 public class LibraryException extends Exception {
     
     public LibraryException(String message) {

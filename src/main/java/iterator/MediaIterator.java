@@ -1,11 +1,7 @@
 package iterator;
-
 import model.media.Media;
 
-/**
- * Interfaccia per l'iteratore di media.
- * Implementa il pattern Iterator.
- */
+// Interface for media iterator, implementing the Iterator pattern
 public interface MediaIterator {
     boolean hasNext();
     Media next();

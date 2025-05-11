@@ -1,13 +1,9 @@
 package model.media;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-/**
- * Classe che rappresenta un libro.
- * Implementa l'interfaccia Media come parte del pattern Composite.
- */
+// Book class implementing the Media interface as part of the Composite pattern
 public class Book implements Media, Serializable {
     private static final long serialVersionUID = 1L;
     private final String id;
@@ -68,7 +64,7 @@ public class Book implements Media, Serializable {
 
     @Override
     public String getDetails() {
-        return String.format("Libro: %s di %s, Pubblicato: %s, Editore: %s, Pagine: %d, Disponibile: %s",
+        return String.format("Book: %s di %s, Published: %s, Publisher: %s, Pages: %d, Available: %s",
                 title, author, publicationDate, publisher, pages, available ? "Sì" : "No");
     }
 

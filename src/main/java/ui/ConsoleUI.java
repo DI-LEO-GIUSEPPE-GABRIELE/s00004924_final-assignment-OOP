@@ -1,16 +1,11 @@
 package ui;
-
 import exception.LibraryException;
-import exception.MediaNotFoundException;
 import factory.MediaFactory;
 import model.media.Book;
-import model.media.Magazine;
 import model.media.Media;
-import model.media.MediaCollection;
 import service.MediaService;
 import util.InputValidator;
 import util.LoggerManager;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -162,7 +157,6 @@ public class ConsoleUI {
     }
 
     private LocalDate readDateInput(String prompt) {
-        LocalDate date;
         String input;
         do {
             System.out.print(prompt);

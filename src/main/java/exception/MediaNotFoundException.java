@@ -1,12 +1,9 @@
 package exception;
 
-/**
- * Eccezione lanciata quando un media non viene trovato.
- * Parte del pattern Exception Shielding.
- */
+// Exception for media not found
 public class MediaNotFoundException extends LibraryException {
     
     public MediaNotFoundException(String mediaId) {
-        super("Media con ID " + mediaId + " non trovato");
+        super("Media with ID " + mediaId + " not found");
     }
 }

@@ -1,18 +1,13 @@
 package model.media;
-
 import iterator.MediaIterator;
 import iterator.MediaCollectionIterator;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * Classe che rappresenta una collezione di media.
- * Implementa l'interfaccia Media come parte del pattern Composite.
- */
+// Class for MediaCollection implementing the Media interface as Composite pattern
 public class MediaCollection implements Media, Serializable {
     private static final long serialVersionUID = 3L;
     private final String id;
@@ -51,7 +46,6 @@ public class MediaCollection implements Media, Serializable {
     @Override
     public void setAvailable(boolean available) {
         this.available = available;
-        // Se la collezione non è disponibile, tutti gli elementi al suo interno non sono disponibili
         if (!available) {
             for (Media media : mediaItems) {
                 media.setAvailable(false);
@@ -61,7 +55,7 @@ public class MediaCollection implements Media, Serializable {
 
     @Override
     public String getDetails() {
-        return String.format("Collezione: %s, Creata: %s, Elementi: %d, Disponibile: %s",
+        return String.format("Collection: %s, Created: %s, Elements: %d, Available: %s",
                 title, creationDate, mediaItems.size(), available ? "Sì" : "No");
     }
 

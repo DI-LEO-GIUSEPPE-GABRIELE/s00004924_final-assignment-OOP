@@ -1,12 +1,8 @@
 package model.media;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 
-/**
- * Interfaccia che rappresenta un elemento multimediale nella biblioteca.
- * Parte del pattern Composite.
- */
+// Interface for Media elements in lirary as Composite pattern
 public interface Media extends Serializable {
     String getId();
     String getTitle();

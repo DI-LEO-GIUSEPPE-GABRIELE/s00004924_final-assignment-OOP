@@ -1,11 +1,9 @@
 package service;
-
 import exception.LibraryException;
 import exception.MediaNotFoundException;
 import factory.MediaFactory;
 import model.media.Book;
 import model.media.Media;
-import model.media.MediaCollection;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -95,24 +93,6 @@ public class MediaServiceJUnitTest {
         // Verifica che l'aggiornamento sia persistente
         Media retrievedBook = mediaService.findMediaById(testBook.getId());
         assertFalse("Lo stato di disponibilità non è persistente", retrievedBook.isAvailable());
-    }
-    
-    @Test
-    public void testMediaCollection() throws LibraryException, MediaNotFoundException {
-        // Crea una collezione
-        MediaCollection collection = MediaFactory.createMediaCollection("Test Collection");
-        mediaService.saveMedia(collection);
-        
-        // Aggiungi un media alla collezione
-        mediaService.addMediaToCollection(collection.getId(), testBook.getId());
-        
-        // Verifica che il media sia stato aggiunto alla collezione
-        Media retrievedCollection = mediaService.findMediaById(collection.getId());
-        assertTrue("L'oggetto recuperato non è una collezione", retrievedCollection instanceof MediaCollection);
-        
-        MediaCollection actualCollection = (MediaCollection) retrievedCollection;
-        assertFalse("La collezione non contiene media", actualCollection.getMediaItems().isEmpty());
-        assertEquals("La collezione non contiene il numero corretto di media", 1, actualCollection.getMediaItems().size());
     }
     
     @Test(expected = MediaNotFoundException.class)

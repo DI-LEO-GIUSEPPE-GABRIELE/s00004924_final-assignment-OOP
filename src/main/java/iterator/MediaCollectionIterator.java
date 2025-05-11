@@ -1,15 +1,10 @@
 package iterator;
-
 import model.media.Media;
 import model.media.MediaCollection;
-
 import java.util.List;
 import java.util.NoSuchElementException;
 
-/**
- * Implementazione dell'iteratore per le collezioni di media.
- * Implementa il pattern Iterator.
- */
+// Iterator for MediaCollections, implementing the Iterator pattern
 public class MediaCollectionIterator implements MediaIterator {
     private final List<Media> mediaItems;
     private int position = 0;
@@ -26,7 +21,7 @@ public class MediaCollectionIterator implements MediaIterator {
     @Override
     public Media next() {
         if (!hasNext()) {
-            throw new NoSuchElementException("Non ci sono più elementi nella collezione");
+            throw new NoSuchElementException("There are no more media items.");
         }
         return mediaItems.get(position++);
     }

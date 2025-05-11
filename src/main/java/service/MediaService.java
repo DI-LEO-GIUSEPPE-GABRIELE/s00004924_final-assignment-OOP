@@ -1,5 +1,4 @@
 package service;
-
 import exception.LibraryException;
 import exception.MediaNotFoundException;
 import model.media.Book;
@@ -7,8 +6,6 @@ import model.media.Media;
 import model.media.MediaCollection;
 import repository.MediaRepository;
 import util.LoggerManager;
-
-import java.time.LocalDate;
 import java.util.List;
 import java.util.logging.Logger;
 

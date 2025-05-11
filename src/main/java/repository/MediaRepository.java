@@ -1,19 +1,15 @@
 package repository;
-
 import exception.LibraryException;
 import exception.MediaNotFoundException;
 import model.media.Book;
 import model.media.Media;
 import util.LoggerManager;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
-import java.io.Serializable;
 
 /**
  * Implementazione del repository per i media.
