@@ -1,4 +1,6 @@
 package factory;
+
+import model.media.MediaCollection;
 import model.media.Book;
 import model.media.Magazine;
 import model.media.Media;
@@ -20,6 +22,12 @@ public class MediaFactory {
             String publisher, int issue) {
         String id = generateId();
         return new Magazine(id, title, publicationDate, publisher, issue);
+    }
+
+    // Method for creating a media collection
+    public static MediaCollection createMediaCollection(String title) {
+        String id = generateId();
+        return new MediaCollection(id, title, LocalDate.now());
     }
 
     // Private method for generating a unique ID

@@ -1,164 +1,189 @@
 package test;
+
 import exception.LibraryException;
 import exception.MediaNotFoundException;
 import factory.MediaFactory;
 import model.media.Book;
 import model.media.Media;
 import service.MediaService;
+import model.media.MediaCollection;
 import util.LoggerManager;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.logging.Logger;
 
-/**
- * Classe di test per il servizio MediaService.
- * Verifica il corretto funzionamento delle operazioni CRUD e delle ricerche.
- */
+// Test class for MediaService, check the correct operation of CRUD operations and searches.
 public class MediaServiceTest {
     private static final Logger LOGGER = LoggerManager.getLogger(MediaServiceTest.class.getName());
     private final MediaService mediaService;
-    
+
     public MediaServiceTest() {
         this.mediaService = MediaService.getInstance();
     }
-    
-    /**
-     * Esegue i test del servizio MediaService.
-     */
+
+    // Run the tests
     public void runTests() {
-        LOGGER.info("Inizio dei test del servizio MediaService");
-        
+        LOGGER.info("Starting the test of MediaService");
+
         try {
-            // Test di creazione e salvataggio
+            // Creation and saving test
             testCreateAndSave();
-            
-            // Test di ricerca
+
+            // Search test
             testSearch();
-            
-            // Test di aggiornamento
+
+            // Update test
             testUpdate();
-            
-            // Test di eliminazione
+
+            // Delete test
             testDelete();
-            
-            LOGGER.info("Tutti i test completati con successo");
+
+            // Collections test
+            testCollections();
+
+            LOGGER.info("All tests completed successfully");
         } catch (Exception e) {
-            LOGGER.severe("Errore durante l'esecuzione dei test: " + e.getMessage());
+            LOGGER.severe("Error executing tests: " + e.getMessage());
             e.printStackTrace();
         }
     }
-    
-    /**
-     * Test di creazione e salvataggio dei media.
-     */
+
+    // Creation and saving test
     private void testCreateAndSave() throws LibraryException {
-        LOGGER.info("Test di creazione e salvataggio");
-        
-        // Creazione e salvataggio di un libro
+        LOGGER.info("Creation and saving test");
+
+        // Creating and saving a book
         Media book = MediaFactory.createBook(
-                "Il Nome della Rosa", 
-                "Umberto Eco", 
-                LocalDate.of(1980, 10, 15), 
-                "Bompiani", 
+                "Il Nome della Rosa",
+                "Umberto Eco",
+                LocalDate.of(1980, 10, 15),
+                "Bompiani",
                 512);
-        
+
         mediaService.saveMedia(book);
-        LOGGER.info("Libro creato e salvato: " + book.getDetails());
-        
-        // Creazione e salvataggio di una rivista
+        LOGGER.info("Book created and saved: " + book.getDetails());
+
+        // Creating and saving a magazine
         Media magazine = MediaFactory.createMagazine(
-                "Focus", 
-                LocalDate.of(2023, 5, 10), 
-                "Mondadori", 
+                "Focus",
+                LocalDate.of(2023, 5, 10),
+                "Mondadori",
                 350);
-        
+
         mediaService.saveMedia(magazine);
-        LOGGER.info("Rivista creata e salvata: " + magazine.getDetails());
-        
-        // Verifica che i media siano stati salvati
+        LOGGER.info("Magazine created and saved: " + magazine.getDetails());
+
         List<Media> allMedia = mediaService.findAllMedia();
-        LOGGER.info("Numero di media salvati: " + allMedia.size());
-        
+        LOGGER.info("Number of media saved: " + allMedia.size());
+
         if (allMedia.size() < 2) {
-            throw new LibraryException("Errore nel salvataggio dei media");
+            throw new LibraryException("Error saving media");
         }
     }
-    
-    /**
-     * Test di ricerca dei media.
-     */
+
+    // Search Test
     private void testSearch() throws LibraryException {
-        LOGGER.info("Test di ricerca");
-        
+        LOGGER.info("Search Test");
+
         // Ricerca per titolo
         List<Media> mediaByTitle = mediaService.findMediaByTitle("Rosa");
-        LOGGER.info("Media trovati per titolo 'Rosa': " + mediaByTitle.size());
-        
+        LOGGER.info("Media found for title 'Rosa': " + mediaByTitle.size());
+
         // Ricerca per autore
         List<Book> booksByAuthor = mediaService.findBooksByAuthor("Eco");
-        LOGGER.info("Libri trovati per autore 'Eco': " + booksByAuthor.size());
-        
+        LOGGER.info("Books found by author 'Eco': " + booksByAuthor.size());
+
         // Ricerca per anno
         List<Media> mediaByYear = mediaService.findMediaByPublicationYear(1980);
-        LOGGER.info("Media trovati per anno 1980: " + mediaByYear.size());
+        LOGGER.info("Media found for year 1980: " + mediaByYear.size());
     }
-    
-    /**
-     * Test di aggiornamento dei media.
-     */
+
+    // Update Test
     private void testUpdate() throws LibraryException, MediaNotFoundException {
-        LOGGER.info("Test di aggiornamento");
-        
-        // Trova un libro da aggiornare
+        LOGGER.info("Update Test");
+
+        // Find a book to update
         List<Media> books = mediaService.findMediaByTitle("Rosa");
         if (!books.isEmpty()) {
             Media book = books.get(0);
             book.setAvailable(false);
             mediaService.updateMedia(book);
-            LOGGER.info("Libro aggiornato: " + book.getDetails());
-            
-            // Verifica che il libro sia stato aggiornato
+            LOGGER.info("Updated book: " + book.getDetails());
+
             Media updatedBook = mediaService.findMediaById(book.getId());
             if (updatedBook.isAvailable()) {
-                throw new LibraryException("Errore nell'aggiornamento del libro");
+                throw new LibraryException("Error updating book");
             }
-            LOGGER.info("Verifica aggiornamento completata con successo");
+            LOGGER.info("Update verification completed successfully");
         }
     }
-    
-    /**
-     * Test di eliminazione dei media.
-     */
+
+    // Delete Test
     private void testDelete() throws LibraryException, MediaNotFoundException {
-        LOGGER.info("Test di eliminazione");
-        
-        // Crea un nuovo media da eliminare
+        LOGGER.info("Delete Test");
+
+        // Create a new media to delete
         Media mediaToDelete = MediaFactory.createBook(
-                "Libro da eliminare", 
-                "Autore Test", 
-                LocalDate.now(), 
-                "Editore Test", 
+                "Libro da eliminare",
+                "Autore Test",
+                LocalDate.now(),
+                "Editore Test",
                 100);
-        
+
         mediaService.saveMedia(mediaToDelete);
-        LOGGER.info("Media creato per il test di eliminazione: " + mediaToDelete.getDetails());
-        
-        // Elimina il media
+        LOGGER.info("Media created for elimination test: " + mediaToDelete.getDetails());
+
+        // Delete the media
         mediaService.deleteMedia(mediaToDelete.getId());
-        LOGGER.info("Media eliminato");
-        
-        // Verifica che il media sia stato eliminato
+        LOGGER.info("Media deleted");
+
         try {
             mediaService.findMediaById(mediaToDelete.getId());
-            throw new LibraryException("Errore nell'eliminazione del media");
+            throw new LibraryException("Error deleting media");
         } catch (MediaNotFoundException e) {
-            LOGGER.info("Verifica eliminazione completata con successo");
+            LOGGER.info("Verification deletion completed successfully");
         }
     }
-    
-    /**
-     * Metodo main per eseguire i test.
-     */
+
+    // Collections Test
+    private void testCollections() throws LibraryException, MediaNotFoundException {
+        LOGGER.info("Collections Test");
+
+        // Create a new collection
+        MediaCollection collection = MediaFactory.createMediaCollection("Test Collection");
+        mediaService.saveMedia(collection);
+        LOGGER.info("Collection created: " + collection.getDetails());
+
+        // Create a new book to add to the collection
+        Media bookForCollection = MediaFactory.createBook(
+                "Libro prova per collezione",
+                "Autore prova Collezione",
+                LocalDate.now(),
+                "Editore prova Collezione",
+                200);
+
+        mediaService.saveMedia(bookForCollection);
+        LOGGER.info("Book created for the collection: " + bookForCollection.getDetails());
+
+        // Add the book to the collection
+        mediaService.addMediaToCollection(collection.getId(), bookForCollection.getId());
+        LOGGER.info("Book added to collection");
+
+        Media updatedCollection = mediaService.findMediaById(collection.getId());
+        if (!(updatedCollection instanceof MediaCollection)) {
+            throw new LibraryException("Error retrieving collection");
+        }
+
+        MediaCollection retrievedCollection = (MediaCollection) updatedCollection;
+        if (retrievedCollection.getMediaItems().isEmpty()) {
+            throw new LibraryException("Error adding book to collection");
+        }
+
+        LOGGER.info("Number of media in the collection: " + retrievedCollection.getMediaItems().size());
+        LOGGER.info("Collection verification completed successfully");
+    }
+
+    // Main method for testing
     public static void main(String[] args) {
         MediaServiceTest test = new MediaServiceTest();
         test.runTests();

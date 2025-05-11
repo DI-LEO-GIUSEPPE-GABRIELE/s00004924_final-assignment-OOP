@@ -11,7 +11,6 @@ util/LoggerManager.class
 factory/MediaFactory.class
 repository/FileStorageManager.class
 model/media/Media.class
-doc/ArchitectureDoc.class
 util/InputValidator.class
 iterator/MediaIterator.class
 repository/MediaRepository.class

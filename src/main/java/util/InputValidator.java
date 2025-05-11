@@ -1,17 +1,15 @@
 package util;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-/**
- * Classe per la validazione degli input utente.
- * Implementa la sanitizzazione degli input come parte della programmazione sicura.
- */
+// Class for input validation
 public class InputValidator {
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
+    // Private constructor to avoid instantiation
     private InputValidator() {
-        // Costruttore privato per evitare l'istanziazione
     }
 
     public static boolean isValidString(String input) {
@@ -50,7 +48,7 @@ public class InputValidator {
         if (input == null) {
             return "";
         }
-        // Rimuovi caratteri potenzialmente pericolosi
+        // Remove characters that may cause errors
         return input.replaceAll("[<>\"'&]", "").trim();
     }
 }

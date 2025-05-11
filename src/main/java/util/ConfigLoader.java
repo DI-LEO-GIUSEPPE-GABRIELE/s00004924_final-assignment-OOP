@@ -1,20 +1,18 @@
 package util;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Logger;
 
-/**
- * Classe per il caricamento delle configurazioni da file esterni.
- * Implementa la gestione sicura dei segreti come parte della programmazione sicura.
- */
+// Class for loading configurations from external files
 public class ConfigLoader {
     private static final Logger LOGGER = LoggerManager.getLogger(ConfigLoader.class.getName());
     private static final String CONFIG_FILE = "config.properties";
     private static Properties properties;
 
+    // Private constructor to avoid instantiation
     private ConfigLoader() {
-        // Costruttore privato per evitare l'istanziazione
     }
 
     public static synchronized Properties getProperties() {
@@ -36,10 +34,10 @@ public class ConfigLoader {
         properties = new Properties();
         try (FileInputStream fis = new FileInputStream(CONFIG_FILE)) {
             properties.load(fis);
-            LOGGER.info("Configurazioni caricate con successo");
+            LOGGER.info("Configurations successfully loaded");
         } catch (IOException e) {
-            LOGGER.warning("Impossibile caricare il file di configurazione: " + e.getMessage());
-            LOGGER.info("Utilizzo delle configurazioni predefinite");
+            LOGGER.warning("Unable to load configuration file: " + e.getMessage());
+            LOGGER.info("Using default configurations");
         }
     }
 }

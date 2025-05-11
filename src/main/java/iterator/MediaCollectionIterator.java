@@ -1,4 +1,5 @@
 package iterator;
+
 import model.media.Media;
 import model.media.MediaCollection;
 import java.util.List;

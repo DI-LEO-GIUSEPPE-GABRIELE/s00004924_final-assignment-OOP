@@ -1,4 +1,5 @@
 package model.media;
+
 import iterator.MediaIterator;
 import iterator.MediaCollectionIterator;
 import java.io.Serializable;
@@ -77,8 +78,10 @@ public class MediaCollection implements Media, Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         MediaCollection that = (MediaCollection) o;
         return Objects.equals(id, that.id);
     }

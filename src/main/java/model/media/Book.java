@@ -1,4 +1,5 @@
 package model.media;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -14,8 +15,8 @@ public class Book implements Media, Serializable {
     private final int pages;
     private boolean available;
 
-    public Book(String id, String title, String author, 
-                LocalDate publicationDate, String publisher, int pages) {
+    public Book(String id, String title, String author,
+            LocalDate publicationDate, String publisher, int pages) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -70,8 +71,10 @@ public class Book implements Media, Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         Book book = (Book) o;
         return Objects.equals(id, book.id);
     }

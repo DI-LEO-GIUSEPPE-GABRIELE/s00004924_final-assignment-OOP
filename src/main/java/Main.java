@@ -1,4 +1,5 @@
 package main.java;
+
 import ui.ConsoleUI;
 import util.LoggerManager;
 import java.util.logging.Logger;
@@ -9,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         LOGGER.info("Starting the Library Management System");
-        
+
         try {
             ConsoleUI ui = new ConsoleUI();
             ui.start();
@@ -17,7 +18,7 @@ public class Main {
             LOGGER.severe("Error while running the application: " + e.getMessage());
             System.out.println("An error occurred. See logs for more details.");
         }
-        
+
         LOGGER.info("Closing of the Library Management System");
     }
 }
