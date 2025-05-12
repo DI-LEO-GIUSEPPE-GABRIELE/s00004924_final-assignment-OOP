@@ -1,11 +1,10 @@
 package model.media;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
 // Magazine class implementing the Media interface as part of the Composite pattern
-public class Magazine implements Media, Serializable {
+public class Magazine implements Media {
     private static final long serialVersionUID = 2L;
     private final String id;
     private final String title;
@@ -14,6 +13,7 @@ public class Magazine implements Media, Serializable {
     private final int issue;
     private boolean available;
 
+    // Magazine constructor
     public Magazine(String id, String title, LocalDate publicationDate,
             String publisher, int issue) {
         this.id = id;
@@ -25,16 +25,19 @@ public class Magazine implements Media, Serializable {
     }
 
     @Override
+    // Override method of the Media interface
     public String getId() {
         return id;
     }
 
     @Override
+    // Override method of the Media interface
     public String getTitle() {
         return title;
     }
 
     @Override
+    // Override method of the Media interface
     public LocalDate getPublicationDate() {
         return publicationDate;
     }
@@ -48,22 +51,26 @@ public class Magazine implements Media, Serializable {
     }
 
     @Override
+    // Override method of the Media interface
     public boolean isAvailable() {
         return available;
     }
 
     @Override
+    // Override method of the Media interface
     public void setAvailable(boolean available) {
         this.available = available;
     }
 
     @Override
+    // Override method of the Media interface
     public String getDetails() {
-        return String.format("Magazine: %s, Published: %s, Publisher: %s, Number: %d, Available: %s",
+        return String.format("Magazine: %s, Publication date: %s, Publisher: %s, Number: %d, Available: %s",
                 title, publicationDate, publisher, issue, available ? "Sì" : "No");
     }
 
     @Override
+    // Override method of the Media interface
     public boolean equals(Object o) {
         if (this == o)
             return true;
@@ -74,11 +81,13 @@ public class Magazine implements Media, Serializable {
     }
 
     @Override
+    // Override method of the Media interface
     public int hashCode() {
         return Objects.hash(id);
     }
 
     @Override
+    // Override method of the Media interface
     public String toString() {
         return getDetails();
     }

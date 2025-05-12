@@ -1,6 +1,6 @@
 package main.java;
 
-import ui.ConsoleUI;
+import ui.UserInterfaceUI;
 import util.LoggerManager;
 import java.util.logging.Logger;
 
@@ -12,7 +12,7 @@ public class Main {
         LOGGER.info("Starting the Library Management System");
 
         try {
-            ConsoleUI ui = new ConsoleUI();
+            UserInterfaceUI ui = new UserInterfaceUI();
             ui.start();
         } catch (Exception e) {
             LOGGER.severe("Error while running the application: " + e.getMessage());

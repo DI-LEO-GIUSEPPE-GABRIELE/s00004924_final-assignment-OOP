@@ -20,7 +20,7 @@ mag 10, 2025 11:08:51 AM com.library.repository.MediaRepository saveMediaToStora
 INFORMAZIONI: Media salvati sul file system
 mag 10, 2025 11:08:51 AM com.library.repository.MediaRepository save
 INFORMAZIONI: Media salvato con ID: 94dd35ef-ab0b-41a5-872c-144dba78e72f
-mag 10, 2025 11:08:51 AM com.library.ui.ConsoleUI addNewMagazine
+mag 10, 2025 11:08:51 AM com.library.ui.UserInterfaceUI addNewMagazine
 INFORMAZIONI: Nuova rivista aggiunta: 94dd35ef-ab0b-41a5-872c-144dba78e72f
 mag 10, 2025 11:09:12 AM com.library.service.MediaService findAllMedia
 INFORMAZIONI: Richiesta di tutti i media
@@ -66,7 +66,7 @@ mag 10, 2025 6:07:58 PM repository.MediaRepository saveMediaToStorage
 INFORMAZIONI: Media salvati sul file system
 mag 10, 2025 6:07:58 PM repository.MediaRepository save
 INFORMAZIONI: Media salvato con ID: 1742f474-1627-46a6-a107-027f76b29e38
-mag 10, 2025 6:07:58 PM ui.ConsoleUI addNewBook
+mag 10, 2025 6:07:58 PM ui.UserInterfaceUI addNewBook
 INFORMAZIONI: Nuovo libro aggiunto: 1742f474-1627-46a6-a107-027f76b29e38
 mag 10, 2025 6:08:02 PM service.MediaService findAllMedia
 INFORMAZIONI: Richiesta di tutti i media
@@ -92,7 +92,7 @@ mag 10, 2025 6:15:15 PM repository.MediaRepository saveMediaToStorage
 INFORMAZIONI: Media salvati sul file system
 mag 10, 2025 6:15:15 PM repository.MediaRepository save
 INFORMAZIONI: Media salvato con ID: b234ee49-987d-437f-8697-c4f902ac5671
-mag 10, 2025 6:15:15 PM ui.ConsoleUI addNewMagazine
+mag 10, 2025 6:15:15 PM ui.UserInterfaceUI addNewMagazine
 INFORMAZIONI: Nuova rivista aggiunta: b234ee49-987d-437f-8697-c4f902ac5671
 mag 10, 2025 6:15:19 PM service.MediaService findAllMedia
 INFORMAZIONI: Richiesta di tutti i media

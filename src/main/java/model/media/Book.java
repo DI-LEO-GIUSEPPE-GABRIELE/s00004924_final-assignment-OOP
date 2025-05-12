@@ -1,11 +1,10 @@
 package model.media;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
 // Book class implementing the Media interface as part of the Composite pattern
-public class Book implements Media, Serializable {
+public class Book implements Media {
     private static final long serialVersionUID = 1L;
     private final String id;
     private final String title;
@@ -15,6 +14,7 @@ public class Book implements Media, Serializable {
     private final int pages;
     private boolean available;
 
+    // Book constructor
     public Book(String id, String title, String author,
             LocalDate publicationDate, String publisher, int pages) {
         this.id = id;
@@ -27,11 +27,13 @@ public class Book implements Media, Serializable {
     }
 
     @Override
+    // Override method of the Media interface
     public String getId() {
         return id;
     }
 
     @Override
+    // Override method of the Media interface
     public String getTitle() {
         return title;
     }
@@ -41,6 +43,7 @@ public class Book implements Media, Serializable {
     }
 
     @Override
+    // Override method of the Media interface
     public LocalDate getPublicationDate() {
         return publicationDate;
     }
@@ -54,22 +57,26 @@ public class Book implements Media, Serializable {
     }
 
     @Override
+    // Override method of the Media interface
     public boolean isAvailable() {
         return available;
     }
 
     @Override
+    // Override method of the Media interface
     public void setAvailable(boolean available) {
         this.available = available;
     }
 
     @Override
+    // Override method of the Media interface
     public String getDetails() {
-        return String.format("Book: %s di %s, Published: %s, Publisher: %s, Pages: %d, Available: %s",
+        return String.format("Book: %s di %s, Publication date: %s, Publisher: %s, Pages: %d, Available: %s",
                 title, author, publicationDate, publisher, pages, available ? "Sì" : "No");
     }
 
     @Override
+    // Override method of the Media interface
     public boolean equals(Object o) {
         if (this == o)
             return true;
@@ -80,11 +87,13 @@ public class Book implements Media, Serializable {
     }
 
     @Override
+    // Override method of the Media interface
     public int hashCode() {
         return Objects.hash(id);
     }
 
     @Override
+    // Override method of the Media interface
     public String toString() {
         return getDetails();
     }

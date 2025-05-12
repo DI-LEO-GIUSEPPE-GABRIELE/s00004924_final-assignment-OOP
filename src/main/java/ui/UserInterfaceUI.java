@@ -13,15 +13,13 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
-/**
- * Interfaccia utente a console per il sistema di gestione biblioteca.
- */
-public class ConsoleUI {
-    private static final Logger LOGGER = LoggerManager.getLogger(ConsoleUI.class.getName());
+// Class for the User Interface in console
+public class UserInterfaceUI {
+    private static final Logger LOGGER = LoggerManager.getLogger(UserInterfaceUI.class.getName());
     private final Scanner scanner;
     private final MediaService mediaService;
 
-    public ConsoleUI() {
+    public UserInterfaceUI() {
         this.scanner = new Scanner(System.in);
         this.mediaService = MediaService.getInstance();
     }
@@ -33,7 +31,7 @@ public class ConsoleUI {
 
         while (running) {
             printMainMenu();
-            int choice = readIntInput("Seleziona un'opzione: ");
+            int choice = readIntInput("Select an option: ");
 
             try {
                 switch (choice) {
@@ -50,42 +48,42 @@ public class ConsoleUI {
                         running = false;
                         break;
                     default:
-                        System.out.println("Opzione non valida. Riprova.");
+                        System.out.println("Invalid option, try again.");
                 }
             } catch (LibraryException e) {
-                System.out.println("Errore: " + e.getMessage());
-                LOGGER.warning("Errore durante l'esecuzione dell'operazione: " + e.getMessage());
+                System.out.println("Error: " + e.getMessage());
+                LOGGER.warning("Error while performing operation: " + e.getMessage());
             } catch (Exception e) {
-                System.out.println("Si è verificato un errore imprevisto. Riprova.");
-                LOGGER.severe("Errore imprevisto: " + e.getMessage());
+                System.out.println("An unexpected error occurred, please try again.");
+                LOGGER.severe("Error: " + e.getMessage());
             }
         }
 
-        System.out.println("Grazie per aver utilizzato il Sistema di Gestione Biblioteca!");
+        System.out.println("Thank you for using the Library Management System!");
         scanner.close();
     }
 
     private void printWelcomeMessage() {
-        System.out.println("===================================================");
-        System.out.println("  BENVENUTO NEL SISTEMA DI GESTIONE BIBLIOTECA");
-        System.out.println("===================================================");
+        System.out.println("*****************************************");
+        System.out.println("WELCOME TO THE LIBRARY MANAGEMENT SYSTEM");
+        System.out.println("*****************************************");
     }
 
     private void printMainMenu() {
-        System.out.println("\nMENU PRINCIPALE");
-        System.out.println("1. Aggiungi nuovo media");
-        System.out.println("2. Visualizza tutti i media");
-        System.out.println("3. Cerca media");
-        System.out.println("0. Esci");
+        System.out.println("MAIN MENU");
+        System.out.println("1. Add new media");
+        System.out.println("2. View all media");
+        System.out.println("3. Search media");
+        System.out.println("0. Exit");
     }
 
     private void addNewMedia() throws LibraryException {
-        System.out.println("\nAGGIUNGI NUOVO MEDIA");
-        System.out.println("1. Libro");
-        System.out.println("2. Rivista");
-        System.out.println("0. Indietro");
+        System.out.println("ADD NEW MEDIA");
+        System.out.println("1. Book");
+        System.out.println("2. Magazine");
+        System.out.println("0. Go back");
 
-        int choice = readIntInput("Seleziona un tipo di media: ");
+        int choice = readIntInput("Select a media type: ");
 
         switch (choice) {
             case 1:
@@ -97,39 +95,39 @@ public class ConsoleUI {
             case 0:
                 return;
             default:
-                System.out.println("Opzione non valida. Riprova.");
+                System.out.println("Invalid option, try again.");
         }
     }
 
     private void addNewBook() throws LibraryException {
-        System.out.println("\nAGGIUNGI NUOVO LIBRO");
+        System.out.println("ADD NEW BOOK");
 
-        String title = readStringInput("Titolo: ");
-        String author = readStringInput("Autore: ");
-        LocalDate publicationDate = readDateInput("Data di pubblicazione (dd/MM/yyyy): ");
-        String publisher = readStringInput("Editore: ");
-        int pages = readIntInput("Numero di pagine: ");
+        String title = readStringInput("Title: ");
+        String author = readStringInput("Author: ");
+        LocalDate publicationDate = readDateInput("Publication date (dd/MM/yyyy): ");
+        String publisher = readStringInput("Publisher: ");
+        int pages = readIntInput("Number of pages: ");
 
         Media book = MediaFactory.createBook(title, author, publicationDate, publisher, pages);
 
         mediaService.saveMedia(book);
-        System.out.println("Libro aggiunto con successo: " + book.getDetails());
-        LOGGER.info("Nuovo libro aggiunto: " + book.getId());
+        System.out.println("Book added successfully: " + book.getDetails());
+        LOGGER.info("Book added successfully: " + book.getId());
     }
 
     private void addNewMagazine() throws LibraryException {
-        System.out.println("\nAGGIUNGI NUOVA RIVISTA");
+        System.out.println("ADD NEW MAGAZINE");
 
-        String title = readStringInput("Titolo: ");
-        LocalDate publicationDate = readDateInput("Data di pubblicazione (dd/MM/yyyy): ");
-        String publisher = readStringInput("Editore: ");
-        int issue = readIntInput("Numero: ");
+        String title = readStringInput("Title: ");
+        LocalDate publicationDate = readDateInput("Publication date (dd/MM/yyyy): ");
+        String publisher = readStringInput("Publisher: ");
+        int issue = readIntInput("Number: ");
 
         Media magazine = MediaFactory.createMagazine(title, publicationDate, publisher, issue);
 
         mediaService.saveMedia(magazine);
-        System.out.println("Rivista aggiunta con successo: " + magazine.getDetails());
-        LOGGER.info("Nuova rivista aggiunta: " + magazine.getId());
+        System.out.println("Magazine added successfully: " + magazine.getDetails());
+        LOGGER.info("Magazine added successfully: " + magazine.getId());
     }
 
     private String readStringInput(String prompt) {
@@ -138,7 +136,7 @@ public class ConsoleUI {
             System.out.print(prompt);
             input = InputValidator.sanitizeString(scanner.nextLine());
             if (!InputValidator.isValidString(input)) {
-                System.out.println("Input non valido. Riprova.");
+                System.out.println("Invalid input, try again.");
             }
         } while (!InputValidator.isValidString(input));
         return input;
@@ -152,7 +150,7 @@ public class ConsoleUI {
                 input = Integer.parseInt(scanner.nextLine().trim());
                 return input;
             } catch (NumberFormatException e) {
-                System.out.println("Input non valido. Inserisci un numero intero.");
+                System.out.println("Invalid input, please enter an integer.");
             }
         }
     }
@@ -163,7 +161,7 @@ public class ConsoleUI {
             System.out.print(prompt);
             input = scanner.nextLine().trim();
             if (!InputValidator.isValidDate(input)) {
-                System.out.println("Data non valida. Utilizza il formato dd/MM/yyyy.");
+                System.out.println("Invalid date. Use the format dd/MM/yyyy.");
             }
         } while (!InputValidator.isValidDate(input));
 
@@ -172,29 +170,29 @@ public class ConsoleUI {
     }
 
     private void viewAllMedia() throws LibraryException {
-        System.out.println("\nVISUALIZZA TUTTI I MEDIA");
+        System.out.println("VIEW ALL MEDIA");
 
         List<Media> allMedia = mediaService.findAllMedia();
 
         if (allMedia.isEmpty()) {
-            System.out.println("\nNessun media disponibile nel sistema.");
+            System.out.println("No media available in the system.");
             return;
         }
 
-        System.out.println("\nELENCO DI TUTTI I MEDIA:");
+        System.out.println("LIST OF ALL MEDIA:/n");
         for (Media media : allMedia) {
             System.out.println("- " + media.getDetails());
         }
     }
 
     private void searchMedia() throws LibraryException {
-        System.out.println("\nCERCA MEDIA");
-        System.out.println("1. Cerca per titolo");
-        System.out.println("2. Cerca per autore (solo libri)");
-        System.out.println("3. Cerca per anno di pubblicazione");
-        System.out.println("0. Indietro");
+        System.out.println("SEARCH MEDIA");
+        System.out.println("1. Search by title");
+        System.out.println("2. Search book by author");
+        System.out.println("3. Search by publication year");
+        System.out.println("0. Go back");
 
-        int choice = readIntInput("Seleziona un'opzione di ricerca: ");
+        int choice = readIntInput("Select an option: ");
 
         switch (choice) {
             case 1:
@@ -209,53 +207,53 @@ public class ConsoleUI {
             case 0:
                 return;
             default:
-                System.out.println("Opzione non valida. Riprova.");
+                System.out.println("Invalid option, try again.");
         }
     }
 
     private void searchByTitle() throws LibraryException {
-        String title = readStringInput("Inserisci il titolo da cercare: ");
+        String title = readStringInput("Enter title: ");
 
         List<Media> results = mediaService.findMediaByTitle(title);
 
         if (results.isEmpty()) {
-            System.out.println("\nNessun media trovato con il titolo '" + title + "'.");
+            System.out.println("\nNo media found with title '" + title + "'.");
             return;
         }
 
-        System.out.println("\nRISULTATI DELLA RICERCA:");
+        System.out.println("\nSEARCH RESULTS:");
         for (Media media : results) {
             System.out.println("- " + media.getDetails());
         }
     }
 
     private void searchByAuthor() throws LibraryException {
-        String author = readStringInput("Inserisci l'autore da cercare: ");
+        String author = readStringInput("Enter author: ");
 
         List<Book> results = mediaService.findBooksByAuthor(author);
 
         if (results.isEmpty()) {
-            System.out.println("\nNessun libro trovato con l'autore '" + author + "'.");
+            System.out.println("\nNo books found with author '" + author + "'.");
             return;
         }
 
-        System.out.println("\nRISULTATI DELLA RICERCA:");
+        System.out.println("\nSEARCH RESULTS:");
         for (Book book : results) {
             System.out.println("- " + book.getDetails());
         }
     }
 
     private void searchByYear() throws LibraryException {
-        int year = readIntInput("Inserisci l'anno di pubblicazione da cercare: ");
+        int year = readIntInput("Enter publication year: ");
 
         List<Media> results = mediaService.findMediaByPublicationYear(year);
 
         if (results.isEmpty()) {
-            System.out.println("\nNessun media trovato pubblicato nell'anno " + year + ".");
+            System.out.println("\nNo media found for publication year " + year + ".");
             return;
         }
 
-        System.out.println("\nRISULTATI DELLA RICERCA:");
+        System.out.println("\nSEARCH RESULTS:");
         for (Media media : results) {
             System.out.println("- " + media.getDetails());
         }

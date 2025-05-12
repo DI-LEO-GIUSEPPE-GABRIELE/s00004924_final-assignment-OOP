@@ -2,14 +2,13 @@ package model.media;
 
 import iterator.MediaIterator;
 import iterator.MediaCollectionIterator;
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 // Class for MediaCollection implementing the Media interface as Composite pattern
-public class MediaCollection implements Media, Serializable {
+public class MediaCollection implements Media {
     private static final long serialVersionUID = 3L;
     private final String id;
     private final String title;
@@ -17,6 +16,7 @@ public class MediaCollection implements Media, Serializable {
     private boolean available;
     private final List<Media> mediaItems = new ArrayList<>();
 
+    // MediaCollection constructor
     public MediaCollection(String id, String title, LocalDate creationDate) {
         this.id = id;
         this.title = title;
@@ -25,26 +25,31 @@ public class MediaCollection implements Media, Serializable {
     }
 
     @Override
+    // Override method of the Media interface
     public String getId() {
         return id;
     }
 
     @Override
+    // Override method of the Media interface
     public String getTitle() {
         return title;
     }
 
     @Override
+    // Override method of the Media interface
     public LocalDate getPublicationDate() {
         return creationDate;
     }
 
     @Override
+    // Override method of the Media interface
     public boolean isAvailable() {
         return available;
     }
 
     @Override
+    // Override method of the Media interface
     public void setAvailable(boolean available) {
         this.available = available;
         if (!available) {
@@ -55,6 +60,7 @@ public class MediaCollection implements Media, Serializable {
     }
 
     @Override
+    // Override method of the Media interface
     public String getDetails() {
         return String.format("Collection: %s, Created: %s, Elements: %d, Available: %s",
                 title, creationDate, mediaItems.size(), available ? "Sì" : "No");
@@ -77,6 +83,7 @@ public class MediaCollection implements Media, Serializable {
     }
 
     @Override
+    // Override method of the Media interface
     public boolean equals(Object o) {
         if (this == o)
             return true;
@@ -87,11 +94,13 @@ public class MediaCollection implements Media, Serializable {
     }
 
     @Override
+    // Override method of the Media interface
     public int hashCode() {
         return Objects.hash(id);
     }
 
     @Override
+    // Override method of the Media interface
     public String toString() {
         return getDetails();
     }

@@ -3,7 +3,7 @@ package model.media;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-// Interface for Media elements in lirary as Composite pattern
+// Interface for Media elements in lirary implementing Composite pattern
 public interface Media extends Serializable {
     String getId();
 

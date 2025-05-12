@@ -1,4 +1,5 @@
 model/media/Book.class
+ui/UserInterfaceUI.class
 main/java/Main.class
 model/media/MediaCollection.class
 exception/MediaNotFoundException.class
@@ -15,5 +16,4 @@ util/InputValidator.class
 iterator/MediaIterator.class
 repository/MediaRepository.class
 iterator/MediaCollectionIterator.class
-ui/ConsoleUI.class
 service/MediaService.class

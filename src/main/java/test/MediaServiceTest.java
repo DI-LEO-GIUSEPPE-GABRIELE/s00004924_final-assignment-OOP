@@ -124,10 +124,10 @@ public class MediaServiceTest {
 
         // Create a new media to delete
         Media mediaToDelete = MediaFactory.createBook(
-                "Libro da eliminare",
-                "Autore Test",
+                "Book to delete",
+                "Author Test",
                 LocalDate.now(),
-                "Editore Test",
+                "Publisher Test",
                 100);
 
         mediaService.saveMedia(mediaToDelete);

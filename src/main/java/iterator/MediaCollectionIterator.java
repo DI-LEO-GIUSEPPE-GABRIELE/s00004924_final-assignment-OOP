@@ -5,7 +5,7 @@ import model.media.MediaCollection;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-// Iterator for MediaCollections, implementing the Iterator pattern
+// Iterator class for MediaCollections, implementing the Iterator pattern
 public class MediaCollectionIterator implements MediaIterator {
     private final List<Media> mediaItems;
     private int position = 0;
@@ -15,11 +15,13 @@ public class MediaCollectionIterator implements MediaIterator {
     }
 
     @Override
+    // Override method of the MediaIterator interface
     public boolean hasNext() {
         return position < mediaItems.size();
     }
 
     @Override
+    // Override method of the MediaIterator interface
     public Media next() {
         if (!hasNext()) {
             throw new NoSuchElementException("There are no more media items.");

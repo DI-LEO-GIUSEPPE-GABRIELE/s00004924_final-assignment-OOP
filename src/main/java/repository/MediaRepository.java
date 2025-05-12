@@ -1,4 +1,5 @@
 package repository;
+
 import exception.LibraryException;
 import exception.MediaNotFoundException;
 import model.media.Book;
@@ -11,7 +12,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-// Repository for Media, using memory location for storage
+// Repository class for Media, using memory location for storage
 public class MediaRepository implements Repository<Media, String> {
     private static final Logger LOGGER = LoggerManager.getLogger(MediaRepository.class.getName());
     private static MediaRepository instance;
@@ -59,6 +60,7 @@ public class MediaRepository implements Repository<Media, String> {
     }
 
     @Override
+    // Override method of the Repository interface
     public Media save(Media media) throws LibraryException {
         if (media == null) {
             throw new LibraryException("Impossible to save a null media");
@@ -71,6 +73,7 @@ public class MediaRepository implements Repository<Media, String> {
     }
 
     @Override
+    // Override method of the Repository interface
     public Media findById(String id) throws MediaNotFoundException {
         if (!mediaMap.containsKey(id)) {
             LOGGER.warning("Media not found with ID: " + id);
@@ -81,11 +84,13 @@ public class MediaRepository implements Repository<Media, String> {
     }
 
     @Override
+    // Override method of the Repository interface
     public List<Media> findAll() throws LibraryException {
         return new ArrayList<>(mediaMap.values());
     }
 
     @Override
+    // Override method of the Repository interface
     public void delete(String id) throws MediaNotFoundException {
         if (!mediaMap.containsKey(id)) {
             LOGGER.warning("Impossible to delete: Media not found with ID: " + id);
@@ -98,6 +103,7 @@ public class MediaRepository implements Repository<Media, String> {
     }
 
     @Override
+    // Override method of the Repository interface
     public Media update(Media media) throws MediaNotFoundException {
         if (media == null || !mediaMap.containsKey(media.getId())) {
             LOGGER.warning("Impossible to update: Media not found");

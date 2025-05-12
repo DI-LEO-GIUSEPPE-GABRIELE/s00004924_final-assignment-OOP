@@ -11,10 +11,7 @@ import java.time.LocalDate;
 import java.util.List;
 import static org.junit.Assert.*;
 
-/**
- * Test unitari per il servizio MediaService.
- * Verifica il corretto funzionamento delle operazioni CRUD e delle ricerche.
- */
+// Class for MediaServiceTest
 public class MediaServiceJUnitTest {
 
     private MediaService mediaService;
@@ -22,10 +19,11 @@ public class MediaServiceJUnitTest {
     private Media testMagazine;
 
     @Before
+    // Executed before each test
     public void setUp() throws LibraryException {
         mediaService = MediaService.getInstance();
 
-        // Crea un libro e una rivista di test
+        // Create one book and one magazine for testing
         testBook = MediaFactory.createBook(
                 "Test Book",
                 "Test Author",
@@ -39,64 +37,65 @@ public class MediaServiceJUnitTest {
                 "Test Publisher",
                 1);
 
-        // Salva i media di test
+        // Save the media
         mediaService.saveMedia(testBook);
         mediaService.saveMedia(testMagazine);
     }
 
     @Test
+    // Test that the media is saved and can be found by ID
     public void testSaveAndFindById() throws LibraryException, MediaNotFoundException {
-        // Verifica che i media siano stati salvati correttamente
         Media foundBook = mediaService.findMediaById(testBook.getId());
         Media foundMagazine = mediaService.findMediaById(testMagazine.getId());
 
-        assertNotNull("Il libro non è stato trovato", foundBook);
-        assertNotNull("La rivista non è stata trovata", foundMagazine);
-        assertEquals("L'ID del libro non corrisponde", testBook.getId(), foundBook.getId());
-        assertEquals("L'ID della rivista non corrisponde", testMagazine.getId(), foundMagazine.getId());
+        assertNotNull("Book not found", foundBook);
+        assertNotNull("Magazine not found", foundMagazine);
+        assertEquals("Book ID does not match", testBook.getId(), foundBook.getId());
+        assertEquals("Magazine ID does not match", testMagazine.getId(), foundMagazine.getId());
     }
 
     @Test
+    // Test that all media can be found
     public void testFindAll() throws LibraryException {
-        // Verifica che findAll restituisca una lista non vuota
         List<Media> allMedia = mediaService.findAllMedia();
-        assertNotNull("La lista dei media è nulla", allMedia);
-        assertFalse("La lista dei media è vuota", allMedia.isEmpty());
+        assertNotNull("The media list is void", allMedia);
+        assertFalse("The media list is void", allMedia.isEmpty());
     }
 
     @Test
+    // Test that the media can be found by title
     public void testFindByTitle() {
-        // Verifica la ricerca per titolo
         List<Media> mediaByTitle = mediaService.findMediaByTitle("Test");
-        assertNotNull("La lista dei media è nulla", mediaByTitle);
-        assertFalse("La lista dei media è vuota", mediaByTitle.isEmpty());
+        assertNotNull("The media list is void", mediaByTitle);
+        assertFalse("The media list is void", mediaByTitle.isEmpty());
     }
 
     @Test
+    // Test that the media can be found by author
     public void testFindByAuthor() {
-        // Verifica la ricerca per autore
         List<Book> booksByAuthor = mediaService.findBooksByAuthor("Test Author");
-        assertNotNull("La lista dei libri è nulla", booksByAuthor);
-        assertFalse("La lista dei libri è vuota", booksByAuthor.isEmpty());
+        assertNotNull("The book list is void", booksByAuthor);
+        assertFalse("The book list is empty", booksByAuthor.isEmpty());
     }
 
     @Test
+    // Test the media update
     public void testUpdate() throws LibraryException, MediaNotFoundException {
-        // Verifica l'aggiornamento di un media
         testBook.setAvailable(false);
         Media updatedBook = mediaService.updateMedia(testBook);
 
-        assertNotNull("Il libro aggiornato è nullo", updatedBook);
-        assertFalse("Lo stato di disponibilità non è stato aggiornato", updatedBook.isAvailable());
+        assertNotNull("The updated book is void", updatedBook);
+        assertFalse("Availability status has not been updated", updatedBook.isAvailable());
 
-        // Verifica che l'aggiornamento sia persistente
+        // Verify that the update is persistent
         Media retrievedBook = mediaService.findMediaById(testBook.getId());
-        assertFalse("Lo stato di disponibilità non è persistente", retrievedBook.isAvailable());
+        assertFalse("The availability status is not persistent", retrievedBook.isAvailable());
     }
 
     @Test(expected = MediaNotFoundException.class)
+    // Test the media deletion
     public void testDelete() throws LibraryException, MediaNotFoundException {
-        // Crea un nuovo media da eliminare
+        // Mock media to delete
         Media mediaToDelete = MediaFactory.createBook(
                 "Delete Test Book",
                 "Delete Test Author",
@@ -106,14 +105,14 @@ public class MediaServiceJUnitTest {
 
         mediaService.saveMedia(mediaToDelete);
 
-        // Verifica che il media sia stato creato
+        // Verify that the media is created
         Media foundMedia = mediaService.findMediaById(mediaToDelete.getId());
-        assertNotNull("Il media non è stato creato", foundMedia);
+        assertNotNull("The media was not created", foundMedia);
 
-        // Elimina il media
+        // Delete the media
         mediaService.deleteMedia(mediaToDelete.getId());
 
-        // Questo dovrebbe lanciare MediaNotFoundException
+        // If the media does not exist, throw MediaNotFoundException
         mediaService.findMediaById(mediaToDelete.getId());
     }
 }
