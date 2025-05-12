@@ -65,8 +65,9 @@ public class Magazine implements Media {
     @Override
     // Override method of the Media interface
     public String getDetails() {
-        return String.format("Magazine: %s, Publication date: %s, Publisher: %s, Number: %d, Available: %s",
-                title, publicationDate, publisher, issue, available ? "Yes" : "No");
+        return String.format("Magazine: %s, ID: %s, Publication date: %s, Publisher: %s, Number: %d, Available: %s",
+                title, id, publicationDate.format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+                publisher, issue, available ? "Yes" : "No");
     }
 
     @Override

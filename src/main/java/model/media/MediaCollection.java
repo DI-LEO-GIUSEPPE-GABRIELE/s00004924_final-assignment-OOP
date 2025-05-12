@@ -62,12 +62,16 @@ public class MediaCollection implements Media {
     @Override
     // Override method of the Media interface
     public String getDetails() {
-        return String.format("Collection: %s, Created: %s, Elements: %d, Available: %s",
-                title, creationDate, mediaItems.size(), available ? "Yes" : "No");
+        return String.format("Collection: %s, ID: %s, Created: %s, Elements: %d, Available: %s",
+                title, id, creationDate.format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+                mediaItems.size(), available ? "Yes" : "No");
     }
 
     public void addMedia(Media media) {
-        mediaItems.add(media);
+        // Verify if the media is not already in the collection
+        if (!mediaItems.contains(media)) {
+            mediaItems.add(media);
+        }
     }
 
     public void removeMedia(Media media) {

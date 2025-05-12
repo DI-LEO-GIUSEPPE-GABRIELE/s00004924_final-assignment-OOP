@@ -4,6 +4,7 @@ import exception.LibraryException;
 import exception.MediaNotFoundException;
 import model.media.Book;
 import model.media.Media;
+import model.media.MediaCollection;
 import util.LoggerManager;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -95,6 +96,22 @@ public class MediaRepository implements Repository<Media, String> {
         if (!mediaMap.containsKey(id)) {
             LOGGER.warning("Impossible to delete: Media not found with ID: " + id);
             throw new MediaNotFoundException("Media not found with ID: " + id);
+        }
+
+        // Remove the media from all collections
+        Media mediaToDelete = mediaMap.get(id);
+        for (Media media : mediaMap.values()) {
+            if (media instanceof MediaCollection) {
+                MediaCollection collection = (MediaCollection) media;
+                List<Media> mediaItems = collection.getMediaItems();
+                for (Media item : mediaItems) {
+                    // Check if the media is in the collection using the equals method
+                    if (item.equals(mediaToDelete)) {
+                        collection.removeMedia(mediaToDelete);
+                        break;
+                    }
+                }
+            }
         }
 
         mediaMap.remove(id);
