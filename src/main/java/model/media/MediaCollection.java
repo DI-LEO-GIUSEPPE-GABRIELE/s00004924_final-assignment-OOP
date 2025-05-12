@@ -63,7 +63,7 @@ public class MediaCollection implements Media {
     // Override method of the Media interface
     public String getDetails() {
         return String.format("Collection: %s, Created: %s, Elements: %d, Available: %s",
-                title, creationDate, mediaItems.size(), available ? "Sì" : "No");
+                title, creationDate, mediaItems.size(), available ? "Yes" : "No");
     }
 
     public void addMedia(Media media) {

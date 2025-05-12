@@ -85,15 +85,15 @@ public class MediaServiceTest {
     private void testSearch() throws LibraryException {
         LOGGER.info("Search Test");
 
-        // Ricerca per titolo
+        // Search by title
         List<Media> mediaByTitle = mediaService.findMediaByTitle("Rosa");
         LOGGER.info("Media found for title 'Rosa': " + mediaByTitle.size());
 
-        // Ricerca per autore
+        // Search by author
         List<Book> booksByAuthor = mediaService.findBooksByAuthor("Eco");
         LOGGER.info("Books found by author 'Eco': " + booksByAuthor.size());
 
-        // Ricerca per anno
+        // Search by year
         List<Media> mediaByYear = mediaService.findMediaByPublicationYear(1980);
         LOGGER.info("Media found for year 1980: " + mediaByYear.size());
     }
@@ -156,10 +156,10 @@ public class MediaServiceTest {
 
         // Create a new book to add to the collection
         Media bookForCollection = MediaFactory.createBook(
-                "Libro prova per collezione",
-                "Autore prova Collezione",
+                "Test book for collection",
+                "Test Author Collection",
                 LocalDate.now(),
-                "Editore prova Collezione",
+                "Test Publisher Collection",
                 200);
 
         mediaService.saveMedia(bookForCollection);

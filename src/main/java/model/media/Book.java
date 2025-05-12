@@ -71,8 +71,8 @@ public class Book implements Media {
     @Override
     // Override method of the Media interface
     public String getDetails() {
-        return String.format("Book: %s di %s, Publication date: %s, Publisher: %s, Pages: %d, Available: %s",
-                title, author, publicationDate, publisher, pages, available ? "Sì" : "No");
+        return String.format("Book: %s by %s, Publication date: %s, Publisher: %s, Pages: %d, Available: %s",
+                title, author, publicationDate, publisher, pages, available ? "Yes" : "No");
     }
 
     @Override

@@ -1,124 +1,138 @@
-mag 10, 2025 11:07:10 AM com.library.Main main
-INFORMAZIONI: Avvio del Sistema di Gestione Biblioteca
-mag 10, 2025 11:07:10 AM com.library.repository.MediaRepository <init>
-INFORMAZIONI: Inizializzazione del repository dei media
-mag 10, 2025 11:07:10 AM com.library.repository.FileStorageManager <init>
-INFORMAZIONI: Directory dei dati creata: /Users/giuseppegabrieledileo/Desktop/My_Works/Laurea | Epicode/OOP-final-assignment/data
-mag 10, 2025 11:07:10 AM com.library.repository.FileStorageManager loadMedia
-INFORMAZIONI: File dei media non trovato. Verrà creato un nuovo file al primo salvataggio.
-mag 10, 2025 11:07:10 AM com.library.repository.MediaRepository loadMediaFromStorage
-INFORMAZIONI: Media caricati dal file system: 0
-mag 10, 2025 11:07:10 AM com.library.service.MediaService <init>
-INFORMAZIONI: Inizializzazione del servizio media
-mag 10, 2025 11:07:18 AM com.library.service.MediaService findAllMedia
-INFORMAZIONI: Richiesta di tutti i media
-mag 10, 2025 11:08:51 AM com.library.service.MediaService saveMedia
-INFORMAZIONI: Richiesta di salvataggio media: Donna 2000
-mag 10, 2025 11:08:51 AM com.library.repository.FileStorageManager saveMedia
-INFORMAZIONI: Media salvati su file: data/media.dat
-mag 10, 2025 11:08:51 AM com.library.repository.MediaRepository saveMediaToStorage
-INFORMAZIONI: Media salvati sul file system
-mag 10, 2025 11:08:51 AM com.library.repository.MediaRepository save
-INFORMAZIONI: Media salvato con ID: 94dd35ef-ab0b-41a5-872c-144dba78e72f
-mag 10, 2025 11:08:51 AM com.library.ui.UserInterfaceUI addNewMagazine
-INFORMAZIONI: Nuova rivista aggiunta: 94dd35ef-ab0b-41a5-872c-144dba78e72f
-mag 10, 2025 11:09:12 AM com.library.service.MediaService findAllMedia
-INFORMAZIONI: Richiesta di tutti i media
-mag 10, 2025 11:09:35 AM com.library.service.MediaService findMediaByPublicationYear
-INFORMAZIONI: Ricerca media per anno di pubblicazione: 25
-mag 10, 2025 11:09:50 AM com.library.service.MediaService findMediaByPublicationYear
-INFORMAZIONI: Ricerca media per anno di pubblicazione: 2025
-mag 10, 2025 11:13:03 AM com.library.Main main
-INFORMAZIONI: Chiusura del Sistema di Gestione Biblioteca
-mag 10, 2025 4:08:47 PM main.java.Main main
-INFORMAZIONI: Avvio del Sistema di Gestione Biblioteca
-mag 10, 2025 4:08:47 PM repository.MediaRepository <init>
-INFORMAZIONI: Inizializzazione del repository dei media
-mag 10, 2025 4:08:47 PM java.io.ObjectInputFilter$Config traceFilter
+mag 12, 2025 10:41:47 AM repository.MediaRepository <init>
+INFORMAZIONI: Starting the repository for media
+mag 12, 2025 10:41:47 AM java.io.ObjectInputFilter$Config traceFilter
 MIGLIORE: Builtin factory: null -> new: null
-mag 10, 2025 4:08:47 PM repository.FileStorageManager loadMedia
-GRAVE: Errore durante il caricamento dei media da file: com.library.model.media.Magazine
-mag 10, 2025 4:08:47 PM repository.MediaRepository loadMediaFromStorage
-AVVERTENZA: Impossibile caricare i media dal file system: Errore durante il caricamento dei media: com.library.model.media.Magazine
-mag 10, 2025 4:08:47 PM service.MediaService <init>
-INFORMAZIONI: Inizializzazione del servizio media
-mag 10, 2025 4:09:02 PM main.java.Main main
-INFORMAZIONI: Chiusura del Sistema di Gestione Biblioteca
-mag 10, 2025 6:06:39 PM main.java.Main main
-INFORMAZIONI: Avvio del Sistema di Gestione Biblioteca
-mag 10, 2025 6:06:39 PM repository.MediaRepository <init>
-INFORMAZIONI: Inizializzazione del repository dei media
-mag 10, 2025 6:06:39 PM java.io.ObjectInputFilter$Config traceFilter
-MIGLIORE: Builtin factory: null -> new: null
-mag 10, 2025 6:06:39 PM repository.FileStorageManager loadMedia
-GRAVE: Errore durante il caricamento dei media da file: com.library.model.media.Magazine
-mag 10, 2025 6:06:39 PM repository.MediaRepository loadMediaFromStorage
-AVVERTENZA: Impossibile caricare i media dal file system: Errore durante il caricamento dei media: com.library.model.media.Magazine
-mag 10, 2025 6:06:39 PM service.MediaService <init>
-INFORMAZIONI: Inizializzazione del servizio media
-mag 10, 2025 6:06:44 PM service.MediaService findAllMedia
-INFORMAZIONI: Richiesta di tutti i media
-mag 10, 2025 6:07:58 PM service.MediaService saveMedia
-INFORMAZIONI: Richiesta di salvataggio media: llall
-mag 10, 2025 6:07:58 PM repository.FileStorageManager saveMedia
-INFORMAZIONI: Media salvati su file: data/media.dat
-mag 10, 2025 6:07:58 PM repository.MediaRepository saveMediaToStorage
-INFORMAZIONI: Media salvati sul file system
-mag 10, 2025 6:07:58 PM repository.MediaRepository save
-INFORMAZIONI: Media salvato con ID: 1742f474-1627-46a6-a107-027f76b29e38
-mag 10, 2025 6:07:58 PM ui.UserInterfaceUI addNewBook
-INFORMAZIONI: Nuovo libro aggiunto: 1742f474-1627-46a6-a107-027f76b29e38
-mag 10, 2025 6:08:02 PM service.MediaService findAllMedia
-INFORMAZIONI: Richiesta di tutti i media
-mag 10, 2025 6:09:33 PM main.java.Main main
-INFORMAZIONI: Chiusura del Sistema di Gestione Biblioteca
-mag 10, 2025 6:14:14 PM main.java.Main main
-INFORMAZIONI: Avvio del Sistema di Gestione Biblioteca
-mag 10, 2025 6:14:14 PM repository.MediaRepository <init>
-INFORMAZIONI: Inizializzazione del repository dei media
-mag 10, 2025 6:14:14 PM java.io.ObjectInputFilter$Config traceFilter
-MIGLIORE: Builtin factory: null -> new: null
-mag 10, 2025 6:14:14 PM repository.FileStorageManager loadMedia
-INFORMAZIONI: Media caricati da file: data/media.dat, numero di media: 1
-mag 10, 2025 6:14:14 PM repository.MediaRepository loadMediaFromStorage
-INFORMAZIONI: Media caricati dal file system: 1
-mag 10, 2025 6:14:14 PM service.MediaService <init>
-INFORMAZIONI: Inizializzazione del servizio media
-mag 10, 2025 6:15:15 PM service.MediaService saveMedia
-INFORMAZIONI: Richiesta di salvataggio media: asas
-mag 10, 2025 6:15:15 PM repository.FileStorageManager saveMedia
-INFORMAZIONI: Media salvati su file: data/media.dat
-mag 10, 2025 6:15:15 PM repository.MediaRepository saveMediaToStorage
-INFORMAZIONI: Media salvati sul file system
-mag 10, 2025 6:15:15 PM repository.MediaRepository save
-INFORMAZIONI: Media salvato con ID: b234ee49-987d-437f-8697-c4f902ac5671
-mag 10, 2025 6:15:15 PM ui.UserInterfaceUI addNewMagazine
-INFORMAZIONI: Nuova rivista aggiunta: b234ee49-987d-437f-8697-c4f902ac5671
-mag 10, 2025 6:15:19 PM service.MediaService findAllMedia
-INFORMAZIONI: Richiesta di tutti i media
-mag 10, 2025 6:15:45 PM service.MediaService saveMedia
-INFORMAZIONI: Richiesta di salvataggio media: Magazine
-mag 10, 2025 6:15:45 PM repository.FileStorageManager saveMedia
-INFORMAZIONI: Media salvati su file: data/media.dat
-mag 10, 2025 6:15:45 PM repository.MediaRepository saveMediaToStorage
-INFORMAZIONI: Media salvati sul file system
-mag 10, 2025 6:15:45 PM repository.MediaRepository save
-INFORMAZIONI: Media salvato con ID: 129d67a0-9381-421d-bfdb-5bff576fdd16
-mag 10, 2025 6:16:09 PM service.MediaService findAllMedia
-INFORMAZIONI: Richiesta di tutti i media
-mag 10, 2025 6:16:57 PM main.java.Main main
-INFORMAZIONI: Chiusura del Sistema di Gestione Biblioteca
-mag 10, 2025 6:18:35 PM main.java.Main main
-INFORMAZIONI: Avvio del Sistema di Gestione Biblioteca
-mag 10, 2025 6:18:35 PM repository.MediaRepository <init>
-INFORMAZIONI: Inizializzazione del repository dei media
-mag 10, 2025 6:18:35 PM java.io.ObjectInputFilter$Config traceFilter
-MIGLIORE: Builtin factory: null -> new: null
-mag 10, 2025 6:18:35 PM repository.FileStorageManager loadMedia
-INFORMAZIONI: Media caricati da file: data/media.dat, numero di media: 3
-mag 10, 2025 6:18:35 PM repository.MediaRepository loadMediaFromStorage
-INFORMAZIONI: Media caricati dal file system: 3
-mag 10, 2025 6:18:35 PM service.MediaService <init>
-INFORMAZIONI: Inizializzazione del servizio media
-mag 10, 2025 6:19:03 PM main.java.Main main
-INFORMAZIONI: Chiusura del Sistema di Gestione Biblioteca
+mag 12, 2025 10:41:47 AM repository.FileStorageManager loadMedia
+INFORMAZIONI: Media uploaded from files: data/media.dat, number of media: 3
+mag 12, 2025 10:41:47 AM repository.MediaRepository loadMediaFromStorage
+INFORMAZIONI: Media loaded from file system: 3
+mag 12, 2025 10:41:47 AM service.MediaService <init>
+INFORMAZIONI: Starting the media service
+mag 12, 2025 10:41:47 AM test.MediaServiceTest runTests
+INFORMAZIONI: Starting the test of MediaService
+mag 12, 2025 10:41:47 AM test.MediaServiceTest testCreateAndSave
+INFORMAZIONI: Creation and saving test
+mag 12, 2025 10:41:48 AM service.MediaService saveMedia
+INFORMAZIONI: Media Save Request: Il Nome della Rosa
+mag 12, 2025 10:41:48 AM repository.FileStorageManager saveMedia
+INFORMAZIONI: Media saved to file: data/media.dat
+mag 12, 2025 10:41:48 AM repository.MediaRepository saveMediaToStorage
+INFORMAZIONI: Media saved in file system
+mag 12, 2025 10:41:48 AM repository.MediaRepository save
+INFORMAZIONI: Media saved with ID: 498c0245-8d26-45e4-b04a-776c6bd256b8
+mag 12, 2025 10:41:48 AM test.MediaServiceTest testCreateAndSave
+INFORMAZIONI: Book created and saved: Book: Il Nome della Rosa di Umberto Eco, Publication date: 1980-10-15, Publisher: Bompiani, Pages: 512, Available: Sì
+mag 12, 2025 10:41:48 AM service.MediaService saveMedia
+INFORMAZIONI: Media Save Request: Focus
+mag 12, 2025 10:41:48 AM repository.FileStorageManager saveMedia
+INFORMAZIONI: Media saved to file: data/media.dat
+mag 12, 2025 10:41:48 AM repository.MediaRepository saveMediaToStorage
+INFORMAZIONI: Media saved in file system
+mag 12, 2025 10:41:48 AM repository.MediaRepository save
+INFORMAZIONI: Media saved with ID: 027adf57-9eeb-4b88-abf5-f6f5fbb69770
+mag 12, 2025 10:41:48 AM test.MediaServiceTest testCreateAndSave
+INFORMAZIONI: Magazine created and saved: Magazine: Focus, Publication date: 2023-05-10, Publisher: Mondadori, Number: 350, Available: Sì
+mag 12, 2025 10:41:48 AM service.MediaService findAllMedia
+INFORMAZIONI: All media request
+mag 12, 2025 10:41:48 AM test.MediaServiceTest testCreateAndSave
+INFORMAZIONI: Number of media saved: 5
+mag 12, 2025 10:41:48 AM test.MediaServiceTest testSearch
+INFORMAZIONI: Search Test
+mag 12, 2025 10:41:48 AM service.MediaService findMediaByTitle
+INFORMAZIONI: Media search by title: Rosa
+mag 12, 2025 10:41:48 AM test.MediaServiceTest testSearch
+INFORMAZIONI: Media found for title 'Rosa': 1
+mag 12, 2025 10:41:48 AM service.MediaService findBooksByAuthor
+INFORMAZIONI: Search books by author: Eco
+mag 12, 2025 10:41:48 AM test.MediaServiceTest testSearch
+INFORMAZIONI: Books found by author 'Eco': 1
+mag 12, 2025 10:41:48 AM service.MediaService findMediaByPublicationYear
+INFORMAZIONI: Search media by publication year: 1980
+mag 12, 2025 10:41:48 AM test.MediaServiceTest testSearch
+INFORMAZIONI: Media found for year 1980: 1
+mag 12, 2025 10:41:48 AM test.MediaServiceTest testUpdate
+INFORMAZIONI: Update Test
+mag 12, 2025 10:41:48 AM service.MediaService findMediaByTitle
+INFORMAZIONI: Media search by title: Rosa
+mag 12, 2025 10:41:48 AM service.MediaService updateMedia
+INFORMAZIONI: Media Update Request: Il Nome della Rosa
+mag 12, 2025 10:41:48 AM repository.FileStorageManager saveMedia
+INFORMAZIONI: Media saved to file: data/media.dat
+mag 12, 2025 10:41:48 AM repository.MediaRepository saveMediaToStorage
+INFORMAZIONI: Media saved in file system
+mag 12, 2025 10:41:48 AM repository.MediaRepository update
+INFORMAZIONI: Media updated with ID: 498c0245-8d26-45e4-b04a-776c6bd256b8
+mag 12, 2025 10:41:48 AM test.MediaServiceTest testUpdate
+INFORMAZIONI: Updated book: Book: Il Nome della Rosa di Umberto Eco, Publication date: 1980-10-15, Publisher: Bompiani, Pages: 512, Available: No
+mag 12, 2025 10:41:48 AM service.MediaService findMediaById
+INFORMAZIONI: Media Search by ID: 498c0245-8d26-45e4-b04a-776c6bd256b8
+mag 12, 2025 10:41:48 AM test.MediaServiceTest testUpdate
+INFORMAZIONI: Update verification completed successfully
+mag 12, 2025 10:41:48 AM test.MediaServiceTest testDelete
+INFORMAZIONI: Delete Test
+mag 12, 2025 10:41:48 AM service.MediaService saveMedia
+INFORMAZIONI: Media Save Request: Book to delete
+mag 12, 2025 10:41:48 AM repository.FileStorageManager saveMedia
+INFORMAZIONI: Media saved to file: data/media.dat
+mag 12, 2025 10:41:48 AM repository.MediaRepository saveMediaToStorage
+INFORMAZIONI: Media saved in file system
+mag 12, 2025 10:41:48 AM repository.MediaRepository save
+INFORMAZIONI: Media saved with ID: b9c1f80f-7032-4c1f-8987-70dcd7d19b0d
+mag 12, 2025 10:41:48 AM test.MediaServiceTest testDelete
+INFORMAZIONI: Media created for elimination test: Book: Book to delete di Author Test, Publication date: 2025-05-12, Publisher: Publisher Test, Pages: 100, Available: Sì
+mag 12, 2025 10:41:48 AM service.MediaService deleteMedia
+INFORMAZIONI: Media Delete Request with ID: b9c1f80f-7032-4c1f-8987-70dcd7d19b0d
+mag 12, 2025 10:41:48 AM repository.FileStorageManager saveMedia
+INFORMAZIONI: Media saved to file: data/media.dat
+mag 12, 2025 10:41:48 AM repository.MediaRepository saveMediaToStorage
+INFORMAZIONI: Media saved in file system
+mag 12, 2025 10:41:48 AM repository.MediaRepository delete
+INFORMAZIONI: Media deleted with ID: b9c1f80f-7032-4c1f-8987-70dcd7d19b0d
+mag 12, 2025 10:41:48 AM test.MediaServiceTest testDelete
+INFORMAZIONI: Media deleted
+mag 12, 2025 10:41:48 AM service.MediaService findMediaById
+INFORMAZIONI: Media Search by ID: b9c1f80f-7032-4c1f-8987-70dcd7d19b0d
+mag 12, 2025 10:41:48 AM repository.MediaRepository findById
+AVVERTENZA: Media not found with ID: b9c1f80f-7032-4c1f-8987-70dcd7d19b0d
+mag 12, 2025 10:41:48 AM test.MediaServiceTest testDelete
+INFORMAZIONI: Verification deletion completed successfully
+mag 12, 2025 10:41:48 AM test.MediaServiceTest testCollections
+INFORMAZIONI: Collections Test
+mag 12, 2025 10:41:48 AM service.MediaService saveMedia
+INFORMAZIONI: Media Save Request: Test Collection
+mag 12, 2025 10:41:48 AM repository.FileStorageManager saveMedia
+INFORMAZIONI: Media saved to file: data/media.dat
+mag 12, 2025 10:41:48 AM repository.MediaRepository saveMediaToStorage
+INFORMAZIONI: Media saved in file system
+mag 12, 2025 10:41:48 AM repository.MediaRepository save
+INFORMAZIONI: Media saved with ID: 1a51d172-16e0-416f-8a63-1a5955dff093
+mag 12, 2025 10:41:48 AM test.MediaServiceTest testCollections
+INFORMAZIONI: Collection created: Collection: Test Collection, Created: 2025-05-12, Elements: 0, Available: Sì
+mag 12, 2025 10:41:48 AM service.MediaService saveMedia
+INFORMAZIONI: Media Save Request: Libro prova per collezione
+mag 12, 2025 10:41:48 AM repository.FileStorageManager saveMedia
+INFORMAZIONI: Media saved to file: data/media.dat
+mag 12, 2025 10:41:48 AM repository.MediaRepository saveMediaToStorage
+INFORMAZIONI: Media saved in file system
+mag 12, 2025 10:41:48 AM repository.MediaRepository save
+INFORMAZIONI: Media saved with ID: 61c9ee5b-9abb-4e05-8962-a582d2583137
+mag 12, 2025 10:41:48 AM test.MediaServiceTest testCollections
+INFORMAZIONI: Book created for the collection: Book: Libro prova per collezione di Autore prova Collezione, Publication date: 2025-05-12, Publisher: Editore prova Collezione, Pages: 200, Available: Sì
+mag 12, 2025 10:41:48 AM repository.FileStorageManager saveMedia
+INFORMAZIONI: Media saved to file: data/media.dat
+mag 12, 2025 10:41:48 AM repository.MediaRepository saveMediaToStorage
+INFORMAZIONI: Media saved in file system
+mag 12, 2025 10:41:48 AM repository.MediaRepository update
+INFORMAZIONI: Media updated with ID: 1a51d172-16e0-416f-8a63-1a5955dff093
+mag 12, 2025 10:41:48 AM service.MediaService addMediaToCollection
+INFORMAZIONI: Media 61c9ee5b-9abb-4e05-8962-a582d2583137 added to collection 1a51d172-16e0-416f-8a63-1a5955dff093
+mag 12, 2025 10:41:48 AM test.MediaServiceTest testCollections
+INFORMAZIONI: Book added to collection
+mag 12, 2025 10:41:48 AM service.MediaService findMediaById
+INFORMAZIONI: Media Search by ID: 1a51d172-16e0-416f-8a63-1a5955dff093
+mag 12, 2025 10:41:48 AM test.MediaServiceTest testCollections
+INFORMAZIONI: Number of media in the collection: 1
+mag 12, 2025 10:41:48 AM test.MediaServiceTest testCollections
+INFORMAZIONI: Collection verification completed successfully
+mag 12, 2025 10:41:48 AM test.MediaServiceTest runTests
+INFORMAZIONI: All tests completed successfully
