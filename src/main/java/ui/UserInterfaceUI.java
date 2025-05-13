@@ -334,16 +334,26 @@ public class UserInterfaceUI {
             return;
         }
 
-        System.out.println("\nAVAILABLE COLLECTIONS:");
+        System.out.println("\nCOLLECTIONS:");
         for (int i = 0; i < collections.size(); i++) {
             System.out.println((i + 1) + ". " + collections.get(i).getDetails());
         }
 
-        int collectionIndex = readIntInput("Select a collection (0 to cancel): ") - 1;
+        int collectionIndex = -1;
+        boolean validInput = false;
 
-        if (collectionIndex < 0 || collectionIndex >= collections.size()) {
-            System.out.println("Action cancelled.");
-            return;
+        while (!validInput) {
+            collectionIndex = readIntInput("Select a collection (0 to cancel): ") - 1;
+
+            if (collectionIndex == -1) {
+                System.out.println("Action cancelled.");
+                return;
+            } else if (collectionIndex < 0 || collectionIndex >= collections.size()) {
+                System.out.println(
+                        "Invalid selection, enter a number between 1 and " + collections.size() + " or 0 to cancel.");
+            } else {
+                validInput = true;
+            }
         }
 
         MediaCollection selectedCollection = (MediaCollection) collections.get(collectionIndex);
@@ -357,26 +367,37 @@ public class UserInterfaceUI {
         }
 
         System.out.println("\nSelect media to delete (1-" + mediaList.size() + ", 0 to cancel): ");
-        int index = readIntInput("") - 1;
 
-        if (index < 0 || index >= mediaList.size()) {
-            System.out.println("Action cancelled.");
-            return;
-        }
+        int index;
+        boolean validInput = false;
 
-        Media mediaToDelete = mediaList.get(index);
-        System.out.println("Are you sure you want to delete: " + mediaToDelete.getTitle() + "? (y/n)");
-        String confirmation = scanner.nextLine().trim().toLowerCase();
+        while (!validInput) {
+            index = readIntInput("") - 1;
 
-        if (confirmation.equals("y")) {
-            try {
-                mediaService.deleteMedia(mediaToDelete.getId());
-                System.out.println("Media deleted successfully.");
-            } catch (Exception e) {
-                System.out.println("Error deleting media: " + e.getMessage());
+            if (index == -1) {
+                System.out.println("Action cancelled.");
+                return;
+            } else if (index < 0 || index >= mediaList.size()) {
+                System.out.println("Invalid selection, enter a number between 1 and " + mediaList.size()
+                        + " or 0 to cancel.");
+            } else {
+                validInput = true;
+
+                Media mediaToDelete = mediaList.get(index);
+                System.out.println("Are you sure you want to delete: " + mediaToDelete.getTitle() + "? (y/n)");
+                String confirmation = scanner.nextLine().trim().toLowerCase();
+
+                if (confirmation.equals("y")) {
+                    try {
+                        mediaService.deleteMedia(mediaToDelete.getId());
+                        System.out.println("Media deleted successfully.");
+                    } catch (Exception e) {
+                        System.out.println("Error deleting media: " + e.getMessage());
+                    }
+                } else {
+                    System.out.println("Deletion cancelled.");
+                }
             }
-        } else {
-            System.out.println("Deletion cancelled.");
         }
     }
 
@@ -423,7 +444,7 @@ public class UserInterfaceUI {
                 return;
             }
 
-            System.out.println("\nAVAILABLE MEDIA:");
+            System.out.println("\nMEDIA:");
             for (int i = 0; i < availableMedia.size(); i++) {
                 System.out.println((i + 1) + ". " + availableMedia.get(i).getDetails());
             }
@@ -558,16 +579,26 @@ public class UserInterfaceUI {
             return;
         }
 
-        System.out.println("\nAVAILABLE COLLECTIONS:");
+        System.out.println("\nCOLLECTIONS:");
         for (int i = 0; i < collections.size(); i++) {
             System.out.println((i + 1) + ". " + collections.get(i).getDetails());
         }
 
-        int index = readIntInput("Select a collection (0 to cancel): ") - 1;
+        int index = -1;
+        boolean validInput = false;
 
-        if (index < 0 || index >= collections.size()) {
-            System.out.println("Action cancelled.");
-            return;
+        while (!validInput) {
+            index = readIntInput("Select a collection (0 to cancel): ") - 1;
+
+            if (index == -1) {
+                System.out.println("Action cancelled.");
+                return;
+            } else if (index < 0 || index >= collections.size()) {
+                System.out.println(
+                        "Invalid selection, enter a number between 1 and " + collections.size() + " or 0 to cancel.");
+            } else {
+                validInput = true;
+            }
         }
 
         MediaCollection selectedCollection = (MediaCollection) collections.get(index);
@@ -592,16 +623,26 @@ public class UserInterfaceUI {
             return;
         }
 
-        System.out.println("\nAVAILABLE COLLECTIONS:");
+        System.out.println("\nCOLLECTIONS:");
         for (int i = 0; i < collections.size(); i++) {
             System.out.println((i + 1) + ". " + collections.get(i).getDetails());
         }
 
-        int collectionIndex = readIntInput("Select a collection (0 to cancel): ") - 1;
+        int collectionIndex = -1;
+        boolean validInput = false;
 
-        if (collectionIndex < 0 || collectionIndex >= collections.size()) {
-            System.out.println("Action cancelled.");
-            return;
+        while (!validInput) {
+            collectionIndex = readIntInput("Select a collection (0 to cancel): ") - 1;
+
+            if (collectionIndex == -1) {
+                System.out.println("Action cancelled.");
+                return;
+            } else if (collectionIndex < 0 || collectionIndex >= collections.size()) {
+                System.out.println(
+                        "Invalid selection, enter a number between 1 and " + collections.size() + " or 0 to cancel.");
+            } else {
+                validInput = true;
+            }
         }
 
         MediaCollection selectedCollection = (MediaCollection) collections.get(collectionIndex);

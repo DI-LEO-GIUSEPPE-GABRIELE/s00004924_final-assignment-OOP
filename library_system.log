@@ -1,0 +1,66 @@
+mag 13, 2025 10:13:07 AM main.java.Main main
+INFORMAZIONI: Starting the Library Management System
+mag 13, 2025 10:13:07 AM repository.MediaRepository <init>
+INFORMAZIONI: Starting the repository for media
+mag 13, 2025 10:13:07 AM java.io.ObjectInputFilter$Config traceFilter
+MIGLIORE: Builtin factory: null -> new: null
+mag 13, 2025 10:13:07 AM repository.FileStorageManager loadMedia
+INFORMAZIONI: Media uploaded from files: data/media.dat, number of media: 8
+mag 13, 2025 10:13:07 AM repository.MediaRepository loadMediaFromStorage
+INFORMAZIONI: Media loaded from file system: 8
+mag 13, 2025 10:13:07 AM service.MediaService <init>
+INFORMAZIONI: Starting the media service
+mag 13, 2025 10:14:01 AM service.MediaService saveMedia
+INFORMAZIONI: Media Save Request: libro prova
+mag 13, 2025 10:14:01 AM repository.FileStorageManager saveMedia
+INFORMAZIONI: Media saved to file: data/media.dat
+mag 13, 2025 10:14:01 AM repository.MediaRepository saveMediaToStorage
+INFORMAZIONI: Media saved in file system
+mag 13, 2025 10:14:01 AM repository.MediaRepository save
+INFORMAZIONI: Media saved with ID: 600103a7-45a4-49ea-9916-e95085045223
+mag 13, 2025 10:14:01 AM ui.UserInterfaceUI addNewBook
+INFORMAZIONI: Book added successfully: 600103a7-45a4-49ea-9916-e95085045223
+mag 13, 2025 10:14:13 AM service.MediaService findAllMedia
+INFORMAZIONI: All media request
+mag 13, 2025 10:14:35 AM service.MediaService findMediaByTitle
+INFORMAZIONI: Media search by title: libro prova
+mag 13, 2025 10:14:50 AM service.MediaService deleteMedia
+INFORMAZIONI: Media Delete Request with ID: 61c9ee5b-9abb-4e05-8962-a582d2583137
+mag 13, 2025 10:14:50 AM repository.FileStorageManager saveMedia
+INFORMAZIONI: Media saved to file: data/media.dat
+mag 13, 2025 10:14:50 AM repository.MediaRepository saveMediaToStorage
+INFORMAZIONI: Media saved in file system
+mag 13, 2025 10:14:50 AM repository.MediaRepository delete
+INFORMAZIONI: Media deleted with ID: 61c9ee5b-9abb-4e05-8962-a582d2583137
+mag 13, 2025 10:15:00 AM service.MediaService findAllMedia
+INFORMAZIONI: All media request
+mag 13, 2025 10:15:19 AM service.MediaService findBooksByAuthor
+INFORMAZIONI: Search books by author: autore prova
+mag 13, 2025 10:24:34 AM main.java.Main main
+INFORMAZIONI: Library Management System closed
+mag 13, 2025 10:24:39 AM main.java.Main main
+INFORMAZIONI: Starting the Library Management System
+mag 13, 2025 10:24:39 AM repository.MediaRepository <init>
+INFORMAZIONI: Starting the repository for media
+mag 13, 2025 10:24:39 AM java.io.ObjectInputFilter$Config traceFilter
+MIGLIORE: Builtin factory: null -> new: null
+mag 13, 2025 10:24:39 AM repository.FileStorageManager loadMedia
+INFORMAZIONI: Media uploaded from files: data/media.dat, number of media: 8
+mag 13, 2025 10:24:39 AM repository.MediaRepository loadMediaFromStorage
+INFORMAZIONI: Media loaded from file system: 8
+mag 13, 2025 10:24:39 AM service.MediaService <init>
+INFORMAZIONI: Starting the media service
+mag 13, 2025 10:24:42 AM service.MediaService findAllMedia
+INFORMAZIONI: All media request
+mag 13, 2025 10:25:04 AM service.MediaService findMediaByPublicationYear
+INFORMAZIONI: Search media by publication year: 1995
+mag 13, 2025 10:25:42 AM service.MediaService findMediaById
+INFORMAZIONI: Media Search by ID: 45a4
+mag 13, 2025 10:25:42 AM repository.MediaRepository findById
+AVVERTENZA: Media not found with ID: 45a4
+mag 13, 2025 10:25:58 AM service.MediaService findMediaById
+INFORMAZIONI: Media Search by ID: 600103a7-45a4-49ea-9916-e95085045223
+mag 13, 2025 10:26:13 AM service.MediaService findAllMedia
+INFORMAZIONI: All media request
+mag 13, 2025 11:10:54 AM main.java.Main main
+INFORMAZIONI: Library Management System closed
