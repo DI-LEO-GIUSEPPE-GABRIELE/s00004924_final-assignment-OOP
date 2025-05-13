@@ -659,11 +659,22 @@ public class UserInterfaceUI {
         }
 
         System.out.println("\nSelect media to remove (1-" + mediaItems.size() + ", 0 to cancel): ");
-        int mediaIndex = readIntInput("") - 1;
 
-        if (mediaIndex < 0 || mediaIndex >= mediaItems.size()) {
-            System.out.println("Action cancelled.");
-            return;
+        int mediaIndex = -1;
+        boolean removeMediaValidInput = false;
+
+        while (!removeMediaValidInput) {
+            mediaIndex = readIntInput("") - 1;
+
+            if (mediaIndex == -1) {
+                System.out.println("Action cancelled.");
+                return;
+            } else if (mediaIndex < 0 || mediaIndex >= mediaItems.size()) {
+                System.out.println(
+                        "Invalid selection, enter a number between 1 and " + mediaItems.size() + " or 0 to cancel.");
+            } else {
+                removeMediaValidInput = true;
+            }
         }
 
         Media mediaToRemove = mediaItems.get(mediaIndex);
