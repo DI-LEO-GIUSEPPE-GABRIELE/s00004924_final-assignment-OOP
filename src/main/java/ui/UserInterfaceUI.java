@@ -190,7 +190,7 @@ public class UserInterfaceUI {
             return;
         }
 
-        System.out.println("\nLIST OF ALL MEDIA:");
+        System.out.println("\nALL MEDIA:");
         for (Media media : allMedia) {
             // Show all media without collections
             if (!(media instanceof MediaCollection)) {

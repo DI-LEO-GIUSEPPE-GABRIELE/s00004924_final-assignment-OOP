@@ -64,3 +64,59 @@ mag 13, 2025 10:26:13 AM service.MediaService findAllMedia
 INFORMAZIONI: All media request
 mag 13, 2025 11:10:54 AM main.java.Main main
 INFORMAZIONI: Library Management System closed
+mag 13, 2025 11:13:18 AM main.java.Main main
+INFORMAZIONI: Starting the Library Management System
+mag 13, 2025 11:13:18 AM repository.MediaRepository <init>
+INFORMAZIONI: Starting the repository for media
+mag 13, 2025 11:13:18 AM java.io.ObjectInputFilter$Config traceFilter
+MIGLIORE: Builtin factory: null -> new: null
+mag 13, 2025 11:13:18 AM repository.FileStorageManager loadMedia
+INFORMAZIONI: Media uploaded from files: data/media.dat, number of media: 8
+mag 13, 2025 11:13:18 AM repository.MediaRepository loadMediaFromStorage
+INFORMAZIONI: Media loaded from file system: 8
+mag 13, 2025 11:13:18 AM service.MediaService <init>
+INFORMAZIONI: Starting the media service
+mag 13, 2025 11:13:24 AM service.MediaService findAllMedia
+INFORMAZIONI: All media request
+mag 13, 2025 11:13:40 AM service.MediaService findAllMedia
+INFORMAZIONI: All media request
+mag 13, 2025 11:14:21 AM service.MediaService findAllMedia
+INFORMAZIONI: All media request
+mag 13, 2025 11:14:49 AM service.MediaService findAllMedia
+INFORMAZIONI: All media request
+mag 13, 2025 11:15:27 AM service.MediaService findAllMedia
+INFORMAZIONI: All media request
+mag 13, 2025 11:16:16 AM service.MediaService findAllMedia
+INFORMAZIONI: All media request
+mag 13, 2025 11:16:20 AM repository.FileStorageManager saveMedia
+INFORMAZIONI: Media saved to file: data/media.dat
+mag 13, 2025 11:16:20 AM repository.MediaRepository saveMediaToStorage
+INFORMAZIONI: Media saved in file system
+mag 13, 2025 11:16:20 AM repository.MediaRepository update
+INFORMAZIONI: Media updated with ID: b234ee49-987d-437f-8697-c4f902ac5671
+mag 13, 2025 11:16:20 AM repository.FileStorageManager saveMedia
+INFORMAZIONI: Media saved to file: data/media.dat
+mag 13, 2025 11:16:20 AM repository.MediaRepository saveMediaToStorage
+INFORMAZIONI: Media saved in file system
+mag 13, 2025 11:16:20 AM repository.MediaRepository update
+INFORMAZIONI: Media updated with ID: 129d67a0-9381-421d-bfdb-5bff576fdd16
+mag 13, 2025 11:16:20 AM service.MediaService removeMediaFromCollection
+INFORMAZIONI: Media b234ee49-987d-437f-8697-c4f902ac5671 removed from collection 129d67a0-9381-421d-bfdb-5bff576fdd16
+mag 13, 2025 11:16:23 AM service.MediaService findAllMedia
+INFORMAZIONI: All media request
+mag 13, 2025 11:16:32 AM service.MediaService findAllMedia
+INFORMAZIONI: All media request
+mag 13, 2025 11:16:48 AM main.java.Main main
+INFORMAZIONI: Library Management System closed
+May 13, 2025 11:41:38 AM main.java.Main main
+INFO: Starting the Library Management System
+May 13, 2025 11:41:38 AM repository.MediaRepository <init>
+INFO: Starting the repository for media
+May 13, 2025 11:41:38 AM java.io.ObjectInputFilter$Config traceFilter
+FINER: Builtin factory: null -> new: null
+May 13, 2025 11:41:38 AM repository.FileStorageManager loadMedia
+INFO: Media uploaded from files: data/media.dat, number of media: 8
+May 13, 2025 11:41:38 AM repository.MediaRepository loadMediaFromStorage
+INFO: Media loaded from file system: 8
+May 13, 2025 11:41:38 AM service.MediaService <init>
+INFO: Starting the media service

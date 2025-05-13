@@ -1,6 +1,7 @@
 package util;
 
 import java.io.IOException;
+import java.util.Locale;
 import java.util.logging.*;
 
 // Class for logging management
@@ -21,6 +22,9 @@ public class LoggerManager {
 
     private static void initializeLogging() {
         try {
+            // Set english language for log messages
+            Locale.setDefault(Locale.ENGLISH);
+
             // Logger configuration
             Logger rootLogger = Logger.getLogger("");
 
