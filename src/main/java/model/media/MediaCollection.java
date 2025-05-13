@@ -86,6 +86,15 @@ public class MediaCollection implements Media {
         return new MediaCollectionIterator(this);
     }
 
+    public boolean containsMedia(String mediaId) {
+        for (Media media : mediaItems) {
+            if (media.getId().equals(mediaId)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     // Override method of the Media interface
     public boolean equals(Object o) {

@@ -77,7 +77,7 @@ public class UserInterfaceUI {
 
     private void printMainMenu() {
         System.out.println("\nMAIN MENU");
-        System.out.println("1. Add new media");
+        System.out.println("1. Add new media or collection");
         System.out.println("2. View all media");
         System.out.println("3. Search media");
         System.out.println("4. Manage collections");
@@ -85,7 +85,7 @@ public class UserInterfaceUI {
     }
 
     private void addNewMedia() throws LibraryException {
-        System.out.println("\nADD NEW MEDIA");
+        System.out.println("\nADD NEW MEDIA OR COLLECTION");
         System.out.println("1. Book");
         System.out.println("2. Magazine");
         System.out.println("3. Collection");
@@ -491,7 +491,7 @@ public class UserInterfaceUI {
                     try {
                         int index = Integer.parseInt(sel.trim()) - 1;
                         if (index < 0 || index >= mediaList.size()) {
-                            System.out.println("Invalid selection: " + (index + 1) + ", enter a number between 1 and"
+                            System.out.println("Invalid selection: " + (index + 1) + ", enter a number between 1 and "
                                     + mediaList.size());
                             allSelectionsValid = false;
                             break;
@@ -536,6 +536,7 @@ public class UserInterfaceUI {
         System.out.println("1. View all collections");
         System.out.println("2. View collection content");
         System.out.println("3. Remove media from collection");
+        System.out.println("4. Add media to collection");
         System.out.println("0. Go back");
 
         int choice = readIntInput("Select an option: ");
@@ -549,6 +550,9 @@ public class UserInterfaceUI {
                 break;
             case 3:
                 removeFromCollection();
+                break;
+            case 4:
+                addToCollection();
                 break;
             case 0:
                 return;
@@ -685,5 +689,60 @@ public class UserInterfaceUI {
         } catch (Exception e) {
             System.out.println("Error removing media: " + e.getMessage());
         }
+    }
+
+    private void addToCollection() throws LibraryException {
+        List<Media> collections = getAllCollections();
+
+        if (collections.isEmpty()) {
+            System.out.println("No collections available. Please create a collection first.");
+            return;
+        }
+
+        System.out.println("\nCOLLECTIONS:");
+        for (int i = 0; i < collections.size(); i++) {
+            System.out.println((i + 1) + ". " + collections.get(i).getDetails());
+        }
+
+        int collectionIndex = -1;
+        boolean validInput = false;
+
+        while (!validInput) {
+            collectionIndex = readIntInput("Select a collection (0 to cancel): ") - 1;
+
+            if (collectionIndex == -1) {
+                System.out.println("Action cancelled.");
+                return;
+            } else if (collectionIndex < 0 || collectionIndex >= collections.size()) {
+                System.out.println(
+                        "Invalid selection, enter a number between 1 and " + collections.size() + " or 0 to cancel.");
+            } else {
+                validInput = true;
+            }
+        }
+
+        MediaCollection selectedCollection = (MediaCollection) collections.get(collectionIndex);
+
+        // Get all media that are not collections
+        List<Media> allMedia = mediaService.findAllMedia();
+        List<Media> availableMedia = new ArrayList<>();
+
+        for (Media media : allMedia) {
+            if (!(media instanceof MediaCollection) && !selectedCollection.containsMedia(media.getId())) {
+                availableMedia.add(media);
+            }
+        }
+
+        if (availableMedia.isEmpty()) {
+            System.out.println("No media available to add to the collection.");
+            return;
+        }
+
+        System.out.println("\nAVAILABLE MEDIA:");
+        for (int i = 0; i < availableMedia.size(); i++) {
+            System.out.println((i + 1) + ". " + availableMedia.get(i).getDetails());
+        }
+
+        addToCollection(availableMedia, selectedCollection);
     }
 }
