@@ -72,7 +72,7 @@ public class Book implements Media {
     // Override method of the Media interface
     public String getDetails() {
         return String.format(
-                "Book: %s, Author %s, ID: %s, Publication date: %s, Publisher: %s, Pages: %d, Available: %s",
+                "Book: %s, Author: %s, ID: %s, Publication date: %s, Publisher: %s, Pages: %d, Available: %s",
                 title, author, id, publicationDate.format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy")),
                 publisher, pages, available ? "Yes" : "No");
     }

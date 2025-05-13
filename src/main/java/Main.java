@@ -19,6 +19,6 @@ public class Main {
             System.out.println("An error occurred. See logs for more details.");
         }
 
-        LOGGER.info("Closing of the Library Management System");
+        LOGGER.info("Library Management System closed");
     }
 }
