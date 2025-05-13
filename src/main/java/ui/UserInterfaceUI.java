@@ -184,18 +184,23 @@ public class UserInterfaceUI {
         System.out.println("\nVIEW ALL MEDIA");
 
         List<Media> allMedia = mediaService.findAllMedia();
+        List<Media> filteredMedia = new ArrayList<>();
 
-        if (allMedia.isEmpty()) {
+        for (Media media : allMedia) {
+            // Filter media to exclude collections
+            if (!(media instanceof MediaCollection)) {
+                filteredMedia.add(media);
+            }
+        }
+
+        if (filteredMedia.isEmpty()) {
             System.out.println("No media available in the system.");
             return;
         }
 
         System.out.println("\nALL MEDIA:");
-        for (Media media : allMedia) {
-            // Show all media without collections
-            if (!(media instanceof MediaCollection)) {
-                System.out.println("- " + media.getDetails());
-            }
+        for (Media media : filteredMedia) {
+            System.out.println("- " + media.getDetails());
         }
     }
 

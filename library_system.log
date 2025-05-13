@@ -112,3 +112,31 @@ May 13, 2025 5:03:03 PM service.MediaService findAllMedia
 INFO: All media request
 May 13, 2025 5:03:28 PM main.java.Main main
 INFO: Library Management System closed
+May 13, 2025 5:37:56 PM main.java.Main main
+INFO: Starting the Library Management System
+May 13, 2025 5:37:56 PM repository.MediaRepository <init>
+INFO: Starting the repository for media
+May 13, 2025 5:37:56 PM java.io.ObjectInputFilter$Config traceFilter
+FINER: Builtin factory: null -> new: null
+May 13, 2025 5:37:56 PM repository.FileStorageManager loadMedia
+INFO: Media uploaded from files: data/media.dat, number of media: 2
+May 13, 2025 5:37:56 PM repository.MediaRepository loadMediaFromStorage
+INFO: Media loaded from file system: 2
+May 13, 2025 5:37:56 PM service.MediaService <init>
+INFO: Starting the media service
+May 13, 2025 5:37:58 PM service.MediaService findAllMedia
+INFO: All media request
+May 13, 2025 5:38:12 PM service.MediaService findMediaByTitle
+INFO: Media search by title: prova
+May 13, 2025 5:38:28 PM service.MediaService deleteMedia
+INFO: Media Delete Request with ID: 4278e318-288f-4c96-8369-9aa8cd223fa9
+May 13, 2025 5:38:28 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 13, 2025 5:38:28 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 13, 2025 5:38:28 PM repository.MediaRepository delete
+INFO: Media deleted with ID: 4278e318-288f-4c96-8369-9aa8cd223fa9
+May 13, 2025 5:38:31 PM service.MediaService findAllMedia
+INFO: All media request
+May 13, 2025 5:39:03 PM main.java.Main main
+INFO: Library Management System closed
