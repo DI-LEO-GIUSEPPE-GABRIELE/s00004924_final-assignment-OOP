@@ -336,3 +336,33 @@ mag 12, 2025 3:30:55 PM ui.UserInterfaceUI addNewCollection
 INFORMAZIONI: Collection added successfully: 9af6ba6f-c09c-4e70-a2d8-75591a82479a
 mag 12, 2025 4:01:28 PM main.java.Main main
 INFORMAZIONI: Closing of the Library Management System
+mag 13, 2025 9:00:31 AM main.java.Main main
+INFORMAZIONI: Starting the Library Management System
+mag 13, 2025 9:00:31 AM repository.MediaRepository <init>
+INFORMAZIONI: Starting the repository for media
+mag 13, 2025 9:00:31 AM java.io.ObjectInputFilter$Config traceFilter
+MIGLIORE: Builtin factory: null -> new: null
+mag 13, 2025 9:00:31 AM repository.FileStorageManager loadMedia
+INFORMAZIONI: Media uploaded from files: data/media.dat, number of media: 8
+mag 13, 2025 9:00:31 AM repository.MediaRepository loadMediaFromStorage
+INFORMAZIONI: Media loaded from file system: 8
+mag 13, 2025 9:00:31 AM service.MediaService <init>
+INFORMAZIONI: Starting the media service
+mag 13, 2025 9:00:34 AM service.MediaService findAllMedia
+INFORMAZIONI: All media request
+mag 13, 2025 9:06:35 AM main.java.Main main
+INFORMAZIONI: Closing of the Library Management System
+mag 13, 2025 9:06:37 AM main.java.Main main
+INFORMAZIONI: Starting the Library Management System
+mag 13, 2025 9:06:37 AM repository.MediaRepository <init>
+INFORMAZIONI: Starting the repository for media
+mag 13, 2025 9:06:37 AM java.io.ObjectInputFilter$Config traceFilter
+MIGLIORE: Builtin factory: null -> new: null
+mag 13, 2025 9:06:37 AM repository.FileStorageManager loadMedia
+INFORMAZIONI: Media uploaded from files: data/media.dat, number of media: 8
+mag 13, 2025 9:06:37 AM repository.MediaRepository loadMediaFromStorage
+INFORMAZIONI: Media loaded from file system: 8
+mag 13, 2025 9:06:37 AM service.MediaService <init>
+INFORMAZIONI: Starting the media service
+mag 13, 2025 9:06:39 AM main.java.Main main
+INFORMAZIONI: Closing of the Library Management System

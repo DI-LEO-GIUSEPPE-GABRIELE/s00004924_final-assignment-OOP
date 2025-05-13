@@ -79,7 +79,7 @@ public class MediaServiceJUnitTest {
     }
 
     @Test
-    // Test the media update
+    // Test the media availability update
     public void testUpdate() throws LibraryException, MediaNotFoundException {
         testBook.setAvailable(false);
         Media updatedBook = mediaService.updateMedia(testBook);

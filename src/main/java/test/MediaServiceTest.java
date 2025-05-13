@@ -32,7 +32,7 @@ public class MediaServiceTest {
             // Search test
             testSearch();
 
-            // Update test
+            // Update availability test
             testUpdate();
 
             // Delete test
@@ -98,7 +98,7 @@ public class MediaServiceTest {
         LOGGER.info("Media found for year 1980: " + mediaByYear.size());
     }
 
-    // Update Test
+    // Update availability Test
     private void testUpdate() throws LibraryException, MediaNotFoundException {
         LOGGER.info("Update Test");
 

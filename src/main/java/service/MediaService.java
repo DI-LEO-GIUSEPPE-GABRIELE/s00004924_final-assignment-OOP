@@ -87,6 +87,10 @@ public class MediaService {
             throw new LibraryException("The specified ID does not match a collection");
         }
 
+        // Set media as unavailable when added to a collection
+        media.setAvailable(false);
+        mediaRepository.update(media);
+
         ((MediaCollection) collection).addMedia(media);
         mediaRepository.update(collection);
         LOGGER.info("Media " + mediaId + " added to collection " + collectionId);
@@ -101,6 +105,10 @@ public class MediaService {
         if (!(collection instanceof MediaCollection)) {
             throw new LibraryException("The specified ID does not match a collection");
         }
+
+        // Set media as available when removed from a collection
+        media.setAvailable(true);
+        mediaRepository.update(media);
 
         ((MediaCollection) collection).removeMedia(media);
         mediaRepository.update(collection);
