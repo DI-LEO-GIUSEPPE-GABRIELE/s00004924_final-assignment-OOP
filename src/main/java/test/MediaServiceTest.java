@@ -165,21 +165,60 @@ public class MediaServiceTest {
         mediaService.saveMedia(bookForCollection);
         LOGGER.info("Book created for the collection: " + bookForCollection.getDetails());
 
-        // Add the book to the collection
-        mediaService.addMediaToCollection(collection.getId(), bookForCollection.getId());
-        LOGGER.info("Book added to collection");
+        // Create a second book to add to the collection
+        Media secondBookForCollection = MediaFactory.createBook(
+                "Pirati dei Caraibi",
+                "Menichella",
+                LocalDate.of(2007, 05, 24),
+                "Disney Libri",
+                523);
 
+        mediaService.saveMedia(secondBookForCollection);
+        LOGGER.info("Second book created for the collection: " + secondBookForCollection.getDetails());
+
+        // Add the books to the collection
+        mediaService.addMediaToCollection(collection.getId(), bookForCollection.getId());
+        LOGGER.info("First book added to collection");
+
+        mediaService.addMediaToCollection(collection.getId(), secondBookForCollection.getId());
+        LOGGER.info("Second book added to collection");
+
+        // Verify the books were added to the collection
         Media updatedCollection = mediaService.findMediaById(collection.getId());
         if (!(updatedCollection instanceof MediaCollection)) {
             throw new LibraryException("Error retrieving collection");
         }
 
         MediaCollection retrievedCollection = (MediaCollection) updatedCollection;
-        if (retrievedCollection.getMediaItems().isEmpty()) {
-            throw new LibraryException("Error adding book to collection");
+        if (retrievedCollection.getMediaItems().size() != 2) {
+            throw new LibraryException("Error adding books to collection");
         }
 
         LOGGER.info("Number of media in the collection: " + retrievedCollection.getMediaItems().size());
+
+        // Verify the books are not available
+        Media retrievedBook = mediaService.findMediaById(bookForCollection.getId());
+        if (retrievedBook.isAvailable()) {
+            throw new LibraryException("Book should not be available when added to a collection");
+        }
+
+        // Test removing a book from the collection
+        mediaService.removeMediaFromCollection(collection.getId(), bookForCollection.getId());
+        LOGGER.info("Book removed from collection");
+
+        // Verify the book was removed
+        updatedCollection = mediaService.findMediaById(collection.getId());
+        retrievedCollection = (MediaCollection) updatedCollection;
+        if (retrievedCollection.getMediaItems().size() != 1) {
+            throw new LibraryException("Error removing book from collection");
+        }
+
+        // Verify the book is now available
+        retrievedBook = mediaService.findMediaById(bookForCollection.getId());
+        if (!retrievedBook.isAvailable()) {
+            throw new LibraryException("Book should be available after being removed from a collection");
+        }
+
         LOGGER.info("Collection verification completed successfully");
     }
 

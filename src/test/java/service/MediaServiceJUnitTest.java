@@ -5,6 +5,7 @@ import exception.MediaNotFoundException;
 import factory.MediaFactory;
 import model.media.Book;
 import model.media.Media;
+import model.media.MediaCollection;
 import org.junit.Before;
 import org.junit.Test;
 import java.time.LocalDate;
@@ -114,5 +115,84 @@ public class MediaServiceJUnitTest {
 
         // If the media does not exist, throw MediaNotFoundException
         mediaService.findMediaById(mediaToDelete.getId());
+    }
+
+    @Test
+    // Test the creation of a collection and adding media to it
+    public void testCollectionCreationAndAddMedia() throws LibraryException, MediaNotFoundException {
+        // Create a new collection
+        MediaCollection collection = MediaFactory.createMediaCollection("Test Collection");
+        mediaService.saveMedia(collection);
+
+        // Create a new book to add to the collection
+        Media bookForCollection = MediaFactory.createBook(
+                "Test Book for Collection",
+                "Test Author Collection",
+                LocalDate.now(),
+                "Test Publisher Collection",
+                200);
+        mediaService.saveMedia(bookForCollection);
+
+        // Add the book to the collection
+        mediaService.addMediaToCollection(collection.getId(), bookForCollection.getId());
+
+        // Verify the book was added to the collection
+        Media updatedCollection = mediaService.findMediaById(collection.getId());
+        assertTrue("The retrieved media is not a collection", updatedCollection instanceof MediaCollection);
+
+        MediaCollection retrievedCollection = (MediaCollection) updatedCollection;
+        assertFalse("The collection should not be empty", retrievedCollection.getMediaItems().isEmpty());
+        assertEquals("The collection should contain 1 item", 1, retrievedCollection.getMediaItems().size());
+
+        // Verify the book is not available
+        Media retrievedBook = mediaService.findMediaById(bookForCollection.getId());
+        assertFalse("The book should not be available when added to a collection", retrievedBook.isAvailable());
+    }
+
+    @Test
+    // Test removing media from a collection
+    public void testRemoveMediaFromCollection() throws LibraryException, MediaNotFoundException {
+        // Create a new collection
+        MediaCollection collection = MediaFactory.createMediaCollection("Test Collection for Removal");
+        mediaService.saveMedia(collection);
+
+        // Create a new book to add to the collection
+        Media bookForCollection = MediaFactory.createBook(
+                "Test Book for Removal",
+                "Test Author Removal",
+                LocalDate.now(),
+                "Test Publisher Removal",
+                200);
+        mediaService.saveMedia(bookForCollection);
+
+        // Add the book to the collection
+        mediaService.addMediaToCollection(collection.getId(), bookForCollection.getId());
+
+        // Remove the book from the collection
+        mediaService.removeMediaFromCollection(collection.getId(), bookForCollection.getId());
+
+        // Verify the book was removed from the collection
+        Media updatedCollection = mediaService.findMediaById(collection.getId());
+        MediaCollection retrievedCollection = (MediaCollection) updatedCollection;
+        assertTrue("The collection should be empty after removal", retrievedCollection.getMediaItems().isEmpty());
+
+        // Verify the book is now available
+        Media retrievedBook = mediaService.findMediaById(bookForCollection.getId());
+        assertTrue("The book should be available after being removed from a collection", retrievedBook.isAvailable());
+    }
+
+    @Test
+    // Test finding media by publication year
+    public void testFindByPublicationYear() {
+        int currentYear = LocalDate.now().getYear();
+        List<Media> mediaByYear = mediaService.findMediaByPublicationYear(currentYear);
+        assertNotNull("The media list should not be null", mediaByYear);
+        assertFalse("The media list should not be empty", mediaByYear.isEmpty());
+
+        // Verify that all media in the list have the correct publication year
+        for (Media media : mediaByYear) {
+            assertEquals("Publication year should match the search criteria",
+                    currentYear, media.getPublicationDate().getYear());
+        }
     }
 }

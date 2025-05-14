@@ -396,3 +396,223 @@ May 14, 2025 10:10:18 AM service.MediaService findMediaByTitle
 INFO: Media search by title: libro
 May 14, 2025 10:41:48 AM main.java.Main main
 INFO: Library Management System closed
+May 14, 2025 5:17:18 PM main.java.Main main
+INFO: Starting the Library Management System
+May 14, 2025 5:17:18 PM repository.MediaRepository <init>
+INFO: Starting the repository for media
+May 14, 2025 5:17:18 PM java.io.ObjectInputFilter$Config traceFilter
+FINER: Builtin factory: null -> new: null
+May 14, 2025 5:17:18 PM repository.FileStorageManager loadMedia
+INFO: Media uploaded from files: data/media.dat, number of media: 6
+May 14, 2025 5:17:18 PM repository.MediaRepository loadMediaFromStorage
+INFO: Media loaded from file system: 6
+May 14, 2025 5:17:18 PM service.MediaService <init>
+INFO: Starting the media service
+May 14, 2025 5:18:17 PM service.MediaService saveMedia
+INFO: Media Save Request: asasasasas
+May 14, 2025 5:18:17 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 14, 2025 5:18:17 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 14, 2025 5:18:17 PM repository.MediaRepository save
+INFO: Media saved with ID: 200a397b-021c-44db-9b51-bb96a2952da0
+May 14, 2025 5:18:17 PM ui.UserInterfaceUI addNewBook
+INFO: Book added successfully: 200a397b-021c-44db-9b51-bb96a2952da0
+May 14, 2025 5:18:26 PM service.MediaService findAllMedia
+INFO: All media request
+May 14, 2025 5:18:37 PM service.MediaService findMediaByTitle
+INFO: Media search by title: asasasasas
+May 14, 2025 5:19:32 PM main.java.Main main
+INFO: Library Management System closed
+May 14, 2025 5:30:24 PM repository.MediaRepository <init>
+INFO: Starting the repository for media
+May 14, 2025 5:30:24 PM java.io.ObjectInputFilter$Config traceFilter
+FINER: Builtin factory: null -> new: null
+May 14, 2025 5:30:24 PM repository.FileStorageManager loadMedia
+INFO: Media uploaded from files: data/media.dat, number of media: 7
+May 14, 2025 5:30:24 PM repository.MediaRepository loadMediaFromStorage
+INFO: Media loaded from file system: 7
+May 14, 2025 5:30:24 PM service.MediaService <init>
+INFO: Starting the media service
+May 14, 2025 5:30:24 PM test.MediaServiceTest runTests
+INFO: Starting the test of MediaService
+May 14, 2025 5:30:24 PM test.MediaServiceTest testCreateAndSave
+INFO: Creation and saving test
+May 14, 2025 5:30:24 PM service.MediaService saveMedia
+INFO: Media Save Request: Il Nome della Rosa
+May 14, 2025 5:30:24 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 14, 2025 5:30:24 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 14, 2025 5:30:24 PM repository.MediaRepository save
+INFO: Media saved with ID: f8a2b5a3-5d93-4b12-92ac-3e8d3136ada5
+May 14, 2025 5:30:24 PM test.MediaServiceTest testCreateAndSave
+INFO: Book created and saved: Book: Il Nome della Rosa, Author: Umberto Eco, ID: f8a2b5a3-5d93-4b12-92ac-3e8d3136ada5, Publication date: 15/10/1980, Publisher: Bompiani, Pages: 512, Available: Yes
+May 14, 2025 5:30:24 PM service.MediaService saveMedia
+INFO: Media Save Request: Focus
+May 14, 2025 5:30:24 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 14, 2025 5:30:24 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 14, 2025 5:30:24 PM repository.MediaRepository save
+INFO: Media saved with ID: d087ca18-2fce-45a3-81a8-4573d1b0352c
+May 14, 2025 5:30:24 PM test.MediaServiceTest testCreateAndSave
+INFO: Magazine created and saved: Magazine: Focus, ID: d087ca18-2fce-45a3-81a8-4573d1b0352c, Publication date: 10/05/2023, Publisher: Mondadori, Number: 350, Available: Yes
+May 14, 2025 5:30:24 PM service.MediaService findAllMedia
+INFO: All media request
+May 14, 2025 5:30:24 PM test.MediaServiceTest testCreateAndSave
+INFO: Number of media saved: 9
+May 14, 2025 5:30:24 PM test.MediaServiceTest testSearch
+INFO: Search Test
+May 14, 2025 5:30:24 PM service.MediaService findMediaByTitle
+INFO: Media search by title: Rosa
+May 14, 2025 5:30:24 PM test.MediaServiceTest testSearch
+INFO: Media found for title 'Rosa': 1
+May 14, 2025 5:30:24 PM service.MediaService findBooksByAuthor
+INFO: Search books by author: Eco
+May 14, 2025 5:30:24 PM test.MediaServiceTest testSearch
+INFO: Books found by author 'Eco': 1
+May 14, 2025 5:30:24 PM service.MediaService findMediaByPublicationYear
+INFO: Search media by publication year: 1980
+May 14, 2025 5:30:24 PM test.MediaServiceTest testSearch
+INFO: Media found for year 1980: 1
+May 14, 2025 5:30:24 PM test.MediaServiceTest testUpdate
+INFO: Update Test
+May 14, 2025 5:30:24 PM service.MediaService findMediaByTitle
+INFO: Media search by title: Rosa
+May 14, 2025 5:30:24 PM service.MediaService updateMedia
+INFO: Media Update Request: Il Nome della Rosa
+May 14, 2025 5:30:24 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 14, 2025 5:30:24 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 14, 2025 5:30:24 PM repository.MediaRepository update
+INFO: Media updated with ID: f8a2b5a3-5d93-4b12-92ac-3e8d3136ada5
+May 14, 2025 5:30:24 PM test.MediaServiceTest testUpdate
+INFO: Updated book: Book: Il Nome della Rosa, Author: Umberto Eco, ID: f8a2b5a3-5d93-4b12-92ac-3e8d3136ada5, Publication date: 15/10/1980, Publisher: Bompiani, Pages: 512, Available: No
+May 14, 2025 5:30:24 PM service.MediaService findMediaById
+INFO: Media Search by ID: f8a2b5a3-5d93-4b12-92ac-3e8d3136ada5
+May 14, 2025 5:30:24 PM test.MediaServiceTest testUpdate
+INFO: Update verification completed successfully
+May 14, 2025 5:30:24 PM test.MediaServiceTest testDelete
+INFO: Delete Test
+May 14, 2025 5:30:24 PM service.MediaService saveMedia
+INFO: Media Save Request: Book to delete
+May 14, 2025 5:30:24 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 14, 2025 5:30:24 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 14, 2025 5:30:24 PM repository.MediaRepository save
+INFO: Media saved with ID: 4c54e692-a22c-4147-998e-01529aa0dc12
+May 14, 2025 5:30:24 PM test.MediaServiceTest testDelete
+INFO: Media created for elimination test: Book: Book to delete, Author: Author Test, ID: 4c54e692-a22c-4147-998e-01529aa0dc12, Publication date: 14/05/2025, Publisher: Publisher Test, Pages: 100, Available: Yes
+May 14, 2025 5:30:24 PM service.MediaService deleteMedia
+INFO: Media Delete Request with ID: 4c54e692-a22c-4147-998e-01529aa0dc12
+May 14, 2025 5:30:24 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 14, 2025 5:30:24 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 14, 2025 5:30:24 PM repository.MediaRepository delete
+INFO: Media deleted with ID: 4c54e692-a22c-4147-998e-01529aa0dc12
+May 14, 2025 5:30:24 PM test.MediaServiceTest testDelete
+INFO: Media deleted
+May 14, 2025 5:30:24 PM service.MediaService findMediaById
+INFO: Media Search by ID: 4c54e692-a22c-4147-998e-01529aa0dc12
+May 14, 2025 5:30:24 PM repository.MediaRepository findById
+WARNING: Media not found with ID: 4c54e692-a22c-4147-998e-01529aa0dc12
+May 14, 2025 5:30:24 PM test.MediaServiceTest testDelete
+INFO: Verification deletion completed successfully
+May 14, 2025 5:30:24 PM test.MediaServiceTest testCollections
+INFO: Collections Test
+May 14, 2025 5:30:24 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Collection
+May 14, 2025 5:30:24 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 14, 2025 5:30:24 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 14, 2025 5:30:24 PM repository.MediaRepository save
+INFO: Media saved with ID: a72c4168-39f7-4272-98c9-bfd3889e1af5
+May 14, 2025 5:30:24 PM test.MediaServiceTest testCollections
+INFO: Collection created: Collection: Test Collection, ID: a72c4168-39f7-4272-98c9-bfd3889e1af5, Created: 14/05/2025, Elements: 0, Available: Yes
+May 14, 2025 5:30:24 PM service.MediaService saveMedia
+INFO: Media Save Request: Test book for collection
+May 14, 2025 5:30:24 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 14, 2025 5:30:24 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 14, 2025 5:30:24 PM repository.MediaRepository save
+INFO: Media saved with ID: 72b74cc2-aaa9-4ae6-900c-3fe36de759be
+May 14, 2025 5:30:24 PM test.MediaServiceTest testCollections
+INFO: Book created for the collection: Book: Test book for collection, Author: Test Author Collection, ID: 72b74cc2-aaa9-4ae6-900c-3fe36de759be, Publication date: 14/05/2025, Publisher: Test Publisher Collection, Pages: 200, Available: Yes
+May 14, 2025 5:30:24 PM service.MediaService saveMedia
+INFO: Media Save Request: Pirati dei Caraibi
+May 14, 2025 5:30:24 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 14, 2025 5:30:24 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 14, 2025 5:30:24 PM repository.MediaRepository save
+INFO: Media saved with ID: 9f10d682-2eed-47e5-9395-e47c5fc4ffa3
+May 14, 2025 5:30:24 PM test.MediaServiceTest testCollections
+INFO: Second book created for the collection: Book: Pirati dei Caraibi, Author: Menichella, ID: 9f10d682-2eed-47e5-9395-e47c5fc4ffa3, Publication date: 24/05/2007, Publisher: Disney Libri, Pages: 523, Available: Yes
+May 14, 2025 5:30:24 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 14, 2025 5:30:24 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 14, 2025 5:30:24 PM repository.MediaRepository update
+INFO: Media updated with ID: 72b74cc2-aaa9-4ae6-900c-3fe36de759be
+May 14, 2025 5:30:24 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 14, 2025 5:30:24 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 14, 2025 5:30:24 PM repository.MediaRepository update
+INFO: Media updated with ID: a72c4168-39f7-4272-98c9-bfd3889e1af5
+May 14, 2025 5:30:24 PM service.MediaService addMediaToCollection
+INFO: Media 72b74cc2-aaa9-4ae6-900c-3fe36de759be added to collection a72c4168-39f7-4272-98c9-bfd3889e1af5
+May 14, 2025 5:30:24 PM test.MediaServiceTest testCollections
+INFO: First book added to collection
+May 14, 2025 5:30:24 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 14, 2025 5:30:24 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 14, 2025 5:30:24 PM repository.MediaRepository update
+INFO: Media updated with ID: 9f10d682-2eed-47e5-9395-e47c5fc4ffa3
+May 14, 2025 5:30:24 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 14, 2025 5:30:24 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 14, 2025 5:30:24 PM repository.MediaRepository update
+INFO: Media updated with ID: a72c4168-39f7-4272-98c9-bfd3889e1af5
+May 14, 2025 5:30:24 PM service.MediaService addMediaToCollection
+INFO: Media 9f10d682-2eed-47e5-9395-e47c5fc4ffa3 added to collection a72c4168-39f7-4272-98c9-bfd3889e1af5
+May 14, 2025 5:30:24 PM test.MediaServiceTest testCollections
+INFO: Second book added to collection
+May 14, 2025 5:30:24 PM service.MediaService findMediaById
+INFO: Media Search by ID: a72c4168-39f7-4272-98c9-bfd3889e1af5
+May 14, 2025 5:30:24 PM test.MediaServiceTest testCollections
+INFO: Number of media in the collection: 2
+May 14, 2025 5:30:24 PM service.MediaService findMediaById
+INFO: Media Search by ID: 72b74cc2-aaa9-4ae6-900c-3fe36de759be
+May 14, 2025 5:30:24 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 14, 2025 5:30:24 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 14, 2025 5:30:24 PM repository.MediaRepository update
+INFO: Media updated with ID: 72b74cc2-aaa9-4ae6-900c-3fe36de759be
+May 14, 2025 5:30:24 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 14, 2025 5:30:24 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 14, 2025 5:30:24 PM repository.MediaRepository update
+INFO: Media updated with ID: a72c4168-39f7-4272-98c9-bfd3889e1af5
+May 14, 2025 5:30:24 PM service.MediaService removeMediaFromCollection
+INFO: Media 72b74cc2-aaa9-4ae6-900c-3fe36de759be removed from collection a72c4168-39f7-4272-98c9-bfd3889e1af5
+May 14, 2025 5:30:24 PM test.MediaServiceTest testCollections
+INFO: Book removed from collection
+May 14, 2025 5:30:24 PM service.MediaService findMediaById
+INFO: Media Search by ID: a72c4168-39f7-4272-98c9-bfd3889e1af5
+May 14, 2025 5:30:24 PM service.MediaService findMediaById
+INFO: Media Search by ID: 72b74cc2-aaa9-4ae6-900c-3fe36de759be
+May 14, 2025 5:30:24 PM test.MediaServiceTest testCollections
+INFO: Collection verification completed successfully
+May 14, 2025 5:30:24 PM test.MediaServiceTest runTests
+INFO: All tests completed successfully
