@@ -1,11 +1,12 @@
 # Project Core - Library Management System
 
-This project implements a library management system, allowing for the management of books and magazines.
+This project implements a library management system, allowing for the management of books, magazines and collections. You can create, search, add or remove media from collections, and the data is persisted on file.
 
 ## Characteristics
 
-- Books and magazines management
-- Search by title, author and publication year
+- Books, magazines and collections management
+- Search by id, title, author and publication year
+- Add or remove media from collections
 - Data persistence on file
 - UI user interface on console
 

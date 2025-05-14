@@ -79,7 +79,7 @@ public class UserInterfaceUI {
         System.out.println("\nMAIN MENU");
         System.out.println("1. Add new media or collection");
         System.out.println("2. View all media");
-        System.out.println("3. Search media");
+        System.out.println("3. Search media or collection");
         System.out.println("4. Manage collections");
         System.out.println("0. Exit");
     }
@@ -91,22 +91,28 @@ public class UserInterfaceUI {
         System.out.println("3. Collection");
         System.out.println("0. Go back");
 
-        int choice = readIntInput("Select an option: ");
+        boolean validChoice = false;
+        while (!validChoice) {
+            int choice = readIntInput("Select an option: ");
 
-        switch (choice) {
-            case 1:
-                addNewBook();
-                break;
-            case 2:
-                addNewMagazine();
-                break;
-            case 3:
-                addNewCollection();
-                break;
-            case 0:
-                return;
-            default:
-                System.out.println("Invalid option, try again.");
+            switch (choice) {
+                case 1:
+                    addNewBook();
+                    validChoice = true;
+                    break;
+                case 2:
+                    addNewMagazine();
+                    validChoice = true;
+                    break;
+                case 3:
+                    addNewCollection();
+                    validChoice = true;
+                    break;
+                case 0:
+                    return;
+                default:
+                    System.out.println("Invalid option, please enter a number between 0 and 3.");
+            }
         }
     }
 
@@ -205,32 +211,39 @@ public class UserInterfaceUI {
     }
 
     private void searchMedia() throws LibraryException {
-        System.out.println("\nSEARCH MEDIA");
+        System.out.println("\nSEARCH MEDIA OR COLLECTION");
         System.out.println("1. Search by title");
         System.out.println("2. Search book by author");
         System.out.println("3. Search by publication year");
         System.out.println("4. Search by ID");
         System.out.println("0. Go back");
 
-        int choice = readIntInput("Select an option: ");
+        boolean validChoice = false;
+        while (!validChoice) {
+            int choice = readIntInput("Select an option: ");
 
-        switch (choice) {
-            case 1:
-                searchByTitle();
-                break;
-            case 2:
-                searchByAuthor();
-                break;
-            case 3:
-                searchByYear();
-                break;
-            case 4:
-                searchById();
-                break;
-            case 0:
-                return;
-            default:
-                System.out.println("Invalid option, try again.");
+            switch (choice) {
+                case 1:
+                    searchByTitle();
+                    validChoice = true;
+                    break;
+                case 2:
+                    searchByAuthor();
+                    validChoice = true;
+                    break;
+                case 3:
+                    searchByYear();
+                    validChoice = true;
+                    break;
+                case 4:
+                    searchById();
+                    validChoice = true;
+                    break;
+                case 0:
+                    return;
+                default:
+                    System.out.println("Invalid option, please enter a number between 0 and 4.");
+            }
         }
     }
 
@@ -306,18 +319,39 @@ public class UserInterfaceUI {
 
     private void handleSearchResults(List<Media> results) throws LibraryException {
         System.out.println("\nOPTIONS:");
-        System.out.println("1. Add to collection");
-        System.out.println("2. Delete media");
+
+        boolean onlyCollections = true;
+        for (Media media : results) {
+            if (!(media instanceof MediaCollection)) {
+                onlyCollections = false;
+                break;
+            }
+        }
+
+        if (!onlyCollections) {
+            System.out.println("1. Add to collection");
+            System.out.println("2. Delete media or collection");
+        } else {
+            System.out.println("1. Delete collection");
+        }
         System.out.println("0. Go back");
 
         int choice = readIntInput("Select an option: ");
 
         switch (choice) {
             case 1:
-                addToCollection(results);
+                if (!onlyCollections) {
+                    addToCollection(results);
+                } else {
+                    deleteMedia(results);
+                }
                 break;
             case 2:
-                deleteMedia(results);
+                if (!onlyCollections) {
+                    deleteMedia(results);
+                } else {
+                    System.out.println("Invalid option, try again.");
+                }
                 break;
             case 0:
                 return;
@@ -431,7 +465,17 @@ public class UserInterfaceUI {
         LOGGER.info("Collection added successfully: " + collection.getId());
 
         System.out.println("Do you want to add media to this collection now? (y/n)");
-        String answer = scanner.nextLine().trim().toLowerCase();
+        String answer = "";
+        boolean validAnswer = false;
+
+        while (!validAnswer) {
+            answer = scanner.nextLine().trim().toLowerCase();
+            if (answer.equals("y") || answer.equals("n")) {
+                validAnswer = true;
+            } else {
+                System.out.println("Invalid input, please enter 'y' for yes or 'n' for not.");
+            }
+        }
 
         if (answer.equals("y")) {
             List<Media> allMedia = mediaService.findAllMedia();
@@ -455,6 +499,8 @@ public class UserInterfaceUI {
             }
 
             addToCollection(availableMedia, collection);
+        } else {
+            System.out.println("Collection created without any media.");
         }
     }
 
@@ -503,7 +549,7 @@ public class UserInterfaceUI {
                         }
                     } catch (NumberFormatException e) {
                         System.out.println("Invalid format: '" + sel.trim()
-                                + "'. Please enter valid numbers separated by commas.");
+                                + "', please enter valid numbers separated by commas.");
                         allSelectionsValid = false;
                         break;
                     }
@@ -544,25 +590,32 @@ public class UserInterfaceUI {
         System.out.println("4. Add media to collection");
         System.out.println("0. Go back");
 
-        int choice = readIntInput("Select an option: ");
+        boolean validChoice = false;
+        while (!validChoice) {
+            int choice = readIntInput("Select an option: ");
 
-        switch (choice) {
-            case 1:
-                viewAllCollections();
-                break;
-            case 2:
-                viewCollectionContent();
-                break;
-            case 3:
-                removeFromCollection();
-                break;
-            case 4:
-                addToCollection();
-                break;
-            case 0:
-                return;
-            default:
-                System.out.println("Invalid option, try again.");
+            switch (choice) {
+                case 1:
+                    viewAllCollections();
+                    validChoice = true;
+                    break;
+                case 2:
+                    viewCollectionContent();
+                    validChoice = true;
+                    break;
+                case 3:
+                    removeFromCollection();
+                    validChoice = true;
+                    break;
+                case 4:
+                    addToCollection();
+                    validChoice = true;
+                    break;
+                case 0:
+                    return;
+                default:
+                    System.out.println("Invalid option, please enter a number between 0 and 4.");
+            }
         }
     }
 
