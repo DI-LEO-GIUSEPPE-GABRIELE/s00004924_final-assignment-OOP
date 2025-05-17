@@ -60,7 +60,7 @@ To run the application, run in console:
 
 To run the tests, run in console:
 
-`java -cp target/classes test.MediaServiceTest`
+`java -cp target/classes test.MediaServiceTest` or `mvn test`
 
 ## Requirements
 

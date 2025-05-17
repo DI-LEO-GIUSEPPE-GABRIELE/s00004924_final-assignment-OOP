@@ -52,7 +52,11 @@ public class MediaRepository implements Repository<Media, String> {
         }
     }
 
-    // Get instance of repository
+    /**
+     * Get instance of repository
+     * 
+     * @return The instance of repository
+     */
     public static synchronized MediaRepository getInstance() {
         if (instance == null) {
             instance = new MediaRepository();
@@ -61,7 +65,16 @@ public class MediaRepository implements Repository<Media, String> {
     }
 
     @Override
-    // Override method of the Repository interface
+    /**
+     * Annotation: Override method of the Repository interface
+     * Save a media in the repository
+     * 
+     * @param media - The media to save
+     * @return The saved media
+     * @throws LibraryException - If the media is null or there is an error during
+     *                          the
+     *                          save operation
+     */
     public Media save(Media media) throws LibraryException {
         if (media == null) {
             throw new LibraryException("Impossible to save a null media");
@@ -74,7 +87,15 @@ public class MediaRepository implements Repository<Media, String> {
     }
 
     @Override
-    // Override method of the Repository interface
+    /**
+     * Annotation: Override method of the Repository interface
+     * Find a media by its ID
+     * 
+     * @param id - The ID of the media to find
+     * @return The found media
+     * @throws MediaNotFoundException - If the media with the specified ID is not
+     *                                found
+     */
     public Media findById(String id) throws MediaNotFoundException {
         if (!mediaMap.containsKey(id)) {
             LOGGER.warning("Media not found with ID: " + id);
@@ -85,13 +106,26 @@ public class MediaRepository implements Repository<Media, String> {
     }
 
     @Override
-    // Override method of the Repository interface
+    /**
+     * Annotation: Override method of the Repository interface
+     * Find all media in the repository
+     * 
+     * @return List of all media
+     * @throws LibraryException - If there is an error retrieving the media list
+     */
     public List<Media> findAll() throws LibraryException {
         return new ArrayList<>(mediaMap.values());
     }
 
     @Override
-    // Override method of the Repository interface
+    /**
+     * Annotation: Override method of the Repository interface
+     * Delete a media by its ID
+     * 
+     * @param id - The ID of the media to delete
+     * @throws MediaNotFoundException - If the media with the specified ID is not
+     *                                found
+     */
     public void delete(String id) throws MediaNotFoundException {
         if (!mediaMap.containsKey(id)) {
             LOGGER.warning("Impossible to delete: Media not found with ID: " + id);
@@ -120,7 +154,15 @@ public class MediaRepository implements Repository<Media, String> {
     }
 
     @Override
-    // Override method of the Repository interface
+    /**
+     * Annotation: Override method of the Repository interface
+     * Update a media in the repository
+     * 
+     * @param media - The media to update
+     * @return The updated media
+     * @throws MediaNotFoundException - If the media is null or not found in the
+     *                                repository
+     */
     public Media update(Media media) throws MediaNotFoundException {
         if (media == null || !mediaMap.containsKey(media.getId())) {
             LOGGER.warning("Impossible to update: Media not found");
@@ -133,14 +175,22 @@ public class MediaRepository implements Repository<Media, String> {
         return media;
     }
 
-    // Find media by title
+    /**
+     * Find media by title
+     * 
+     * @return The found media
+     */
     public List<Media> findByTitle(String title) {
         return mediaMap.values().stream()
                 .filter(media -> media.getTitle().toLowerCase().contains(title.toLowerCase()))
                 .collect(Collectors.toList());
     }
 
-    // Find media by author
+    /**
+     * Find media by author
+     * 
+     * @return The found media
+     */
     public List<Book> findByAuthor(String author) {
         return mediaMap.values().stream()
                 .filter(media -> media instanceof Book)
@@ -149,7 +199,11 @@ public class MediaRepository implements Repository<Media, String> {
                 .collect(Collectors.toList());
     }
 
-    // Find media by publication year
+    /**
+     * Find media by publication year
+     * 
+     * @return The found media
+     */
     public List<Media> findByPublicationYear(int year) {
         return mediaMap.values().stream()
                 .filter(media -> media.getPublicationDate().getYear() == year)

@@ -20,6 +20,7 @@ public class MediaServiceJUnitTest {
     private Media testMagazine;
 
     @Before
+    // Annotation: Before
     // Executed before each test
     public void setUp() throws LibraryException {
         mediaService = MediaService.getInstance();
@@ -44,6 +45,8 @@ public class MediaServiceJUnitTest {
     }
 
     @Test
+    // Annotation: Test
+    // Unit Test
     // Test that the media is saved and can be found by ID
     public void testSaveAndFindById() throws LibraryException, MediaNotFoundException {
         Media foundBook = mediaService.findMediaById(testBook.getId());
@@ -56,6 +59,8 @@ public class MediaServiceJUnitTest {
     }
 
     @Test
+    // Annotation: Test
+    // Unit Test
     // Test that all media can be found
     public void testFindAll() throws LibraryException {
         List<Media> allMedia = mediaService.findAllMedia();
@@ -64,6 +69,8 @@ public class MediaServiceJUnitTest {
     }
 
     @Test
+    // Annotation: Test
+    // Unit Test
     // Test that the media can be found by title
     public void testFindByTitle() {
         List<Media> mediaByTitle = mediaService.findMediaByTitle("Test");
@@ -72,6 +79,8 @@ public class MediaServiceJUnitTest {
     }
 
     @Test
+    // Annotation: Test
+    // Unit Test
     // Test that the media can be found by author
     public void testFindByAuthor() {
         List<Book> booksByAuthor = mediaService.findBooksByAuthor("Test Author");
@@ -80,6 +89,8 @@ public class MediaServiceJUnitTest {
     }
 
     @Test
+    // Annotation: Test
+    // Unit Test
     // Test the media availability update
     public void testUpdate() throws LibraryException, MediaNotFoundException {
         testBook.setAvailable(false);
@@ -94,6 +105,8 @@ public class MediaServiceJUnitTest {
     }
 
     @Test(expected = MediaNotFoundException.class)
+    // Annotation: Test
+    // Unit Test
     // Test the media deletion
     public void testDelete() throws LibraryException, MediaNotFoundException {
         // Mock media to delete
@@ -118,6 +131,8 @@ public class MediaServiceJUnitTest {
     }
 
     @Test
+    // Annotation: Test
+    // Unit Test
     // Test the creation of a collection and adding media to it
     public void testCollectionCreationAndAddMedia() throws LibraryException, MediaNotFoundException {
         // Create a new collection
@@ -150,6 +165,8 @@ public class MediaServiceJUnitTest {
     }
 
     @Test
+    // Annotation: Test
+    // Unit Test
     // Test removing media from a collection
     public void testRemoveMediaFromCollection() throws LibraryException, MediaNotFoundException {
         // Create a new collection
@@ -182,6 +199,8 @@ public class MediaServiceJUnitTest {
     }
 
     @Test
+    // Annotation: Test
+    // Unit Test
     // Test finding media by publication year
     public void testFindByPublicationYear() {
         int currentYear = LocalDate.now().getYear();

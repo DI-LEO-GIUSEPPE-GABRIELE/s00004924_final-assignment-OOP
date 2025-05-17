@@ -49,6 +49,7 @@ public class FileStorageManager {
 
     // Load media from file
     @SuppressWarnings("unchecked")
+    // Annotation: SuppressWarnings
     public List<Media> loadMedia() throws LibraryException {
         File file = new File(MEDIA_FILE);
         if (!file.exists()) {

@@ -48,6 +48,7 @@ public class MediaServiceTest {
         }
     }
 
+    // Integration Test
     // Creation and saving test
     private void testCreateAndSave() throws LibraryException {
         LOGGER.info("Creation and saving test");
@@ -81,6 +82,7 @@ public class MediaServiceTest {
         }
     }
 
+    // Integration Test
     // Search Test
     private void testSearch() throws LibraryException {
         LOGGER.info("Search Test");
@@ -98,6 +100,7 @@ public class MediaServiceTest {
         LOGGER.info("Media found for year 1980: " + mediaByYear.size());
     }
 
+    // Integration Test
     // Update availability Test
     private void testUpdate() throws LibraryException, MediaNotFoundException {
         LOGGER.info("Update Test");
@@ -118,6 +121,7 @@ public class MediaServiceTest {
         }
     }
 
+    // Integration Test
     // Delete Test
     private void testDelete() throws LibraryException, MediaNotFoundException {
         LOGGER.info("Delete Test");
@@ -145,6 +149,7 @@ public class MediaServiceTest {
         }
     }
 
+    // Integration Test
     // Collections Test
     private void testCollections() throws LibraryException, MediaNotFoundException {
         LOGGER.info("Collections Test");
