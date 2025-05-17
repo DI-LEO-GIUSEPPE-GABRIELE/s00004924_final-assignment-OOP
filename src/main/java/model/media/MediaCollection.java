@@ -158,7 +158,7 @@ public class MediaCollection implements Media {
     }
 
     @Override
-    // Override method of the Media interface
+    // Annotation: Override method of the Media interface
     public boolean equals(Object o) {
         if (this == o)
             return true;
@@ -169,13 +169,13 @@ public class MediaCollection implements Media {
     }
 
     @Override
-    // Override method of the Media interface
+    // Annotation: Override method of the Media interface
     public int hashCode() {
         return Objects.hash(id);
     }
 
     @Override
-    // Override method of the Media interface
+    // Annotation: Override method of the Media interface
     public String toString() {
         return getDetails();
     }

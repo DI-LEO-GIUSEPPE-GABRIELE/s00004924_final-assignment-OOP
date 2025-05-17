@@ -34,6 +34,7 @@ public class Magazine implements Media {
 
     @Override
     /**
+     * Annotation: Override method of the Media interface
      * Get the unique identifier of the magazine
      * 
      * @return the unique identifier of the magazine

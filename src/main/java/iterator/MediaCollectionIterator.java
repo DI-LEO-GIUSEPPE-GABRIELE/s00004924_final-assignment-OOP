@@ -15,13 +15,13 @@ public class MediaCollectionIterator implements MediaIterator {
     }
 
     @Override
-    // Override method of the MediaIterator interface
+    // Annotation: Override method of the MediaIterator interface
     public boolean hasNext() {
         return position < mediaItems.size();
     }
 
     @Override
-    // Override method of the MediaIterator interface
+    // Annotation: Override method of the MediaIterator interface
     public Media next() {
         if (!hasNext()) {
             throw new NoSuchElementException("There are no more media items.");
