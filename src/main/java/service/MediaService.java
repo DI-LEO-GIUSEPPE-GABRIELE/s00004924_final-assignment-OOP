@@ -2,7 +2,6 @@ package service;
 
 import exception.LibraryException;
 import exception.MediaNotFoundException;
-import model.media.Book;
 import model.media.Media;
 import model.media.MediaCollection;
 import repository.MediaRepository;
@@ -101,16 +100,6 @@ public class MediaService {
     public List<Media> findMediaByTitle(String title) {
         LOGGER.info("Media search by title: " + title);
         return mediaRepository.findByTitle(title);
-    }
-
-    /**
-     * Find media by author
-     * 
-     * @return The found media
-     */
-    public List<Book> findBooksByAuthor(String author) {
-        LOGGER.info("Search books by author: " + author);
-        return mediaRepository.findByAuthor(author);
     }
 
     /**

@@ -3,7 +3,6 @@ package ui;
 import exception.LibraryException;
 import exception.MediaNotFoundException;
 import factory.MediaFactory;
-import model.media.Book;
 import model.media.Media;
 import model.media.MediaCollection;
 import service.MediaService;
@@ -213,9 +212,8 @@ public class UserInterfaceUI {
     private void searchMedia() throws LibraryException {
         System.out.println("\nSEARCH MEDIA OR COLLECTION");
         System.out.println("1. Search by title");
-        System.out.println("2. Search book by author");
-        System.out.println("3. Search by publication year");
-        System.out.println("4. Search by ID");
+        System.out.println("2. Search by publication year");
+        System.out.println("3. Search by ID");
         System.out.println("0. Go back");
 
         boolean validChoice = false;
@@ -228,14 +226,10 @@ public class UserInterfaceUI {
                     validChoice = true;
                     break;
                 case 2:
-                    searchByAuthor();
-                    validChoice = true;
-                    break;
-                case 3:
                     searchByYear();
                     validChoice = true;
                     break;
-                case 4:
+                case 3:
                     searchById();
                     validChoice = true;
                     break;
@@ -263,24 +257,6 @@ public class UserInterfaceUI {
         }
 
         handleSearchResults(results);
-    }
-
-    private void searchByAuthor() throws LibraryException {
-        String author = readStringInput("Enter author: ");
-
-        List<Book> results = mediaService.findBooksByAuthor(author);
-
-        if (results.isEmpty()) {
-            System.out.println("\nNo books found with author '" + author + "'.");
-            return;
-        }
-
-        System.out.println("\nSEARCH RESULTS:");
-        for (int i = 0; i < results.size(); i++) {
-            System.out.println((i + 1) + ". " + results.get(i).getDetails());
-        }
-
-        handleSearchResults(new ArrayList<>(results));
     }
 
     private void searchByYear() throws LibraryException {

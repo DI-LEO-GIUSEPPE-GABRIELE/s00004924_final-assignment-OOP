@@ -2,7 +2,6 @@ package repository;
 
 import exception.LibraryException;
 import exception.MediaNotFoundException;
-import model.media.Book;
 import model.media.Media;
 import model.media.MediaCollection;
 import util.LoggerManager;
@@ -183,19 +182,6 @@ public class MediaRepository implements Repository<Media, String> {
     public List<Media> findByTitle(String title) {
         return mediaMap.values().stream()
                 .filter(media -> media.getTitle().toLowerCase().contains(title.toLowerCase()))
-                .collect(Collectors.toList());
-    }
-
-    /**
-     * Find media by author
-     * 
-     * @return The found media
-     */
-    public List<Book> findByAuthor(String author) {
-        return mediaMap.values().stream()
-                .filter(media -> media instanceof Book)
-                .map(media -> (Book) media)
-                .filter(book -> book.getAuthor().toLowerCase().contains(author.toLowerCase()))
                 .collect(Collectors.toList());
     }
 

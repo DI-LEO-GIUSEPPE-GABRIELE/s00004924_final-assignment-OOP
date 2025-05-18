@@ -8194,3 +8194,709 @@ java.lang.Throwable: Runtime.exit(0)
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 
+May 18, 2025 4:30:14 PM repository.MediaRepository <init>
+INFO: Starting the repository for media
+May 18, 2025 4:30:14 PM java.io.ObjectInputFilter$Config traceFilter
+FINER: Builtin factory: null -> new: null
+May 18, 2025 4:30:14 PM repository.FileStorageManager loadMedia
+INFO: Media uploaded from files: data/media.dat, number of media: 455
+May 18, 2025 4:30:14 PM repository.MediaRepository loadMediaFromStorage
+INFO: Media loaded from file system: 455
+May 18, 2025 4:30:14 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:30:14 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest setUp
+INFO: Test initialization
+May 18, 2025 4:30:14 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Book
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: 8751f551-7dce-42f1-8916-e98e84bd666d
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Magazine
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: 740f5628-67a3-46f4-938a-023ac4f3981e
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest setUp
+INFO: Setup completed successfully
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest testFindAll
+INFO: Unit test: Find all media
+May 18, 2025 4:30:14 PM service.MediaService findAllMedia
+INFO: All media request
+May 18, 2025 4:30:14 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:30:14 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest setUp
+INFO: Test initialization
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Book
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: 4e1565b4-bf67-4f83-bb7f-bb0b573db3e4
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Magazine
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: 5341428a-15f2-4805-8692-f7e89bc70d75
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest setUp
+INFO: Setup completed successfully
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest testFindByPublicationYear
+INFO: Unit test: Find by publication year
+May 18, 2025 4:30:14 PM service.MediaService findMediaByPublicationYear
+INFO: Search media by publication year: 2025
+May 18, 2025 4:30:14 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:30:14 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest setUp
+INFO: Test initialization
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Book
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: ca641a5a-1b84-4117-8c23-9bb7a203f40c
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Magazine
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: 318e8cd9-bbda-4929-ac99-82b1aa550df5
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest setUp
+INFO: Setup completed successfully
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest testDeleteIntegration
+INFO: Integration test: Deletion
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Book to delete
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: 46d5779f-2c3c-4380-b606-e58a47d7e4c1
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest testDeleteIntegration
+INFO: Media created for deletion test: Book: Book to delete, Author: Author Test, ID: 46d5779f-2c3c-4380-b606-e58a47d7e4c1, Publication date: 18/05/2025, Publisher: Publisher Test, Pages: 100, Available: Yes
+May 18, 2025 4:30:14 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:30:14 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest setUp
+INFO: Test initialization
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Book
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: d92bca4f-f89e-49fd-a7c0-bc79e47695cf
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Magazine
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: 3a9fe6fa-b7a9-40b6-b450-67e6840d522f
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest setUp
+INFO: Setup completed successfully
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest testFindByTitle
+INFO: Unit test: Find by title
+May 18, 2025 4:30:14 PM service.MediaService findMediaByTitle
+INFO: Media search by title: Test
+May 18, 2025 4:30:14 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:30:14 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest setUp
+INFO: Test initialization
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Book
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: 14095cc7-4c6f-4778-a32a-80ded90e049c
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Magazine
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: b91bfe2d-5c2b-4675-9a4a-4e01de5cd0bf
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest setUp
+INFO: Setup completed successfully
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest testCollectionCreationAndAddMedia
+INFO: Unit test: Collection creation and media addition
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Collection
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: ad6ae281-0df5-4cbc-9dc2-526660a5f333
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Book for Collection
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: f767a4e7-f431-47c5-85fc-83d1ab81984b
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository update
+INFO: Media updated with ID: f767a4e7-f431-47c5-85fc-83d1ab81984b
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository update
+INFO: Media updated with ID: ad6ae281-0df5-4cbc-9dc2-526660a5f333
+May 18, 2025 4:30:14 PM service.MediaService addMediaToCollection
+INFO: Media f767a4e7-f431-47c5-85fc-83d1ab81984b added to collection ad6ae281-0df5-4cbc-9dc2-526660a5f333
+May 18, 2025 4:30:14 PM service.MediaService findMediaById
+INFO: Media Search by ID: ad6ae281-0df5-4cbc-9dc2-526660a5f333
+May 18, 2025 4:30:14 PM service.MediaService findMediaById
+INFO: Media Search by ID: f767a4e7-f431-47c5-85fc-83d1ab81984b
+May 18, 2025 4:30:14 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:30:14 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest setUp
+INFO: Test initialization
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Book
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: 3929ad02-4a4b-439c-a472-3c463e07ae9d
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Magazine
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: 7be233f7-db43-4a86-be69-e1cb7932f7b6
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest setUp
+INFO: Setup completed successfully
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest testEndToEndWorkflow
+INFO: End-to-End test: Complete workflow
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: The Lord of the Rings
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: d3a9e2bb-f5c3-4c94-a5bd-a814ffe9a7ba
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: National Geographic
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: cad1e2a4-adec-48db-853a-e3ce582c34a4
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Fantasy Collection
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: f819d07c-8dd7-4ab8-96e5-4b03090fa114
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest testEndToEndWorkflow
+INFO: All media created and saved
+May 18, 2025 4:30:14 PM service.MediaService findMediaByTitle
+INFO: Media search by title: Lord
+May 18, 2025 4:30:14 PM service.MediaService findMediaByPublicationYear
+INFO: Search media by publication year: 1954
+May 18, 2025 4:30:14 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:30:14 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest setUp
+INFO: Test initialization
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Book
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: 909fa58a-0776-4a84-a447-67009ef76ff1
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Magazine
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: e500c0ea-ce52-47e1-ba40-9862ca98c95c
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest setUp
+INFO: Setup completed successfully
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest testDelete
+INFO: Unit test: Media deletion
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Delete Test Book
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: 041951e6-93eb-4da8-968b-68de0ca1e64d
+May 18, 2025 4:30:14 PM service.MediaService findMediaById
+INFO: Media Search by ID: 041951e6-93eb-4da8-968b-68de0ca1e64d
+May 18, 2025 4:30:14 PM service.MediaService deleteMedia
+INFO: Media Delete Request with ID: 041951e6-93eb-4da8-968b-68de0ca1e64d
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository delete
+INFO: Media deleted with ID: 041951e6-93eb-4da8-968b-68de0ca1e64d
+May 18, 2025 4:30:14 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:30:14 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest setUp
+INFO: Test initialization
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Book
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: b7a97e5a-8229-4145-87d8-7f4a962e80e9
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Magazine
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: 223f9f04-e990-45f9-af79-6ebb377a86e6
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest setUp
+INFO: Setup completed successfully
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest testCollectionsIntegration
+INFO: Integration test: Collection management
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Collection Integration
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: 9deb7614-0cbf-4794-8408-8b881ea5f9de
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest testCollectionsIntegration
+INFO: Collection created: Collection: Test Collection Integration, ID: 9deb7614-0cbf-4794-8408-8b881ea5f9de, Created: 18/05/2025, Elements: 0, Available: Yes
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test book for collection integration
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: afa9d9a7-739e-436f-a7cc-bc5acd76f0ae
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest testCollectionsIntegration
+INFO: Book created for the collection: Book: Test book for collection integration, Author: Test Author Collection Integration, ID: afa9d9a7-739e-436f-a7cc-bc5acd76f0ae, Publication date: 18/05/2025, Publisher: Test Publisher Collection Integration, Pages: 200, Available: Yes
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Pirates of the Caribbean
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: 868dd6c9-c655-4ae2-8367-2eca3c3a33d6
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest testCollectionsIntegration
+INFO: Second book created for the collection: Book: Pirates of the Caribbean, Author: Menichella, ID: 868dd6c9-c655-4ae2-8367-2eca3c3a33d6, Publication date: 24/05/2007, Publisher: Disney Books, Pages: 523, Available: Yes
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository update
+INFO: Media updated with ID: afa9d9a7-739e-436f-a7cc-bc5acd76f0ae
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository update
+INFO: Media updated with ID: 9deb7614-0cbf-4794-8408-8b881ea5f9de
+May 18, 2025 4:30:14 PM service.MediaService addMediaToCollection
+INFO: Media afa9d9a7-739e-436f-a7cc-bc5acd76f0ae added to collection 9deb7614-0cbf-4794-8408-8b881ea5f9de
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest testCollectionsIntegration
+INFO: First book added to the collection
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository update
+INFO: Media updated with ID: 868dd6c9-c655-4ae2-8367-2eca3c3a33d6
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository update
+INFO: Media updated with ID: 9deb7614-0cbf-4794-8408-8b881ea5f9de
+May 18, 2025 4:30:14 PM service.MediaService addMediaToCollection
+INFO: Media 868dd6c9-c655-4ae2-8367-2eca3c3a33d6 added to collection 9deb7614-0cbf-4794-8408-8b881ea5f9de
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest testCollectionsIntegration
+INFO: Second book added to the collection
+May 18, 2025 4:30:14 PM service.MediaService findMediaById
+INFO: Media Search by ID: 9deb7614-0cbf-4794-8408-8b881ea5f9de
+May 18, 2025 4:30:14 PM service.MediaService findMediaById
+INFO: Media Search by ID: afa9d9a7-739e-436f-a7cc-bc5acd76f0ae
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository update
+INFO: Media updated with ID: afa9d9a7-739e-436f-a7cc-bc5acd76f0ae
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository update
+INFO: Media updated with ID: 9deb7614-0cbf-4794-8408-8b881ea5f9de
+May 18, 2025 4:30:14 PM service.MediaService removeMediaFromCollection
+INFO: Media afa9d9a7-739e-436f-a7cc-bc5acd76f0ae removed from collection 9deb7614-0cbf-4794-8408-8b881ea5f9de
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest testCollectionsIntegration
+INFO: Book removed from the collection
+May 18, 2025 4:30:14 PM service.MediaService findMediaById
+INFO: Media Search by ID: 9deb7614-0cbf-4794-8408-8b881ea5f9de
+May 18, 2025 4:30:14 PM service.MediaService findMediaById
+INFO: Media Search by ID: afa9d9a7-739e-436f-a7cc-bc5acd76f0ae
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest testCollectionsIntegration
+INFO: Collection verification completed successfully
+May 18, 2025 4:30:14 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:30:14 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest setUp
+INFO: Test initialization
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Book
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: af5a6a5c-f566-43d0-ad82-3401f9521196
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Magazine
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: 2b992f6d-2e2f-4b8e-b9fd-4be62af4a5c4
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest setUp
+INFO: Setup completed successfully
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest testSearchIntegration
+INFO: Integration test: Search with different methods
+May 18, 2025 4:30:14 PM service.MediaService findMediaByTitle
+INFO: Media search by title: Rosa
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest testSearchIntegration
+INFO: Media found for title 'Rosa': 12
+May 18, 2025 4:30:14 PM service.MediaService findMediaByPublicationYear
+INFO: Search media by publication year: 1980
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest testSearchIntegration
+INFO: Media found for year 1980: 12
+May 18, 2025 4:30:14 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:30:14 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest setUp
+INFO: Test initialization
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Book
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: f0a50bc7-7d27-4095-94c2-ab88ca2990f7
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Magazine
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: 057c8cba-f080-49e7-91d0-fcaf2da7970c
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest setUp
+INFO: Setup completed successfully
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest testUpdate
+INFO: Unit test: Media update
+May 18, 2025 4:30:14 PM service.MediaService updateMedia
+INFO: Media Update Request: Test Book
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository update
+INFO: Media updated with ID: f0a50bc7-7d27-4095-94c2-ab88ca2990f7
+May 18, 2025 4:30:14 PM service.MediaService findMediaById
+INFO: Media Search by ID: f0a50bc7-7d27-4095-94c2-ab88ca2990f7
+May 18, 2025 4:30:14 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:30:14 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest setUp
+INFO: Test initialization
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Book
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: 78376172-5728-40e6-ae9b-8ce01ebda606
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Magazine
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: d88b4b0d-9805-4e4c-a37a-fbc23bd9eb6b
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest setUp
+INFO: Setup completed successfully
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest testSaveAndFindById
+INFO: Unit test: Save and find by ID
+May 18, 2025 4:30:14 PM service.MediaService findMediaById
+INFO: Media Search by ID: 78376172-5728-40e6-ae9b-8ce01ebda606
+May 18, 2025 4:30:14 PM service.MediaService findMediaById
+INFO: Media Search by ID: d88b4b0d-9805-4e4c-a37a-fbc23bd9eb6b
+May 18, 2025 4:30:14 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:30:14 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest setUp
+INFO: Test initialization
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Book
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: 26c1ae3b-594a-472b-a3e5-c61ca99becd9
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Magazine
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: ae9f770a-5009-4264-aad3-d5897464ff12
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest setUp
+INFO: Setup completed successfully
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest testCreateAndSaveIntegration
+INFO: Integration test: Creation and saving
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Il Nome della Rosa
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: 838f761d-1d33-428d-a487-0ef9577e20d0
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest testCreateAndSaveIntegration
+INFO: Book created and saved: Book: Il Nome della Rosa, Author: Umberto Eco, ID: 838f761d-1d33-428d-a487-0ef9577e20d0, Publication date: 15/10/1980, Publisher: Bompiani, Pages: 512, Available: Yes
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Focus
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: 13c88019-afb1-42b1-b6d4-b404a78e09ae
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest testCreateAndSaveIntegration
+INFO: Magazine created and saved: Magazine: Focus, ID: 13c88019-afb1-42b1-b6d4-b404a78e09ae, Publication date: 10/05/2023, Publisher: Mondadori, Number: 350, Available: Yes
+May 18, 2025 4:30:14 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:30:14 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest setUp
+INFO: Test initialization
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Book
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: 01adcf83-3d71-46ac-a281-cc0c60456409
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Magazine
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: 78d5cab5-b7b6-4d65-995a-a9b9df908d55
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest setUp
+INFO: Setup completed successfully
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest testRemoveMediaFromCollection
+INFO: Unit test: Media removal from collection
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Collection for Removal
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: f2a6b479-3185-4962-9feb-afa0fd44ab5f
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Book for Removal
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: c0afc423-e2ed-4071-940f-51e22727c5a0
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository update
+INFO: Media updated with ID: c0afc423-e2ed-4071-940f-51e22727c5a0
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository update
+INFO: Media updated with ID: f2a6b479-3185-4962-9feb-afa0fd44ab5f
+May 18, 2025 4:30:14 PM service.MediaService addMediaToCollection
+INFO: Media c0afc423-e2ed-4071-940f-51e22727c5a0 added to collection f2a6b479-3185-4962-9feb-afa0fd44ab5f
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository update
+INFO: Media updated with ID: c0afc423-e2ed-4071-940f-51e22727c5a0
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository update
+INFO: Media updated with ID: f2a6b479-3185-4962-9feb-afa0fd44ab5f
+May 18, 2025 4:30:14 PM service.MediaService removeMediaFromCollection
+INFO: Media c0afc423-e2ed-4071-940f-51e22727c5a0 removed from collection f2a6b479-3185-4962-9feb-afa0fd44ab5f
+May 18, 2025 4:30:14 PM service.MediaService findMediaById
+INFO: Media Search by ID: f2a6b479-3185-4962-9feb-afa0fd44ab5f
+May 18, 2025 4:30:14 PM service.MediaService findMediaById
+INFO: Media Search by ID: c0afc423-e2ed-4071-940f-51e22727c5a0
+May 18, 2025 4:30:14 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:30:14 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest setUp
+INFO: Test initialization
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Book
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: 6c8805d7-2efe-456c-bc0c-a4e6d5a53b1f
+May 18, 2025 4:30:14 PM service.MediaService saveMedia
+INFO: Media Save Request: Test Magazine
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository save
+INFO: Media saved with ID: c9cbf645-ad06-4f06-b0fc-d5168c93bf31
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest setUp
+INFO: Setup completed successfully
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest testUpdateIntegration
+INFO: Integration test: Availability update
+May 18, 2025 4:30:14 PM service.MediaService findMediaByTitle
+INFO: Media search by title: Test Book
+May 18, 2025 4:30:14 PM service.MediaService updateMedia
+INFO: Media Update Request: Test Book
+May 18, 2025 4:30:14 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:30:14 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:30:14 PM repository.MediaRepository update
+INFO: Media updated with ID: 02705e9e-642d-4525-a859-928e038a36c0
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest testUpdateIntegration
+INFO: Book updated: Book: Test Book, Author: Test Author, ID: 02705e9e-642d-4525-a859-928e038a36c0, Publication date: 18/05/2025, Publisher: Test Publisher, Pages: 100, Available: No
+May 18, 2025 4:30:14 PM service.MediaService findMediaById
+INFO: Media Search by ID: 02705e9e-642d-4525-a859-928e038a36c0
+May 18, 2025 4:30:14 PM service.MediaServiceJUnitTest testUpdateIntegration
+INFO: Update verification completed successfully
+May 18, 2025 4:30:14 PM java.lang.Shutdown logRuntimeExit
+FINE: Runtime.exit() called with status: 0
+java.lang.Throwable: Runtime.exit(0)
+	at java.base/java.lang.Shutdown.logRuntimeExit(Shutdown.java:179)
+	at java.base/java.lang.Shutdown.exit(Shutdown.java:160)
+	at java.base/java.lang.Runtime.exit(Runtime.java:188)
+	at java.base/java.lang.System.exit(System.java:1920)
+	at org.apache.maven.surefire.booter.ForkedBooter.acknowledgedExit(ForkedBooter.java:381)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:178)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+
+May 18, 2025 4:31:03 PM main.java.Main main
+INFO: Starting the Library Management System
+May 18, 2025 4:31:03 PM repository.MediaRepository <init>
+INFO: Starting the repository for media
+May 18, 2025 4:31:03 PM java.io.ObjectInputFilter$Config traceFilter
+FINER: Builtin factory: null -> new: null
+May 18, 2025 4:31:03 PM repository.FileStorageManager loadMedia
+INFO: Media uploaded from files: data/media.dat, number of media: 496
+May 18, 2025 4:31:03 PM repository.MediaRepository loadMediaFromStorage
+INFO: Media loaded from file system: 496
+May 18, 2025 4:31:03 PM service.MediaService <init>
+INFO: Starting the media service
+May 18, 2025 4:31:11 PM service.MediaService findAllMedia
+INFO: All media request
+May 18, 2025 4:31:52 PM service.MediaService findMediaById
+INFO: Media Search by ID: b74c197e-1725-4120-b2dc-af04585a55c0
+May 18, 2025 4:31:59 PM service.MediaService deleteMedia
+INFO: Media Delete Request with ID: b74c197e-1725-4120-b2dc-af04585a55c0
+May 18, 2025 4:31:59 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 18, 2025 4:31:59 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 18, 2025 4:31:59 PM repository.MediaRepository delete
+INFO: Media deleted with ID: b74c197e-1725-4120-b2dc-af04585a55c0
+May 18, 2025 4:32:03 PM service.MediaService findAllMedia
+INFO: All media request
+May 18, 2025 4:33:35 PM main.java.Main main
+INFO: Library Management System closed
