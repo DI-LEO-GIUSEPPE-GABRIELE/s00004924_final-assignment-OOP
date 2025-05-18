@@ -16,11 +16,11 @@ public class Magazine implements Media {
     /**
      * Magazine constructor
      * 
-     * @param id              - The unique identifier of the magazine
-     * @param title           - The title of the magazine
-     * @param publicationDate - The publication date of the magazine
-     * @param publisher       - The publisher of the magazine
-     * @param issue           - The issue number of the magazine
+     * @param id              : The unique identifier of the magazine
+     * @param title           : The title of the magazine
+     * @param publicationDate : The publication date of the magazine
+     * @param publisher       : The publisher of the magazine
+     * @param issue           : The issue number of the magazine
      */
     public Magazine(String id, String title, LocalDate publicationDate,
             String publisher, int issue) {
@@ -99,7 +99,7 @@ public class Magazine implements Media {
      * Annotation: Override method of the Media interface
      * Set the availability status of the magazine
      * 
-     * @param available - The availability status of the magazine to set
+     * @param available : The availability status of the magazine to set
      */
     public void setAvailable(boolean available) {
         this.available = available;
@@ -123,7 +123,7 @@ public class Magazine implements Media {
      * Annotation: Override method of the Media interface
      * Compare this magazine with another object for equality
      * 
-     * @param o - The object to compare with
+     * @param o : The object to compare with
      * @return true if the objects are equal, false for the other cases
      */
     public boolean equals(Object o) {

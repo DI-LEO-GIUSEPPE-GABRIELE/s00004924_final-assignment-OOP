@@ -36,7 +36,7 @@ public interface Media extends Serializable {
     /**
      * Set the availability status of the media
      * 
-     * @param available the availability status of the media to set
+     * @param available : The availability status of the media to set
      */
     void setAvailable(boolean available);
 

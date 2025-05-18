@@ -36,9 +36,9 @@ public class MediaService {
     /**
      * Save media in repository
      * 
-     * @param media - The media to save
+     * @param media : The media to save
      * @return The saved media
-     * @throws LibraryException - If there is an error during the save operation
+     * @throws LibraryException : If there is an error during the save operation
      */
     public Media saveMedia(Media media) throws LibraryException {
         LOGGER.info("Media Save Request: " + media.getTitle());
@@ -48,9 +48,9 @@ public class MediaService {
     /**
      * Find media by ID
      * 
-     * @param id - The ID of the media to find
+     * @param id : The ID of the media to find
      * @return The found media
-     * @throws MediaNotFoundException - If the media with the specified ID is not
+     * @throws MediaNotFoundException : If the media with the specified ID is not
      *                                found
      */
     public Media findMediaById(String id) throws MediaNotFoundException {
@@ -62,7 +62,7 @@ public class MediaService {
      * Find all media
      * 
      * @return List of all media
-     * @throws LibraryException - If there is an error retrieving the media list
+     * @throws LibraryException : If there is an error retrieving the media list
      */
     public List<Media> findAllMedia() throws LibraryException {
         LOGGER.info("All media request");
@@ -72,8 +72,8 @@ public class MediaService {
     /**
      * Delete media
      * 
-     * @param id - The ID of the media to delete
-     * @throws MediaNotFoundException - If the media with the specified ID is not
+     * @param id : The ID of the media to delete
+     * @throws MediaNotFoundException : If the media with the specified ID is not
      *                                found
      */
     public void deleteMedia(String id) throws MediaNotFoundException {
@@ -84,9 +84,9 @@ public class MediaService {
     /**
      * Update media
      * 
-     * @param media - The media to update
+     * @param media : The media to update
      * @return The updated media
-     * @throws MediaNotFoundException - If the media to update is not found
+     * @throws MediaNotFoundException : If the media to update is not found
      */
     public Media updateMedia(Media media) throws MediaNotFoundException {
         LOGGER.info("Media Update Request: " + media.getTitle());
@@ -126,12 +126,12 @@ public class MediaService {
     /**
      * Add media to collection
      * 
-     * @param collectionId - The ID of the collection
-     * @param mediaId      - The ID of the media to add
-     * @throws MediaNotFoundException - If the collection or media with the
+     * @param collectionId : The ID of the collection
+     * @param mediaId      : The ID of the media to add
+     * @throws MediaNotFoundException : If the collection or media with the
      *                                specified
      *                                ID is not found
-     * @throws LibraryException       - If the specified ID does not match a
+     * @throws LibraryException       : If the specified ID does not match a
      *                                collection
      */
     public void addMediaToCollection(String collectionId, String mediaId)
@@ -155,12 +155,12 @@ public class MediaService {
     /**
      * Remove media from collection
      * 
-     * @param collectionId - The ID of the collection
-     * @param mediaId      - The ID of the media to remove
-     * @throws MediaNotFoundException - If the collection or media with the
+     * @param collectionId : The ID of the collection
+     * @param mediaId      : The ID of the media to remove
+     * @throws MediaNotFoundException : If the collection or media with the
      *                                specified
      *                                ID is not found
-     * @throws LibraryException       - If the specified ID does not match a
+     * @throws LibraryException       : If the specified ID does not match a
      *                                collection
      */
     public void removeMediaFromCollection(String collectionId, String mediaId)

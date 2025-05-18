@@ -13,11 +13,11 @@ public class MediaFactory {
     /**
      * Create a book
      * 
-     * @param title           - The title of the book
-     * @param author          - The author of the book
-     * @param publicationDate - The publication date of the book
-     * @param publisher       - The publisher of the book
-     * @param pages           - The number of pages in the book
+     * @param title           : The title of the book
+     * @param author          : The author of the book
+     * @param publicationDate : The publication date of the book
+     * @param publisher       : The publisher of the book
+     * @param pages           : The number of pages in the book
      * @return a new Book
      */
     public static Media createBook(String title, String author,
@@ -29,10 +29,10 @@ public class MediaFactory {
     /**
      * Create a magazine
      * 
-     * @param title           - The title of the magazine
-     * @param publicationDate - The publication date of the magazine
-     * @param publisher       - The publisher of the magazine
-     * @param issue           - The issue number of the magazine
+     * @param title           : The title of the magazine
+     * @param publicationDate : The publication date of the magazine
+     * @param publisher       : The publisher of the magazine
+     * @param issue           : The issue number of the magazine
      * @return a new Magazine
      */
     public static Media createMagazine(String title, LocalDate publicationDate,
@@ -44,7 +44,7 @@ public class MediaFactory {
     /**
      * Create a media collection
      * 
-     * @param title - The title of the media collection
+     * @param title : The title of the media collection
      * @return a new MediaCollection
      */
     public static MediaCollection createMediaCollection(String title) {
