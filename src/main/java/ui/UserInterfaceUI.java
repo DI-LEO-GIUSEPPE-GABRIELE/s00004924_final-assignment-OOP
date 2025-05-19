@@ -19,6 +19,8 @@ import pattern.strategy.SortingStrategy;
 import pattern.strategy.DateSortStrategy;
 import pattern.template.ExportProcessor;
 import java.io.File;
+import java.util.stream.Collectors;
+import util.ConcurrentMediaProcessor;
 
 // Class for the User Interface in console
 public class UserInterfaceUI {
@@ -905,24 +907,30 @@ public class UserInterfaceUI {
         try {
             // Get all media
             List<Media> allMedia = mediaService.findAllMedia();
-            List<Media> filteredMedia = new ArrayList<>();
 
-            // Filter media by type
-            for (Media media : allMedia) {
+            // Filter media by media type using ConcurrentMediaProcessor for parallelism
+            System.out.println("Filtering media concurrently...");
+            int threadCount = Runtime.getRuntime().availableProcessors();
+            ConcurrentMediaProcessor concurrentProcessor = new ConcurrentMediaProcessor(threadCount);
+
+            List<Media> filteredMedia = concurrentProcessor.processConcurrently(allMedia, media -> {
                 String className = media.getClass().getSimpleName();
-                if (className.equals(mediaType)) {
-                    filteredMedia.add(media);
-                }
-            }
+                return className.equals(mediaType) ? media : null;
+            }).stream().filter(media -> media != null).collect(Collectors.toList());
 
             if (filteredMedia.isEmpty()) {
                 System.out.println("No " + mediaType + "s found to export.");
+                // Close the executor service
+                concurrentProcessor.shutdown(5);
                 return;
             }
 
             // Create the processor and export all media to a single file
             ExportProcessor processor = new ExportProcessor(format, exportPath);
             boolean success = processor.processMediaList(filteredMedia, mediaType);
+
+            // Close the executor service
+            concurrentProcessor.shutdown(5);
 
             if (success) {
                 System.out.println("Export completed successfully.");

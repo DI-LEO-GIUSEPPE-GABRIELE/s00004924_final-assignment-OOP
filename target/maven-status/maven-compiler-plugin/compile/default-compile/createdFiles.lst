@@ -4,15 +4,12 @@ main/java/Main.class
 exception/MediaNotFoundException.class
 util/LoggerManager.class
 pattern/observer/MediaChangeSubject.class
-util/LoggableProcessor$1.class
 factory/MediaFactory.class
 repository/FileStorageManager.class
 pattern/factory/MediaFactoryProvider$MediaFactoryInterface.class
-util/LoggableProcessor.class
 model/media/Media.class
 annotation/Inject.class
 pattern/chain/BookOperationHandler.class
-util/LoggableProcessor$2.class
 pattern/adapter/MediaAdapter.class
 pattern/builder/MediaBuilder.class
 util/InputValidator.class
