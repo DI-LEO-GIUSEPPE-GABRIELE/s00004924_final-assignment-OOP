@@ -3,8 +3,10 @@ package factory;
 import model.media.MediaCollection;
 import model.media.Book;
 import model.media.Magazine;
-import pattern.builder.MediaBuilder;
+
 import java.time.LocalDate;
+
+import builder.MediaBuilder;
 
 // Factory class for creation of books and magazines
 public class MediaFactory {

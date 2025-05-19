@@ -1,7 +1,7 @@
 package util;
 
 import model.media.Media;
-import pattern.template.MediaProcessor;
+import processor.MediaProcessor;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
