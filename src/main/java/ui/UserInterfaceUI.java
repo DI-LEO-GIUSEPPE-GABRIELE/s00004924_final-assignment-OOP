@@ -1,5 +1,6 @@
 package ui;
 
+import annotation.Inject;
 import exception.LibraryException;
 import exception.MediaNotFoundException;
 import factory.MediaFactory;
@@ -22,10 +23,19 @@ import java.io.File;
 // Class for the User Interface in console
 public class UserInterfaceUI {
     private static final Logger LOGGER = LoggerManager.getLogger(UserInterfaceUI.class.getName());
-    private final Scanner scanner;
-    private final MediaService mediaService;
+
+    @Inject
+    // Annotation: Dependency injection for Scanner
+    private Scanner scanner;
+
+    @Inject
+    // Annotation: Dependency injection for MediaService
+    private MediaService mediaService;
 
     public UserInterfaceUI() {
+        // The constructor is empty because the dependencies are injected through the
+        // IoCContainer
+        // Fallback to default implementation if the IoCContainer is not initialized
         this.scanner = new Scanner(System.in);
         this.mediaService = MediaService.getInstance();
     }

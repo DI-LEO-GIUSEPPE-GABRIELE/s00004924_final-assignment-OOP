@@ -150,3 +150,35 @@ May 19, 2025 12:45:00 PM pattern.template.ExportProcessor exportToJSON
 INFO: Export completed successfully.
 May 19, 2025 12:45:00 PM ui.UserInterfaceUI exportMedia
 INFO: Export completed successfully.
+May 19, 2025 12:58:22 PM main.java.Main main
+INFO: Library Management System closed
+May 19, 2025 12:58:30 PM main.java.Main main
+INFO: Starting the Library Management System
+May 19, 2025 12:58:30 PM ioc.IoCContainer <init>
+INFO: Initializing IoC Container
+May 19, 2025 12:58:30 PM repository.MediaRepository <init>
+INFO: Starting the repository for media
+May 19, 2025 12:58:30 PM java.io.ObjectInputFilter$Config traceFilter
+FINER: Builtin factory: null -> new: null
+May 19, 2025 12:58:30 PM repository.FileStorageManager loadMedia
+INFO: Media uploaded from files: data/media.dat, number of media: 163
+May 19, 2025 12:58:30 PM repository.MediaRepository loadMediaFromStorage
+INFO: Media loaded from file system: 163
+May 19, 2025 12:58:30 PM ioc.IoCContainer register
+INFO: Registered instance for class: repository.MediaRepository
+May 19, 2025 12:58:30 PM service.MediaService <init>
+INFO: Starting the media service
+May 19, 2025 12:58:30 PM ioc.IoCContainer register
+INFO: Registered instance for class: service.MediaService
+May 19, 2025 12:58:30 PM ioc.IoCContainer register
+INFO: Registered instance for class: java.util.Scanner
+May 19, 2025 12:58:30 PM ioc.IoCContainer injectDependencies
+INFO: Injected dependency into field: scanner of class: ui.UserInterfaceUI
+May 19, 2025 12:58:30 PM ioc.IoCContainer injectDependencies
+INFO: Injected dependency into field: mediaService of class: ui.UserInterfaceUI
+May 19, 2025 12:58:38 PM service.MediaService findAllMedia
+INFO: All media request
+May 19, 2025 12:58:38 PM pattern.strategy.DateSortStrategy sort
+INFO: Sorting media by publication date (desc)
+May 19, 2025 12:58:38 PM pattern.strategy.DateSortStrategy sort
+INFO: Media sorted by publication date successfully (desc)
