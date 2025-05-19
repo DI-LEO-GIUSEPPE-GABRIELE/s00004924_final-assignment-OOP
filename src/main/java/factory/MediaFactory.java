@@ -3,9 +3,8 @@ package factory;
 import model.media.MediaCollection;
 import model.media.Book;
 import model.media.Magazine;
-import model.media.Media;
+import pattern.builder.MediaBuilder;
 import java.time.LocalDate;
-import java.util.UUID;
 
 // Factory class for creation of books and magazines
 public class MediaFactory {
@@ -20,10 +19,15 @@ public class MediaFactory {
      * @param pages           : The number of pages in the book
      * @return a new Book
      */
-    public static Media createBook(String title, String author,
+    public static Book createBook(String title, String author,
             LocalDate publicationDate, String publisher, int pages) {
-        String id = generateId();
-        return new Book(id, title, author, publicationDate, publisher, pages);
+        return new MediaBuilder()
+                .withTitle(title)
+                .withAuthor(author)
+                .withPublicationDate(publicationDate)
+                .withPublisher(publisher)
+                .withPages(pages)
+                .buildBook();
     }
 
     /**
@@ -35,10 +39,14 @@ public class MediaFactory {
      * @param issue           : The issue number of the magazine
      * @return a new Magazine
      */
-    public static Media createMagazine(String title, LocalDate publicationDate,
+    public static Magazine createMagazine(String title, LocalDate publicationDate,
             String publisher, int issue) {
-        String id = generateId();
-        return new Magazine(id, title, publicationDate, publisher, issue);
+        return new MediaBuilder()
+                .withTitle(title)
+                .withPublicationDate(publicationDate)
+                .withPublisher(publisher)
+                .withIssue(issue)
+                .buildMagazine();
     }
 
     /**
@@ -48,16 +56,9 @@ public class MediaFactory {
      * @return a new MediaCollection
      */
     public static MediaCollection createMediaCollection(String title) {
-        String id = generateId();
-        return new MediaCollection(id, title, LocalDate.now());
-    }
-
-    /**
-     * Generate a unique ID
-     * 
-     * @return a unique ID as a string
-     */
-    private static String generateId() {
-        return UUID.randomUUID().toString();
+        return new MediaBuilder()
+                .withTitle(title)
+                .withPublicationDate(LocalDate.now())
+                .buildCollection();
     }
 }

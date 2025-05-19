@@ -2,6 +2,7 @@ package pattern.builder;
 
 import model.media.Book;
 import model.media.Magazine;
+import model.media.MediaCollection;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -71,5 +72,18 @@ public class MediaBuilder {
             throw new IllegalStateException("Magazine is missing required properties");
         }
         return new Magazine(id, title, publicationDate, publisher, issue);
+    }
+
+    /**
+     * Build a MediaCollection object
+     * 
+     * @return a new MediaCollection instance
+     */
+    public MediaCollection buildCollection() {
+        if (title == null || publicationDate == null) {
+            throw new IllegalStateException("Collection is missing required properties");
+        }
+
+        return new MediaCollection(id, title, publicationDate);
     }
 }

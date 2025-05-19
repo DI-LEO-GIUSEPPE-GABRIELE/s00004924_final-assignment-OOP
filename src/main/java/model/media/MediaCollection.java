@@ -9,7 +9,6 @@ import java.util.Objects;
 
 // Class for MediaCollection implementing the Media interface as Composite pattern
 public class MediaCollection implements Media {
-    private static final long serialVersionUID = 3L;
     private final String id;
     private final String title;
     private final LocalDate creationDate;
