@@ -17,6 +17,7 @@ pattern/adapter/MediaAdapter.class
 pattern/builder/MediaBuilder.class
 util/InputValidator.class
 iterator/MediaIterator.class
+pattern/template/ExportProcessor.class
 pattern/factory/MediaFactoryProvider$MagazineFactory.class
 iterator/MediaCollectionIterator.class
 pattern/factory/MediaFactoryProvider$1.class
@@ -32,12 +33,11 @@ pattern/factory/MediaFactoryProvider.class
 util/ConfigLoader.class
 util/ConcurrentMediaProcessor.class
 model/media/Magazine.class
-pattern/template/BookExportProcessor.class
 pattern/chain/MediaHandler.class
 exception/LibraryException.class
 repository/Repository.class
 ioc/IoCContainer.class
+pattern/strategy/DateSortStrategy.class
 annotation/Loggable$LogLevel.class
 annotation/Loggable.class
-pattern/strategy/TitleSortStrategy.class
 repository/MediaRepository.class

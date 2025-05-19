@@ -12,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.InjectMocks;
+import static org.mockito.Mockito.doReturn;
 import org.mockito.junit.MockitoJUnitRunner;
 import repository.MediaRepository;
 import util.LoggerManager;
@@ -394,19 +395,22 @@ public class MediaServiceJUnitTest {
 
         List<Media> yearResults = new ArrayList<>();
         yearResults.add(book);
+        // Configure the mock to return the year results
         when(mediaRepository.findByPublicationYear(1980)).thenReturn(yearResults);
 
         // Search by title
         List<Media> mediaByTitle = mediaService.findMediaByTitle("Rosa");
         LOGGER.info("Media found for title 'Rosa': " + mediaByTitle.size());
+        assertEquals("Should find one media with title 'Rosa'", 1, mediaByTitle.size());
 
         // Search by year
         List<Media> mediaByYear = mediaService.findMediaByPublicationYear(1980);
         LOGGER.info("Media found for year 1980: " + mediaByYear.size());
+        assertEquals("Should find one media with publication year 1980", 1, mediaByYear.size());
 
         // Verification of results
-        assertFalse("The title search results should not be empty", mediaByTitle.isEmpty());
-        assertFalse("The year search results should not be empty", mediaByYear.isEmpty());
+        assertTrue("The title search results should contain the expected book", mediaByTitle.contains(book));
+        assertTrue("The year search results should contain the expected book", mediaByYear.contains(book));
 
         // Verify that the repository methods were called with the correct parameters
         verify(mediaRepository).findByTitle("Rosa");

@@ -14,6 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
+import pattern.strategy.SortingStrategy;
+import pattern.strategy.DateSortStrategy;
+import pattern.template.ExportProcessor;
+import java.io.File;
 
 // Class for the User Interface in console
 public class UserInterfaceUI {
@@ -49,6 +53,9 @@ public class UserInterfaceUI {
                     case 4:
                         manageCollections();
                         break;
+                    case 5:
+                        exportMedia();
+                        break;
                     case 0:
                         running = false;
                         break;
@@ -80,6 +87,7 @@ public class UserInterfaceUI {
         System.out.println("2. View all media");
         System.out.println("3. Search media or collection");
         System.out.println("4. Manage collections");
+        System.out.println("5. Export media");
         System.out.println("0. Exit");
     }
 
@@ -187,6 +195,13 @@ public class UserInterfaceUI {
 
     private void viewAllMedia() throws LibraryException {
         System.out.println("\nVIEW ALL MEDIA");
+        System.out.println("1. View without sorting");
+        System.out.println("2. Sort by publication date (desc)");
+        System.out.println("0. Go back");
+
+        int sortChoice = readIntInput("Select an option: ");
+        if (sortChoice == 0)
+            return;
 
         List<Media> allMedia = mediaService.findAllMedia();
         List<Media> filteredMedia = new ArrayList<>();
@@ -203,7 +218,15 @@ public class UserInterfaceUI {
             return;
         }
 
-        System.out.println("\nALL MEDIA:");
+        // Apply sorting if requested
+        if (sortChoice == 2) {
+            SortingStrategy sortStrategy = new DateSortStrategy();
+            sortStrategy.sort(filteredMedia);
+            System.out.println("\nALL MEDIA (sorted by " + sortStrategy.getSortName() + "):");
+        } else {
+            System.out.println("\nALL MEDIA:");
+        }
+
         for (Media media : filteredMedia) {
             System.out.println("- " + media.getDetails());
         }
@@ -778,5 +801,129 @@ public class UserInterfaceUI {
         }
 
         addToCollection(availableMedia, selectedCollection);
+    }
+
+    private void exportMedia() throws LibraryException {
+        System.out.println("\nEXPORT MEDIA");
+        System.out.println("1. Export Books");
+        System.out.println("2. Export Magazines");
+        System.out.println("3. Export Collections");
+        System.out.println("0. Go back");
+
+        boolean validMediaTypeChoice = false;
+        int mediaTypeChoice = 0;
+
+        while (!validMediaTypeChoice) {
+            mediaTypeChoice = readIntInput("Select media type to export: ");
+
+            if (mediaTypeChoice >= 0 && mediaTypeChoice <= 3) {
+                validMediaTypeChoice = true;
+            } else {
+                System.out.println("Invalid option, please enter a number between 0 and 3.");
+            }
+        }
+
+        if (mediaTypeChoice == 0)
+            return;
+
+        String mediaType;
+        switch (mediaTypeChoice) {
+            case 1:
+                mediaType = "Book";
+                break;
+            case 2:
+                mediaType = "Magazine";
+                break;
+            case 3:
+                mediaType = "Collection";
+                break;
+            default:
+                System.out.println("Invalid option, operation cancelled.");
+                return;
+        }
+
+        System.out.println("\nEXPORT FORMAT");
+        System.out.println("1. Export to JSON");
+        System.out.println("2. Export to Word");
+        System.out.println("0. Go back");
+
+        boolean validFormatChoice = false;
+        int formatChoice = 0;
+
+        while (!validFormatChoice) {
+            formatChoice = readIntInput("Select export format: ");
+
+            if (formatChoice >= 0 && formatChoice <= 2) {
+                validFormatChoice = true;
+            } else {
+                System.out.println("Invalid option, please enter a number between 0 and 2.");
+            }
+        }
+
+        if (formatChoice == 0)
+            return;
+
+        String format;
+        switch (formatChoice) {
+            case 1:
+                format = "JSON";
+                break;
+            case 2:
+                format = "WORD";
+                break;
+            default:
+                System.out.println("Invalid option, operation cancelled.");
+                return;
+        }
+
+        // Export in download directory
+        String userHome = System.getProperty("user.home");
+        String exportPath = userHome + "/Download";
+        System.out.println("Exporting to: " + exportPath);
+
+        // Create directory if it doesn't exist
+        File exportDir = new File(exportPath);
+        if (!exportDir.exists()) {
+            if (exportDir.mkdir()) {
+                System.out.println("Created export directory: " + exportDir.getAbsolutePath());
+            } else {
+                System.out.println("Failed to create export directory. Using current directory.");
+                exportPath = ".";
+            }
+        }
+
+        try {
+            // Get all media
+            List<Media> allMedia = mediaService.findAllMedia();
+            List<Media> filteredMedia = new ArrayList<>();
+
+            // Filter media by type
+            for (Media media : allMedia) {
+                String className = media.getClass().getSimpleName();
+                if (className.equals(mediaType)) {
+                    filteredMedia.add(media);
+                }
+            }
+
+            if (filteredMedia.isEmpty()) {
+                System.out.println("No " + mediaType + "s found to export.");
+                return;
+            }
+
+            // Create the processor and export all media to a single file
+            ExportProcessor processor = new ExportProcessor(format, exportPath);
+            boolean success = processor.processMediaList(filteredMedia, mediaType);
+
+            if (success) {
+                System.out.println("Export completed successfully.");
+                LOGGER.info("Export completed successfully.");
+            } else {
+                System.out.println("Error during export.");
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error during export: " + e.getMessage());
+            LOGGER.severe("Error during export: " + e.getMessage());
+        }
     }
 }

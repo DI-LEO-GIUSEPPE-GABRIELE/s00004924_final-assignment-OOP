@@ -78,7 +78,7 @@ This project implements a complete library management system that allows the man
 
 To run the application, execute in the console:
 
-`java -cp target/classes main.java.Main`
+`java -cp target/classes main.java.Main` or `mvn exec:java -Dexec.mainClass="main.java.Main"` to run with Maven
 
 To run the tests, execute in the console:
 
