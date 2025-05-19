@@ -18,5 +18,5 @@ public interface SortingStrategy {
      * 
      * @return the strategy name
      */
-    String getStrategyName();
+    String getSortName();
 }

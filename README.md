@@ -74,29 +74,6 @@ This project implements a complete library management system that allows the man
 - annotation: Contains custom annotations
 - test: Contains test class
 
-## Commands
-
-### Basic Commands
-
-- `add book`: Adds a new book
-- `add magazine`: Adds a new magazine
-- `add collection`: Creates a new collection
-- `add to collection`: Adds a media to a collection
-- `remove`: Removes a media from the system
-- `remove from collection`: Removes a media from a collection
-- `search`: Searches media by various criteria
-- `display`: Displays all media with filter options
-- `set availability`: Modifies the availability status of a media
-
-### Advanced Commands
-
-- `export`: Exports data in various formats using the Template Method
-- `sort`: Sorts results using different sorting strategies
-- `backup`: Creates a backup of the system state using the Memento Pattern
-- `restore`: Restores the system state from a backup
-- `analyze`: Generates statistics on the collection using Stream API
-- `process`: Processes batch operations using multithreading
-
 ## Run
 
 To run the application, execute in the console:
@@ -105,7 +82,7 @@ To run the application, execute in the console:
 
 To run the tests, execute in the console:
 
-`mvn test` or `mvn -Dtest=MediaServiceJUnitTest test` to run a specific test
+`mvn test` or `mvn -Dtest=MediaServiceJUnitTest testName` to run a specific test
 
 ## Requirements
 
