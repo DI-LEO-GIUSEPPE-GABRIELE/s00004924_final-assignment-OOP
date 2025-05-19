@@ -878,7 +878,7 @@ public class UserInterfaceUI {
 
         // Export in download directory
         String userHome = System.getProperty("user.home");
-        String exportPath = userHome + "/Download";
+        String exportPath = userHome + "/Downloads";
         System.out.println("Exporting to: " + exportPath);
 
         // Create directory if it doesn't exist

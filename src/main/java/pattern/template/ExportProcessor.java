@@ -71,12 +71,14 @@ public class ExportProcessor {
             MediaAdapter adapter = new MediaAdapter(media);
             String content = adapter.exportTo("JSON");
 
-            if (i == mediaList.size() - 1) {
-                // Remove the comma if it's the last element
-                if (content.endsWith(",")) {
-                    content = content.substring(0, content.length() - 1);
-                }
-                contentBuilder.append(content).append("\n");
+            // Remove the comma if it's the last element
+            if (content.endsWith(",}")) {
+                content = content.substring(0, content.length() - 2) + "}";
+            }
+
+            // Add the comma if it's not the last element
+            if (i < mediaList.size() - 1) {
+                contentBuilder.append(content).append(",\n");
             } else {
                 contentBuilder.append(content).append("\n");
             }
@@ -88,8 +90,11 @@ public class ExportProcessor {
         String filename = exportPath + "/" + mediaType + "_list.json";
         try (FileWriter writer = new FileWriter(filename)) {
             writer.write(contentBuilder.toString());
+            // Flush the writer to ensure all data is written
+            writer.flush();
         }
 
+        System.out.println("Export completed successfully.");
         LOGGER.info("Export completed successfully.");
         return true;
     }
