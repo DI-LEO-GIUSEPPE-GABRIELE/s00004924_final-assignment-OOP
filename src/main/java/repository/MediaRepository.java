@@ -2,7 +2,6 @@ package repository;
 
 import exception.LibraryException;
 import exception.MediaNotFoundException;
-import model.media.Book;
 import model.media.Media;
 import model.media.MediaCollection;
 import util.LoggerManager;
@@ -69,9 +68,9 @@ public class MediaRepository implements Repository<Media, String> {
      * Annotation: Override method of the Repository interface
      * Save a media in the repository
      * 
-     * @param media - The media to save
+     * @param media : The media to save
      * @return The saved media
-     * @throws LibraryException - If the media is null or there is an error during
+     * @throws LibraryException : If the media is null or there is an error during
      *                          the
      *                          save operation
      */
@@ -91,9 +90,9 @@ public class MediaRepository implements Repository<Media, String> {
      * Annotation: Override method of the Repository interface
      * Find a media by its ID
      * 
-     * @param id - The ID of the media to find
+     * @param id : The ID of the media to find
      * @return The found media
-     * @throws MediaNotFoundException - If the media with the specified ID is not
+     * @throws MediaNotFoundException : If the media with the specified ID is not
      *                                found
      */
     public Media findById(String id) throws MediaNotFoundException {
@@ -111,7 +110,7 @@ public class MediaRepository implements Repository<Media, String> {
      * Find all media in the repository
      * 
      * @return List of all media
-     * @throws LibraryException - If there is an error retrieving the media list
+     * @throws LibraryException : If there is an error retrieving the media list
      */
     public List<Media> findAll() throws LibraryException {
         return new ArrayList<>(mediaMap.values());
@@ -122,8 +121,8 @@ public class MediaRepository implements Repository<Media, String> {
      * Annotation: Override method of the Repository interface
      * Delete a media by its ID
      * 
-     * @param id - The ID of the media to delete
-     * @throws MediaNotFoundException - If the media with the specified ID is not
+     * @param id : The ID of the media to delete
+     * @throws MediaNotFoundException : If the media with the specified ID is not
      *                                found
      */
     public void delete(String id) throws MediaNotFoundException {
@@ -158,9 +157,9 @@ public class MediaRepository implements Repository<Media, String> {
      * Annotation: Override method of the Repository interface
      * Update a media in the repository
      * 
-     * @param media - The media to update
+     * @param media : The media to update
      * @return The updated media
-     * @throws MediaNotFoundException - If the media is null or not found in the
+     * @throws MediaNotFoundException : If the media is null or not found in the
      *                                repository
      */
     public Media update(Media media) throws MediaNotFoundException {
@@ -183,19 +182,6 @@ public class MediaRepository implements Repository<Media, String> {
     public List<Media> findByTitle(String title) {
         return mediaMap.values().stream()
                 .filter(media -> media.getTitle().toLowerCase().contains(title.toLowerCase()))
-                .collect(Collectors.toList());
-    }
-
-    /**
-     * Find media by author
-     * 
-     * @return The found media
-     */
-    public List<Book> findByAuthor(String author) {
-        return mediaMap.values().stream()
-                .filter(media -> media instanceof Book)
-                .map(media -> (Book) media)
-                .filter(book -> book.getAuthor().toLowerCase().contains(author.toLowerCase()))
                 .collect(Collectors.toList());
     }
 

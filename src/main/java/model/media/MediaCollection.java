@@ -9,7 +9,6 @@ import java.util.Objects;
 
 // Class for MediaCollection implementing the Media interface as Composite pattern
 public class MediaCollection implements Media {
-    private static final long serialVersionUID = 3L;
     private final String id;
     private final String title;
     private final LocalDate creationDate;
@@ -19,9 +18,9 @@ public class MediaCollection implements Media {
     /**
      * MediaCollection constructor
      * 
-     * @param id           - The unique identifier of the collection
-     * @param title        - The title of the collection
-     * @param creationDate - The creation date of the collection
+     * @param id           : The unique identifier of the collection
+     * @param title        : The title of the collection
+     * @param creationDate : The creation date of the collection
      */
     public MediaCollection(String id, String title, LocalDate creationDate) {
         this.id = id;
@@ -79,7 +78,7 @@ public class MediaCollection implements Media {
      * Annotation: Override method of the Media interface
      * Set the availability status of the collection and all its items
      * 
-     * @param the availability status of the collection to set
+     * @param available : The availability status of the collection to set
      */
     public void setAvailable(boolean available) {
         this.available = available;
@@ -106,7 +105,7 @@ public class MediaCollection implements Media {
     /**
      * Add a media item to the collection
      * 
-     * @param media - The media item to add
+     * @param media : The media item to add
      */
     public void addMedia(Media media) {
         // Verify if the media is not already in the collection
@@ -118,7 +117,7 @@ public class MediaCollection implements Media {
     /**
      * Remove a media item from the collection
      * 
-     * @param media - The media item to remove
+     * @param media : The media item to remove
      */
     public void removeMedia(Media media) {
         mediaItems.remove(media);
@@ -145,7 +144,7 @@ public class MediaCollection implements Media {
     /**
      * Check if the collection contains a media item with the given ID
      * 
-     * @param mediaId - The ID of the media item to check
+     * @param mediaId : The ID of the media item to check
      * @return true or false if the collection contains the media item
      */
     public boolean containsMedia(String mediaId) {

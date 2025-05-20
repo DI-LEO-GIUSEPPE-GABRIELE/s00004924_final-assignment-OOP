@@ -1,24 +1,29 @@
 # Project Core - Library Management System
 
-This project implements a complete library management system that allows the management of books, magazines, and collections. It is possible to create, search, add or remove media from collections, view the availability status of media, and filter results. All data is saved to file to ensure persistence.
+This project implements a complete library management system that allows the management of books, magazines, and collections. It is possible to create, search, add or remove media from collections, view the availability status of media, and filter results. All data is saved to files to ensure persistence.
 
 ## Features
 
-- Collection Management: Ability to create custom collections and add/remove media
-- Display Filters: Option to display only books, only magazines, or exclude collections
+- Collection Management: Ability to create collections and add/remove media
+- Media Management: Ability to create, search or delete media as books and magazines
 - Availability Status: Each media has an availability indicator that can be modified
 - Input Validation: Advanced validation system to ensure data integrity
 - Date Management: Standardized format for publication dates
 - Advanced Search: Ability to combine multiple search criteria
+- Multithreading: Parallel processing for intensive operations
+- Stream API & Lambdas: Efficient manipulation of media collections
+- Reflection: Dynamic inspection and manipulation of classes at runtime
+- IoC (Inversion of Control): Dependency management through container
+- Custom Annotations: Custom metadata for advanced functionality
+- Mockito: Testing framework to simulate system components
 
 ## Flows
 
 - Complete management of books, magazines, and collections
-- Search by id, title, author, and publication year
-- Add or remove media from collections
+- Search by id, title and publication year
+- Addition or removal of media from collections
 - Indication of media availability status
 - User input validation
-- Standardized date management
 - Data persistence on file
 - Interactive console user interface
 
@@ -29,6 +34,13 @@ This project implements a complete library management system that allows the man
 - Iterator Pattern: Implemented through the MediaIterator interface and the MediaCollectionIterator class
 - Singleton Pattern: Implemented in the MediaRepository, MediaService, and FileStorageManager classes
 - Exception Shielding: Implemented through the creation and nesting of custom exceptions
+- Abstract Factory: Implemented in MediaFactoryProvider to create families of related objects
+- Builder Pattern: Implemented in MediaBuilder to build complex media objects
+- Strategy Pattern: Implemented in SortingStrategy for interchangeable sorting algorithms
+- Observer Pattern: Implemented in MediaChangeSubject and MediaChangeObserver for change notifications
+- Adapter Pattern: Implemented in MediaAdapter for compatibility between different interfaces
+- Memento Pattern: Implemented in MediaMemento to save and restore state
+- Template Method: Implemented in MediaProcessor to define algorithm skeletons
 
 ## Core Technologies
 
@@ -38,29 +50,42 @@ This project implements a complete library management system that allows the man
 - Logging: Implemented through the LoggerManager class
 - Date API: Used for standardized date management
 - Exception Handling: Advanced exception handling for a better user experience
+- Multithreading: Use of threads for parallel operations and performance improvement
+- Stream API: Declarative and functional processing of collections
+- Reflection API: Dynamic inspection and manipulation of classes at runtime
+- Annotation Processing: Processing of custom annotations
+- Dependency Injection: Dependency management through inversion of control
+- Unit Testing: Automated testing with JUnit and Mockito
 
 ## Project Structure
 
-- model: Contains data model classes
-- repository: Contains classes for data persistence
-- service: Contains services for app logics
-- factory: Contains factories for object creation
-- iterator: Contains iterators for collections
+- adapter: Contains adapter class
+- annotation: Contains custom annotations
+- builder: Contains builder class
 - exception: Contains custom exceptions
-- ui: Contains the ui for the user experience on console
+- factory: Contains factory for object creation
+- ioc: Contains classes for dependency injection
+- iterator: Contains iterators for collections
+- memento: Contains memento class
+- model/media: Contains data model classes
+- observer: Contains observer classes
+- processor: Contains template method class
+- repository: Contains classes for data persistence
+- service: Contains services for application logic
+- strategy: Contains strategy classes
+- ui: Contains the user interface for console experience
 - util: Contains utility classes
-- validation: Contains classes for input validation
-- test: Contains test classes
+- test: Contains test class
 
 ## Run
 
-To run the application, run in console:
+To run the application, execute in the console:
 
-`java -cp target/classes main.java.Main`
+`java -cp target/classes main.java.Main` or `mvn exec:java -Dexec.mainClass="main.java.Main"` to run with Maven
 
-To run the tests, run in console:
+To run the tests, execute in the console:
 
-`java -cp target/classes test.MediaServiceTest` or `mvn test`
+`mvn test` or `mvn -Dtest=MediaServiceJUnitTest testName` to run a specific test
 
 ## Requirements
 

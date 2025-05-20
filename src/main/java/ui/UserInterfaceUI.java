@@ -1,12 +1,15 @@
 package ui;
 
+import annotation.Inject;
 import exception.LibraryException;
 import exception.MediaNotFoundException;
 import factory.MediaFactory;
-import model.media.Book;
 import model.media.Media;
 import model.media.MediaCollection;
+import processor.ExportProcessor;
 import service.MediaService;
+import strategy.DateSortStrategy;
+import strategy.SortingStrategy;
 import util.InputValidator;
 import util.LoggerManager;
 import java.time.LocalDate;
@@ -15,14 +18,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
+import java.io.File;
+import java.util.stream.Collectors;
+import util.ConcurrentMediaProcessor;
 
 // Class for the User Interface in console
 public class UserInterfaceUI {
     private static final Logger LOGGER = LoggerManager.getLogger(UserInterfaceUI.class.getName());
-    private final Scanner scanner;
-    private final MediaService mediaService;
+
+    @Inject
+    // Annotation: Dependency injection for Scanner
+    private Scanner scanner;
+
+    @Inject
+    // Annotation: Dependency injection for MediaService
+    private MediaService mediaService;
 
     public UserInterfaceUI() {
+        // The constructor is empty because the dependencies are injected through the
+        // IoCContainer
+        // Fallback to default implementation if the IoCContainer is not initialized
         this.scanner = new Scanner(System.in);
         this.mediaService = MediaService.getInstance();
     }
@@ -50,6 +65,9 @@ public class UserInterfaceUI {
                     case 4:
                         manageCollections();
                         break;
+                    case 5:
+                        exportMedia();
+                        break;
                     case 0:
                         running = false;
                         break;
@@ -67,6 +85,7 @@ public class UserInterfaceUI {
 
         System.out.println("Thank you for using the Library Management System!");
         scanner.close();
+        mediaService.shutdown();
     }
 
     private void printWelcomeMessage() {
@@ -81,6 +100,7 @@ public class UserInterfaceUI {
         System.out.println("2. View all media");
         System.out.println("3. Search media or collection");
         System.out.println("4. Manage collections");
+        System.out.println("5. Export media");
         System.out.println("0. Exit");
     }
 
@@ -188,6 +208,13 @@ public class UserInterfaceUI {
 
     private void viewAllMedia() throws LibraryException {
         System.out.println("\nVIEW ALL MEDIA");
+        System.out.println("1. View without sorting");
+        System.out.println("2. Sort by publication date (desc)");
+        System.out.println("0. Go back");
+
+        int sortChoice = readIntInput("Select an option: ");
+        if (sortChoice == 0)
+            return;
 
         List<Media> allMedia = mediaService.findAllMedia();
         List<Media> filteredMedia = new ArrayList<>();
@@ -204,7 +231,15 @@ public class UserInterfaceUI {
             return;
         }
 
-        System.out.println("\nALL MEDIA:");
+        // Apply sorting if requested
+        if (sortChoice == 2) {
+            SortingStrategy sortStrategy = new DateSortStrategy();
+            filteredMedia = sortStrategy.sort(filteredMedia);
+            System.out.println("\nALL MEDIA (sorted by " + sortStrategy.getSortName() + "):");
+        } else {
+            System.out.println("\nALL MEDIA:");
+        }
+
         for (Media media : filteredMedia) {
             System.out.println("- " + media.getDetails());
         }
@@ -213,9 +248,9 @@ public class UserInterfaceUI {
     private void searchMedia() throws LibraryException {
         System.out.println("\nSEARCH MEDIA OR COLLECTION");
         System.out.println("1. Search by title");
-        System.out.println("2. Search book by author");
-        System.out.println("3. Search by publication year");
-        System.out.println("4. Search by ID");
+        System.out.println("2. Search by publication year");
+        System.out.println("3. Search by ID");
+        System.out.println("4. Rollback last change");
         System.out.println("0. Go back");
 
         boolean validChoice = false;
@@ -228,15 +263,15 @@ public class UserInterfaceUI {
                     validChoice = true;
                     break;
                 case 2:
-                    searchByAuthor();
-                    validChoice = true;
-                    break;
-                case 3:
                     searchByYear();
                     validChoice = true;
                     break;
-                case 4:
+                case 3:
                     searchById();
+                    validChoice = true;
+                    break;
+                case 4:
+                    rollbackLastChange();
                     validChoice = true;
                     break;
                 case 0:
@@ -263,24 +298,6 @@ public class UserInterfaceUI {
         }
 
         handleSearchResults(results);
-    }
-
-    private void searchByAuthor() throws LibraryException {
-        String author = readStringInput("Enter author: ");
-
-        List<Book> results = mediaService.findBooksByAuthor(author);
-
-        if (results.isEmpty()) {
-            System.out.println("\nNo books found with author '" + author + "'.");
-            return;
-        }
-
-        System.out.println("\nSEARCH RESULTS:");
-        for (int i = 0; i < results.size(); i++) {
-            System.out.println((i + 1) + ". " + results.get(i).getDetails());
-        }
-
-        handleSearchResults(new ArrayList<>(results));
     }
 
     private void searchByYear() throws LibraryException {
@@ -318,45 +335,79 @@ public class UserInterfaceUI {
     }
 
     private void handleSearchResults(List<Media> results) throws LibraryException {
-        System.out.println("\nOPTIONS:");
+        boolean validChoice = false;
 
-        boolean onlyCollections = true;
-        for (Media media : results) {
-            if (!(media instanceof MediaCollection)) {
-                onlyCollections = false;
-                break;
+        while (!validChoice) {
+            System.out.println("\nOPTIONS:");
+
+            boolean onlyCollections = true;
+            for (Media media : results) {
+                if (!(media instanceof MediaCollection)) {
+                    onlyCollections = false;
+                    break;
+                }
             }
-        }
 
-        if (!onlyCollections) {
-            System.out.println("1. Add to collection");
-            System.out.println("2. Delete media or collection");
-        } else {
-            System.out.println("1. Delete collection");
-        }
-        System.out.println("0. Go back");
+            if (!onlyCollections) {
+                System.out.println("1. Add to collection");
+                System.out.println("2. Delete media or collection");
+                System.out.println("3. Edit title");
+                System.out.println("4. Edit publication date");
+                System.out.println("5. Rollback last change");
+            } else {
+                System.out.println("1. Delete collection");
+                System.out.println("2. Rollback last change");
+            }
+            System.out.println("0. Go back");
 
-        int choice = readIntInput("Select an option: ");
+            int choice = readIntInput("Select an option: ");
 
-        switch (choice) {
-            case 1:
-                if (!onlyCollections) {
-                    addToCollection(results);
-                } else {
-                    deleteMedia(results);
-                }
-                break;
-            case 2:
-                if (!onlyCollections) {
-                    deleteMedia(results);
-                } else {
+            switch (choice) {
+                case 1:
+                    if (!onlyCollections) {
+                        addToCollection(results);
+                    } else {
+                        deleteMedia(results);
+                    }
+                    validChoice = true;
+                    break;
+                case 2:
+                    if (!onlyCollections) {
+                        deleteMedia(results);
+                    } else {
+                        rollbackMediaChanges(results);
+                    }
+                    validChoice = true;
+                    break;
+                case 3:
+                    if (!onlyCollections) {
+                        editMediaTitle(results);
+                        validChoice = true;
+                    } else {
+                        System.out.println("Invalid option, try again.");
+                    }
+                    break;
+                case 4:
+                    if (!onlyCollections) {
+                        editMediaPublicationDate(results);
+                        validChoice = true;
+                    } else {
+                        System.out.println("Invalid option, try again.");
+                    }
+                    break;
+                case 5:
+                    if (!onlyCollections) {
+                        rollbackMediaChanges(results);
+                        validChoice = true;
+                    } else {
+                        System.out.println("Invalid option, try again.");
+                    }
+                    break;
+                case 0:
+                    return;
+                default:
                     System.out.println("Invalid option, try again.");
-                }
-                break;
-            case 0:
-                return;
-            default:
-                System.out.println("Invalid option, try again.");
+            }
         }
     }
 
@@ -438,6 +489,266 @@ public class UserInterfaceUI {
                 }
             }
         }
+    }
+
+    /**
+     * Rollback the last changes made to a list of media
+     * 
+     * @param mediaList : The list of media to rollback
+     * @throws LibraryException : If an error occurs during the rollback process
+     */
+    private void rollbackMediaChanges(List<Media> mediaList) throws LibraryException {
+        if (mediaList.isEmpty()) {
+            System.out.println("No media available for rollback.");
+            return;
+        }
+
+        System.out.println("\nSelect media to rollback (1-" + mediaList.size() + ", 0 to cancel): ");
+
+        int index;
+        boolean validInput = false;
+
+        while (!validInput) {
+            index = readIntInput("") - 1;
+
+            if (index == -1) {
+                System.out.println("Action cancelled.");
+                return;
+            } else if (index < 0 || index >= mediaList.size()) {
+                System.out.println(
+                        "Invalid selection, enter a number between 1 and " + mediaList.size() + " or 0 to cancel.");
+            } else {
+                validInput = true;
+
+                Media mediaToRestore = mediaList.get(index);
+                System.out.println("Are you sure you want to rollback: " + mediaToRestore.getTitle() + "? (y/n)");
+                String confirmation = scanner.nextLine().trim().toLowerCase();
+
+                if (confirmation.equals("y")) {
+                    try {
+                        Media restoredMedia = mediaService.restoreMediaChanges(mediaToRestore.getId());
+                        if (restoredMedia != null) {
+                            System.out.println("Changes rollbacked successfully.");
+                            System.out.println("Media rollbacked: " + restoredMedia.getDetails());
+                        } else {
+                            System.out.println("No changes to rollback for this media.");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Error rollbacking media: " + e.getMessage());
+                    }
+                } else {
+                    System.out.println("Action cancelled.");
+                }
+            }
+        }
+    }
+
+    /**
+     * Rollback the last changes made to a media
+     * 
+     * @throws LibraryException : If an error occurs during the rollback process
+     */
+    private void rollbackLastChange() throws LibraryException {
+        System.out.println("\nROLLBACK LAST CHANGE");
+        String mediaId = readStringInput("Enter media ID: ");
+
+        try {
+            Media restoredMedia = mediaService.restoreMediaChanges(mediaId);
+            if (restoredMedia != null) {
+                System.out.println("Changes rollbacked successfully.");
+                System.out.println("Media rollbacked: " + restoredMedia.getDetails());
+            } else {
+                System.out.println("No changes to rollback for this media.");
+            }
+        } catch (MediaNotFoundException e) {
+            System.out.println("Media not found: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error rollbacking media: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Edit the title of a media
+     * 
+     * @param mediaList : The list of media to edit
+     * @throws LibraryException : If an error occurs during the edit process
+     */
+    private void editMediaTitle(List<Media> mediaList) throws LibraryException {
+        if (mediaList.isEmpty()) {
+            System.out.println("No media to edit.");
+            return;
+        }
+
+        System.out.println("\nSelect media to edit (1-" + mediaList.size() + ", 0 to cancel): ");
+
+        int index;
+        boolean validInput = false;
+
+        while (!validInput) {
+            index = readIntInput("") - 1;
+
+            if (index == -1) {
+                System.out.println("Action cancelled.");
+                return;
+            } else if (index < 0 || index >= mediaList.size()) {
+                System.out.println(
+                        "Invalid selection, enter a number between 1 and " + mediaList.size() + " or 0 to cancel.");
+            } else {
+                validInput = true;
+
+                Media mediaToEdit = mediaList.get(index);
+                System.out.println("Current title: " + mediaToEdit.getTitle());
+                String newTitle = readStringInput("Enter new title: ");
+
+                try {
+                    // Create a copy of the media with the new title
+                    Media updatedMedia = createUpdatedMediaWithTitle(mediaToEdit, newTitle);
+
+                    // Update the media
+                    Media result = mediaService.updateMedia(updatedMedia);
+                    System.out.println("Title updated successfully: " + result.getDetails());
+                } catch (Exception e) {
+                    System.out.println("Error updating title: " + e.getMessage());
+                    LOGGER.severe("Error updating title: " + e.getMessage());
+                }
+            }
+        }
+    }
+
+    /**
+     * Create a copy of the media with the new title
+     * 
+     * @param media    : The media to copy
+     * @param newTitle : The new title
+     * @return The updated media
+     * @throws Exception : If an error occurs during the creation process
+     */
+    private Media createUpdatedMediaWithTitle(Media media, String newTitle) throws Exception {
+        String mediaType = media.getClass().getSimpleName();
+        Media updatedMedia;
+
+        if (mediaType.equals("Book")) {
+            // Get current values using reflection for specific class methods and direct
+            // call for interface methods
+            String author = (String) media.getClass().getMethod("getAuthor").invoke(media);
+            LocalDate publicationDate = media.getPublicationDate();
+            String publisher = (String) media.getClass().getMethod("getPublisher").invoke(media);
+            int pages = (int) media.getClass().getMethod("getPages").invoke(media);
+
+            // Create a new instance with the updated title
+            updatedMedia = (Media) Class.forName("model.media.Book")
+                    .getConstructor(String.class, String.class, String.class, LocalDate.class, String.class, int.class)
+                    .newInstance(media.getId(), newTitle, author, publicationDate, publisher, pages);
+        } else if (mediaType.equals("Magazine")) {
+            // Get current values using reflection for specific class methods and direct
+            // call for interface methods
+            LocalDate publicationDate = media.getPublicationDate();
+            String publisher = (String) media.getClass().getMethod("getPublisher").invoke(media);
+            int issue = (int) media.getClass().getMethod("getIssue").invoke(media);
+
+            // Create a new instance with the updated title
+            updatedMedia = (Media) Class.forName("model.media.Magazine")
+                    .getConstructor(String.class, String.class, LocalDate.class, String.class, int.class)
+                    .newInstance(media.getId(), newTitle, publicationDate, publisher, issue);
+        } else {
+            throw new Exception("Unsupported media type for title update: " + mediaType);
+        }
+
+        // Preserve availability state
+        updatedMedia.setAvailable(media.isAvailable());
+        return updatedMedia;
+    }
+
+    /**
+     * Edit the publication date of a media
+     * 
+     * @param mediaList : The list of media to edit
+     * @throws LibraryException : If an error occurs during the edit process
+     */
+    private void editMediaPublicationDate(List<Media> mediaList) throws LibraryException {
+        if (mediaList.isEmpty()) {
+            System.out.println("No media to edit.");
+            return;
+        }
+
+        System.out.println("\nSelect media to edit (1-" + mediaList.size() + ", 0 to cancel): ");
+
+        int index;
+        boolean validInput = false;
+
+        while (!validInput) {
+            index = readIntInput("") - 1;
+
+            if (index == -1) {
+                System.out.println("Action cancelled.");
+                return;
+            } else if (index < 0 || index >= mediaList.size()) {
+                System.out.println(
+                        "Invalid selection, enter a number between 1 and " + mediaList.size() + " or 0 to cancel.");
+            } else {
+                validInput = true;
+
+                Media mediaToEdit = mediaList.get(index);
+                LocalDate currentDate = mediaToEdit.getPublicationDate();
+                System.out.println(
+                        "Current publication date: " + currentDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                LocalDate newDate = readDateInput("Enter new publication date (dd/MM/yyyy): ");
+
+                try {
+                    // Create a copy of the media with the new publication date
+                    Media updatedMedia = createUpdatedMediaWithPublicationDate(mediaToEdit, newDate);
+
+                    // Update the media
+                    Media result = mediaService.updateMedia(updatedMedia);
+                    System.out.println("Publication date updated successfully: " + result.getDetails());
+                } catch (Exception e) {
+                    System.out.println("Error updating publication date: " + e.getMessage());
+                    LOGGER.severe("Error updating publication date: " + e.getMessage());
+                }
+            }
+        }
+    }
+
+    /**
+     * Create a copy of the media with the new publication date
+     * 
+     * @param media              : The media to copy
+     * @param newPublicationDate : The new publication date
+     * @return The updated media
+     * @throws Exception : If an error occurs during the creation process
+     */
+    private Media createUpdatedMediaWithPublicationDate(Media media, LocalDate newPublicationDate) throws Exception {
+        String mediaType = media.getClass().getSimpleName();
+        Media updatedMedia;
+
+        if (mediaType.equals("Book")) {
+            // Get current values
+            String title = media.getTitle();
+            String author = (String) media.getClass().getMethod("getAuthor").invoke(media);
+            String publisher = (String) media.getClass().getMethod("getPublisher").invoke(media);
+            int pages = (int) media.getClass().getMethod("getPages").invoke(media);
+
+            // Create a new instance with the updated publication date
+            updatedMedia = (Media) Class.forName("model.media.Book")
+                    .getConstructor(String.class, String.class, String.class, LocalDate.class, String.class, int.class)
+                    .newInstance(media.getId(), title, author, newPublicationDate, publisher, pages);
+        } else if (mediaType.equals("Magazine")) {
+            // Get current values
+            String title = media.getTitle();
+            String publisher = (String) media.getClass().getMethod("getPublisher").invoke(media);
+            int issue = (int) media.getClass().getMethod("getIssue").invoke(media);
+
+            // Create a new instance with the updated publication date
+            updatedMedia = (Media) Class.forName("model.media.Magazine")
+                    .getConstructor(String.class, String.class, LocalDate.class, String.class, int.class)
+                    .newInstance(media.getId(), title, newPublicationDate, publisher, issue);
+        } else {
+            throw new Exception("Unsupported media type for publication date update: " + mediaType);
+        }
+
+        // Preserve availability state
+        updatedMedia.setAvailable(media.isAvailable());
+        return updatedMedia;
     }
 
     private List<Media> getAllCollections() throws LibraryException {
@@ -802,5 +1113,135 @@ public class UserInterfaceUI {
         }
 
         addToCollection(availableMedia, selectedCollection);
+    }
+
+    private void exportMedia() throws LibraryException {
+        System.out.println("\nEXPORT MEDIA");
+        System.out.println("1. Export Books");
+        System.out.println("2. Export Magazines");
+        System.out.println("3. Export Collections");
+        System.out.println("0. Go back");
+
+        boolean validMediaTypeChoice = false;
+        int mediaTypeChoice = 0;
+
+        while (!validMediaTypeChoice) {
+            mediaTypeChoice = readIntInput("Select media type to export: ");
+
+            if (mediaTypeChoice >= 0 && mediaTypeChoice <= 3) {
+                validMediaTypeChoice = true;
+            } else {
+                System.out.println("Invalid option, please enter a number between 0 and 3.");
+            }
+        }
+
+        if (mediaTypeChoice == 0)
+            return;
+
+        String mediaType;
+        switch (mediaTypeChoice) {
+            case 1:
+                mediaType = "Book";
+                break;
+            case 2:
+                mediaType = "Magazine";
+                break;
+            case 3:
+                mediaType = "Collection";
+                break;
+            default:
+                System.out.println("Invalid option, operation cancelled.");
+                return;
+        }
+
+        System.out.println("\nEXPORT FORMAT");
+        System.out.println("1. Export to JSON");
+        System.out.println("2. Export to Word");
+        System.out.println("0. Go back");
+
+        boolean validFormatChoice = false;
+        int formatChoice = 0;
+
+        while (!validFormatChoice) {
+            formatChoice = readIntInput("Select export format: ");
+
+            if (formatChoice >= 0 && formatChoice <= 2) {
+                validFormatChoice = true;
+            } else {
+                System.out.println("Invalid option, please enter a number between 0 and 2.");
+            }
+        }
+
+        if (formatChoice == 0)
+            return;
+
+        String format;
+        switch (formatChoice) {
+            case 1:
+                format = "JSON";
+                break;
+            case 2:
+                format = "WORD";
+                break;
+            default:
+                System.out.println("Invalid option, operation cancelled.");
+                return;
+        }
+
+        // Export in download directory
+        String userHome = System.getProperty("user.home");
+        String exportPath = userHome + "/Downloads";
+        System.out.println("Exporting to: " + exportPath);
+
+        // Create directory if it doesn't exist
+        File exportDir = new File(exportPath);
+        if (!exportDir.exists()) {
+            if (exportDir.mkdir()) {
+                System.out.println("Created export directory: " + exportDir.getAbsolutePath());
+            } else {
+                System.out.println("Failed to create export directory. Using current directory.");
+                exportPath = ".";
+            }
+        }
+
+        try {
+            // Get all media
+            List<Media> allMedia = mediaService.findAllMedia();
+
+            // Filter media by media type using ConcurrentMediaProcessor for parallelism
+            System.out.println("Filtering media concurrently...");
+            int threadCount = Runtime.getRuntime().availableProcessors();
+            ConcurrentMediaProcessor concurrentProcessor = new ConcurrentMediaProcessor(threadCount);
+
+            List<Media> filteredMedia = concurrentProcessor.processConcurrently(allMedia, media -> {
+                String className = media.getClass().getSimpleName();
+                return className.equals(mediaType) ? media : null;
+            }).stream().filter(media -> media != null).collect(Collectors.toList());
+
+            if (filteredMedia.isEmpty()) {
+                System.out.println("No " + mediaType + "s found to export.");
+                // Close the executor service
+                concurrentProcessor.shutdown(5);
+                return;
+            }
+
+            // Create the processor and export all media to a single file
+            ExportProcessor processor = new ExportProcessor(format, exportPath);
+            boolean success = processor.processMediaList(filteredMedia, mediaType);
+
+            // Close the executor service
+            concurrentProcessor.shutdown(5);
+
+            if (success) {
+                System.out.println("Export completed successfully.");
+                LOGGER.info("Export completed successfully.");
+            } else {
+                System.out.println("Error during export.");
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error during export: " + e.getMessage());
+            LOGGER.severe("Error during export: " + e.getMessage());
+        }
     }
 }

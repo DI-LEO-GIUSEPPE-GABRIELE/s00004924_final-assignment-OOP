@@ -17,12 +17,12 @@ public class Book implements Media {
     /**
      * Book constructor
      * 
-     * @param id              - The unique identifier of the book
-     * @param title           - The title of the book
-     * @param author          - The author of the book
-     * @param publicationDate - The publication date of the book
-     * @param publisher       - The publisher of the book
-     * @param pages           - The number of pages in the book
+     * @param id              : The unique identifier of the book
+     * @param title           : The title of the book
+     * @param author          : The author of the book
+     * @param publicationDate : The publication date of the book
+     * @param publisher       : The publisher of the book
+     * @param pages           : The number of pages in the book
      */
     public Book(String id, String title, String author,
             LocalDate publicationDate, String publisher, int pages) {
@@ -111,7 +111,7 @@ public class Book implements Media {
      * Annotation: Override method of the Media interface
      * Set the availability status of the book
      * 
-     * @param available - The availability status of the book to set
+     * @param available : The availability status of the book to set
      */
     public void setAvailable(boolean available) {
         this.available = available;
@@ -136,7 +136,7 @@ public class Book implements Media {
      * Annotation: Override method of the Media interface
      * Compare this book with another object for equality
      * 
-     * @param o - The object to compare with
+     * @param o : The object to compare with
      * @return true if the objects are equal, false for the other cases
      */
     public boolean equals(Object o) {
