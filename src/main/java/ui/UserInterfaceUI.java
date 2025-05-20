@@ -334,70 +334,79 @@ public class UserInterfaceUI {
     }
 
     private void handleSearchResults(List<Media> results) throws LibraryException {
-        System.out.println("\nOPTIONS:");
+        boolean validChoice = false;
 
-        boolean onlyCollections = true;
-        for (Media media : results) {
-            if (!(media instanceof MediaCollection)) {
-                onlyCollections = false;
-                break;
+        while (!validChoice) {
+            System.out.println("\nOPTIONS:");
+
+            boolean onlyCollections = true;
+            for (Media media : results) {
+                if (!(media instanceof MediaCollection)) {
+                    onlyCollections = false;
+                    break;
+                }
             }
-        }
 
-        if (!onlyCollections) {
-            System.out.println("1. Add to collection");
-            System.out.println("2. Delete media or collection");
-            System.out.println("3. Edit title");
-            System.out.println("4. Edit publication date");
-            System.out.println("5. Rollback last change");
-        } else {
-            System.out.println("1. Delete collection");
-            System.out.println("2. Rollback last change");
-        }
-        System.out.println("0. Go back");
+            if (!onlyCollections) {
+                System.out.println("1. Add to collection");
+                System.out.println("2. Delete media or collection");
+                System.out.println("3. Edit title");
+                System.out.println("4. Edit publication date");
+                System.out.println("5. Rollback last change");
+            } else {
+                System.out.println("1. Delete collection");
+                System.out.println("2. Rollback last change");
+            }
+            System.out.println("0. Go back");
 
-        int choice = readIntInput("Select an option: ");
+            int choice = readIntInput("Select an option: ");
 
-        switch (choice) {
-            case 1:
-                if (!onlyCollections) {
-                    addToCollection(results);
-                } else {
-                    deleteMedia(results);
-                }
-                break;
-            case 2:
-                if (!onlyCollections) {
-                    deleteMedia(results);
-                } else {
-                    rollbackMediaChanges(results);
-                }
-                break;
-            case 3:
-                if (!onlyCollections) {
-                    editMediaTitle(results);
-                } else {
+            switch (choice) {
+                case 1:
+                    if (!onlyCollections) {
+                        addToCollection(results);
+                    } else {
+                        deleteMedia(results);
+                    }
+                    validChoice = true;
+                    break;
+                case 2:
+                    if (!onlyCollections) {
+                        deleteMedia(results);
+                    } else {
+                        rollbackMediaChanges(results);
+                    }
+                    validChoice = true;
+                    break;
+                case 3:
+                    if (!onlyCollections) {
+                        editMediaTitle(results);
+                        validChoice = true;
+                    } else {
+                        System.out.println("Invalid option, try again.");
+                    }
+                    break;
+                case 4:
+                    if (!onlyCollections) {
+                        editMediaPublicationDate(results);
+                        validChoice = true;
+                    } else {
+                        System.out.println("Invalid option, try again.");
+                    }
+                    break;
+                case 5:
+                    if (!onlyCollections) {
+                        rollbackMediaChanges(results);
+                        validChoice = true;
+                    } else {
+                        System.out.println("Invalid option, try again.");
+                    }
+                    break;
+                case 0:
+                    return;
+                default:
                     System.out.println("Invalid option, try again.");
-                }
-                break;
-            case 4:
-                if (!onlyCollections) {
-                    editMediaPublicationDate(results);
-                } else {
-                    System.out.println("Invalid option, try again.");
-                }
-                break;
-            case 5:
-                if (!onlyCollections) {
-                    rollbackMediaChanges(results);
-                } else {
-                    System.out.println("Invalid option, try again.");
-                }
-                break;
-            case 0:
-                return;
-            default:
-                System.out.println("Invalid option, try again.");
+            }
         }
     }
 

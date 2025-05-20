@@ -373,3 +373,31 @@ java.lang.Throwable: Runtime.exit(130)
 	at java.base/jdk.internal.misc.Signal$1.run(Signal.java:218)
 	at java.base/java.lang.Thread.run(Thread.java:1583)
 
+May 20, 2025 12:30:35 PM main.java.Main main
+INFO: Starting the Library Management System
+May 20, 2025 12:30:35 PM ioc.IoCContainer <init>
+INFO: Initializing IoC Container
+May 20, 2025 12:30:35 PM repository.MediaRepository <init>
+INFO: Starting the repository for media
+May 20, 2025 12:30:35 PM java.io.ObjectInputFilter$Config traceFilter
+FINER: Builtin factory: null -> new: null
+May 20, 2025 12:30:35 PM repository.FileStorageManager loadMedia
+INFO: Media uploaded from files: data/media.dat, number of media: 4
+May 20, 2025 12:30:35 PM repository.MediaRepository loadMediaFromStorage
+INFO: Media loaded from file system: 4
+May 20, 2025 12:30:35 PM ioc.IoCContainer register
+INFO: Registered instance for class: repository.MediaRepository
+May 20, 2025 12:30:35 PM service.MediaService <init>
+INFO: Starting the media service
+May 20, 2025 12:30:35 PM ioc.IoCContainer register
+INFO: Registered instance for class: service.MediaService
+May 20, 2025 12:30:35 PM ioc.IoCContainer register
+INFO: Registered instance for class: java.util.Scanner
+May 20, 2025 12:30:35 PM ioc.IoCContainer injectDependencies
+INFO: Injected dependency into field: scanner of class: ui.UserInterfaceUI
+May 20, 2025 12:30:35 PM ioc.IoCContainer injectDependencies
+INFO: Injected dependency into field: mediaService of class: ui.UserInterfaceUI
+May 20, 2025 12:31:06 PM service.MediaService findMediaByTitle
+INFO: Media search by title: uno
+May 20, 2025 12:31:15 PM main.java.Main main
+INFO: Library Management System closed
