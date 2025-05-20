@@ -4,6 +4,7 @@ import ioc.IoCContainer;
 import ioc.IoCException;
 import repository.MediaRepository;
 import service.MediaService;
+import observer.LoggingMediaObserver;
 import ui.UserInterfaceUI;
 import util.LoggerManager;
 import java.util.Scanner;
@@ -26,6 +27,12 @@ public class Main {
 
             MediaService mediaService = MediaService.getInstance();
             container.register(MediaService.class, mediaService);
+
+            // Registration of observers
+            LoggingMediaObserver loggingObserver = new LoggingMediaObserver();
+
+            // Add the observer to the service
+            mediaService.addMediaChangeObserver(loggingObserver);
 
             Scanner scanner = new Scanner(System.in);
             container.register(Scanner.class, scanner);

@@ -5,6 +5,7 @@ processor/MediaProcessor.class
 exception/MediaNotFoundException.class
 observer/MediaChangeObserver.class
 util/LoggerManager.class
+observer/MediaChangeExecutor.class
 strategy/DateSortStrategy.class
 factory/MediaFactory.class
 repository/FileStorageManager.class
@@ -20,14 +21,13 @@ service/MediaService.class
 model/media/Book.class
 ui/UserInterfaceUI.class
 model/media/MediaCollection.class
-util/ConfigLoader.class
 util/ConcurrentMediaProcessor.class
-observer/MediaChangeSubject.class
 model/media/Magazine.class
 exception/LibraryException.class
 repository/Repository.class
 ioc/IoCContainer.class
 memento/MediaMementoService.class
+observer/LoggingMediaObserver.class
 annotation/Loggable$LogLevel.class
 annotation/Loggable.class
 processor/ExportProcessor.class

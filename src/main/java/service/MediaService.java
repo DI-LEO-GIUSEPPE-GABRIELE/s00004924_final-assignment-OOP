@@ -8,6 +8,8 @@ import repository.MediaRepository;
 import util.LoggerManager;
 import memento.MediaMementoService;
 import memento.MediaMemento;
+import observer.MediaChangeExecutor;
+import observer.MediaChangeObserver;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.logging.Logger;
@@ -17,10 +19,38 @@ public class MediaService {
     private static final Logger LOGGER = LoggerManager.getLogger(MediaService.class.getName());
     private static MediaService instance;
     private final MediaRepository mediaRepository;
+    private final MediaChangeExecutor mediaChangeSubject;
 
     private MediaService() {
         this.mediaRepository = MediaRepository.getInstance();
+        this.mediaChangeSubject = new MediaChangeExecutor();
         LOGGER.info("Starting the media service");
+    }
+
+    /**
+     * Add an observer for media changes
+     * 
+     * @param observer : The observer to add
+     */
+    public void addMediaChangeObserver(MediaChangeObserver observer) {
+        mediaChangeSubject.addObserver(observer);
+    }
+
+    /**
+     * Remove an observer for media changes
+     * 
+     * @param observer : The observer to remove
+     */
+    public void removeMediaChangeObserver(MediaChangeObserver observer) {
+        mediaChangeSubject.removeObserver(observer);
+    }
+
+    /**
+     * Shutdown the service
+     */
+    public void shutdown() {
+        mediaChangeSubject.shutdown();
+        LOGGER.info("MediaService shutdown successfully");
     }
 
     /**
@@ -44,7 +74,9 @@ public class MediaService {
      */
     public Media saveMedia(Media media) throws LibraryException {
         LOGGER.info("Media Save Request: " + media.getTitle());
-        return mediaRepository.save(media);
+        Media savedMedia = mediaRepository.save(media);
+        mediaChangeSubject.notifyMediaAdded(savedMedia);
+        return savedMedia;
     }
 
     /**
@@ -155,8 +187,10 @@ public class MediaService {
     public void deleteMedia(String id) throws MediaNotFoundException {
         LOGGER.info("Media Delete Request with ID: " + id);
         // Save state before deleting
-        MediaMementoService.getInstance().saveState(mediaRepository.findById(id));
+        Media mediaToDelete = mediaRepository.findById(id);
+        MediaMementoService.getInstance().saveState(mediaToDelete);
         mediaRepository.delete(id);
+        mediaChangeSubject.notifyMediaRemoved(mediaToDelete);
     }
 
     /**
@@ -169,8 +203,11 @@ public class MediaService {
     public Media updateMedia(Media media) throws MediaNotFoundException {
         LOGGER.info("Media Update Request: " + media.getTitle());
         // Save the current state before updating
-        MediaMementoService.getInstance().saveState(mediaRepository.findById(media.getId()));
-        return mediaRepository.update(media);
+        Media oldMedia = mediaRepository.findById(media.getId());
+        MediaMementoService.getInstance().saveState(oldMedia);
+        Media updatedMedia = mediaRepository.update(media);
+        mediaChangeSubject.notifyMediaUpdated(oldMedia, updatedMedia);
+        return updatedMedia;
     }
 
     /**

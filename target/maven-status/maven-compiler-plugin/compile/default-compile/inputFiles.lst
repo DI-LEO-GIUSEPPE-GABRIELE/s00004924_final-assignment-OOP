@@ -9,6 +9,7 @@
 /Users/giuseppegabrieledileo/Desktop/My_Works/Laurea | Epicode/OOP-final-assignment/src/main/java/adapter/MediaAdapter.java
 /Users/giuseppegabrieledileo/Desktop/My_Works/Laurea | Epicode/OOP-final-assignment/src/main/java/iterator/MediaIterator.java
 /Users/giuseppegabrieledileo/Desktop/My_Works/Laurea | Epicode/OOP-final-assignment/src/main/java/model/media/MediaCollection.java
+/Users/giuseppegabrieledileo/Desktop/My_Works/Laurea | Epicode/OOP-final-assignment/src/main/java/observer/LoggingMediaObserver.java
 /Users/giuseppegabrieledileo/Desktop/My_Works/Laurea | Epicode/OOP-final-assignment/src/main/java/strategy/SortingStrategy.java
 /Users/giuseppegabrieledileo/Desktop/My_Works/Laurea | Epicode/OOP-final-assignment/src/main/java/annotation/Loggable.java
 /Users/giuseppegabrieledileo/Desktop/My_Works/Laurea | Epicode/OOP-final-assignment/src/main/java/memento/MediaMementoService.java
@@ -22,12 +23,11 @@
 /Users/giuseppegabrieledileo/Desktop/My_Works/Laurea | Epicode/OOP-final-assignment/src/main/java/factory/MediaFactory.java
 /Users/giuseppegabrieledileo/Desktop/My_Works/Laurea | Epicode/OOP-final-assignment/src/main/java/exception/MediaNotFoundException.java
 /Users/giuseppegabrieledileo/Desktop/My_Works/Laurea | Epicode/OOP-final-assignment/src/main/java/annotation/Inject.java
+/Users/giuseppegabrieledileo/Desktop/My_Works/Laurea | Epicode/OOP-final-assignment/src/main/java/observer/MediaChangeExecutor.java
 /Users/giuseppegabrieledileo/Desktop/My_Works/Laurea | Epicode/OOP-final-assignment/src/main/java/util/LoggerManager.java
-/Users/giuseppegabrieledileo/Desktop/My_Works/Laurea | Epicode/OOP-final-assignment/src/main/java/util/ConfigLoader.java
 /Users/giuseppegabrieledileo/Desktop/My_Works/Laurea | Epicode/OOP-final-assignment/src/main/java/util/InputValidator.java
 /Users/giuseppegabrieledileo/Desktop/My_Works/Laurea | Epicode/OOP-final-assignment/src/main/java/ui/UserInterfaceUI.java
 /Users/giuseppegabrieledileo/Desktop/My_Works/Laurea | Epicode/OOP-final-assignment/src/main/java/Main.java
 /Users/giuseppegabrieledileo/Desktop/My_Works/Laurea | Epicode/OOP-final-assignment/src/main/java/memento/MediaMemento.java
-/Users/giuseppegabrieledileo/Desktop/My_Works/Laurea | Epicode/OOP-final-assignment/src/main/java/observer/MediaChangeSubject.java
 /Users/giuseppegabrieledileo/Desktop/My_Works/Laurea | Epicode/OOP-final-assignment/src/main/java/exception/LibraryException.java
 /Users/giuseppegabrieledileo/Desktop/My_Works/Laurea | Epicode/OOP-final-assignment/src/main/java/service/MediaService.java

@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-// Subject class for the Observer pattern, maintains a list of observers and
-// notifies them of changes to media objects and demonstrates multithreading by
+// Executor class for the Observer pattern.
+// Notifies media changes and use multithreading by
 // using an ExecutorService to notify observers asynchronously
-public class MediaChangeSubject {
+public class MediaChangeExecutor {
     private final List<MediaChangeObserver> observers = new ArrayList<>();
     private final ExecutorService notificationExecutor = Executors.newFixedThreadPool(2);
 
