@@ -27,6 +27,7 @@ model/media/Magazine.class
 exception/LibraryException.class
 repository/Repository.class
 ioc/IoCContainer.class
+memento/MediaMementoService.class
 annotation/Loggable$LogLevel.class
 annotation/Loggable.class
 processor/ExportProcessor.class

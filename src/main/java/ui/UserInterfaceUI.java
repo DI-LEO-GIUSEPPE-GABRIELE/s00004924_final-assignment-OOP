@@ -249,6 +249,7 @@ public class UserInterfaceUI {
         System.out.println("1. Search by title");
         System.out.println("2. Search by publication year");
         System.out.println("3. Search by ID");
+        System.out.println("4. Rollback last change");
         System.out.println("0. Go back");
 
         boolean validChoice = false;
@@ -266,6 +267,10 @@ public class UserInterfaceUI {
                     break;
                 case 3:
                     searchById();
+                    validChoice = true;
+                    break;
+                case 4:
+                    rollbackLastChange();
                     validChoice = true;
                     break;
                 case 0:
@@ -342,8 +347,10 @@ public class UserInterfaceUI {
         if (!onlyCollections) {
             System.out.println("1. Add to collection");
             System.out.println("2. Delete media or collection");
+            System.out.println("3. Rollback last changes");
         } else {
             System.out.println("1. Delete collection");
+            System.out.println("2. Rollback last changes");
         }
         System.out.println("0. Go back");
 
@@ -360,6 +367,13 @@ public class UserInterfaceUI {
             case 2:
                 if (!onlyCollections) {
                     deleteMedia(results);
+                } else {
+                    rollbackMediaChanges(results);
+                }
+                break;
+            case 3:
+                if (!onlyCollections) {
+                    rollbackMediaChanges(results);
                 } else {
                     System.out.println("Invalid option, try again.");
                 }
@@ -448,6 +462,82 @@ public class UserInterfaceUI {
                     System.out.println("Deletion cancelled.");
                 }
             }
+        }
+    }
+
+    /**
+     * Rollback the last changes made to a list of media
+     * 
+     * @param mediaList : The list of media to rollback
+     * @throws LibraryException : If an error occurs during the rollback process
+     */
+    private void rollbackMediaChanges(List<Media> mediaList) throws LibraryException {
+        if (mediaList.isEmpty()) {
+            System.out.println("No media available for rollback.");
+            return;
+        }
+
+        System.out.println("\nSelect media to rollback (1-" + mediaList.size() + ", 0 to cancel): ");
+
+        int index;
+        boolean validInput = false;
+
+        while (!validInput) {
+            index = readIntInput("") - 1;
+
+            if (index == -1) {
+                System.out.println("Action cancelled.");
+                return;
+            } else if (index < 0 || index >= mediaList.size()) {
+                System.out.println(
+                        "Invalid selection, enter a number between 1 and " + mediaList.size() + " or 0 to cancel.");
+            } else {
+                validInput = true;
+
+                Media mediaToRestore = mediaList.get(index);
+                System.out.println("Are you sure you want to rollback: " + mediaToRestore.getTitle() + "? (y/n)");
+                String confirmation = scanner.nextLine().trim().toLowerCase();
+
+                if (confirmation.equals("y")) {
+                    try {
+                        Media restoredMedia = mediaService.restoreMediaChanges(mediaToRestore.getId());
+                        if (restoredMedia != null) {
+                            System.out.println("Changes rollbacked successfully.");
+                            System.out.println("Media rollbacked: " + restoredMedia.getDetails());
+                        } else {
+                            System.out.println("No changes to rollback for this media.");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Error rollbacking media: " + e.getMessage());
+                    }
+                } else {
+                    System.out.println("Action cancelled.");
+                }
+            }
+        }
+    }
+
+    /**
+     * Rollback the last changes made to a media
+     * 
+     * @throws LibraryException : If an error occurs during the rollback process
+     */
+    private void rollbackLastChange() throws LibraryException {
+        System.out.println("\nROLLBACK LAST CHANGE");
+        String mediaId = readStringInput("Enter media ID: ");
+
+        try {
+            Media restoredMedia = mediaService.restoreMediaChanges(mediaId);
+            if (restoredMedia != null) {
+                System.out.println("Changes rollbacked successfully.");
+                System.out.println("Media rollbacked: " + restoredMedia.getDetails());
+            } else {
+                System.out.println("No changes to rollback for this media.");
+            }
+        } catch (MediaNotFoundException e) {
+            System.out.println("Media not found: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error rollbacking media: " + e.getMessage());
         }
     }
 

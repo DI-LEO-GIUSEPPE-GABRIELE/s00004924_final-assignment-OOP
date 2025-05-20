@@ -6,6 +6,9 @@ import model.media.Media;
 import model.media.MediaCollection;
 import repository.MediaRepository;
 import util.LoggerManager;
+import memento.MediaMementoService;
+import memento.MediaMemento;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -45,6 +48,80 @@ public class MediaService {
     }
 
     /**
+     * Restore the previous state of a media
+     * 
+     * @param mediaId : The ID of the media to restore
+     * @return The restored media or null if no previous state exists
+     * @throws MediaNotFoundException : If the media with the specified ID is not
+     *                                found
+     */
+    public Media restoreMediaChanges(String mediaId) throws MediaNotFoundException {
+        LOGGER.info("Restore Request for Media with ID: " + mediaId);
+
+        MediaMementoService careTaker = MediaMementoService.getInstance();
+
+        if (!careTaker.hasPreviousState(mediaId)) {
+            LOGGER.warning("No previous state found for media with ID: " + mediaId);
+            return null;
+        }
+
+        MediaMemento memento = careTaker.getLastState(mediaId);
+        if (memento == null) {
+            LOGGER.warning("Failed to retrieve previous state for media with ID: " + mediaId);
+            return null;
+        }
+
+        try {
+            // Check if the media exists
+            Media currentMedia = mediaRepository.findById(mediaId);
+            String mediaType = currentMedia.getClass().getSimpleName();
+
+            Media restoredMedia;
+
+            if (mediaType.equals("Book")) {
+                // Restore the state of the Book
+                String title = memento.getTitle();
+                LocalDate publicationDate = memento.getPublicationDate();
+                String author = (String) memento.getState("author");
+                Integer pages = (Integer) memento.getState("pages");
+                String publisher = (String) currentMedia.getClass().getMethod("getPublisher").invoke(currentMedia);
+
+                // Create a new instance of Book with the restored state
+                restoredMedia = (Media) Class.forName("model.media.Book")
+                        .getConstructor(String.class, String.class, String.class, LocalDate.class, String.class,
+                                int.class)
+                        .newInstance(currentMedia.getId(), title, author, publicationDate, publisher, pages);
+
+            } else if (mediaType.equals("Magazine")) {
+                // Restore the state of the Magazine
+                String title = memento.getTitle();
+                LocalDate publicationDate = memento.getPublicationDate();
+                Integer issue = (Integer) memento.getState("issue");
+                String publisher = (String) currentMedia.getClass().getMethod("getPublisher").invoke(currentMedia);
+
+                // Create a new instance of Magazine with the restored state
+                restoredMedia = (Media) Class.forName("model.media.Magazine")
+                        .getConstructor(String.class, String.class, LocalDate.class, String.class, int.class)
+                        .newInstance(currentMedia.getId(), title, publicationDate, publisher, issue);
+
+            } else {
+                LOGGER.warning("Unsupported media type for restoration: " + mediaType);
+                return null;
+            }
+
+            // Restore the availability state
+            restoredMedia.setAvailable(currentMedia.isAvailable());
+
+            // Save the restored media
+            return mediaRepository.update(restoredMedia);
+
+        } catch (Exception e) {
+            LOGGER.severe("Error restoring media state: " + e.getMessage());
+            throw new MediaNotFoundException("Error restoring media state: " + e.getMessage());
+        }
+    }
+
+    /**
      * Find media by ID
      * 
      * @param id : The ID of the media to find
@@ -77,6 +154,8 @@ public class MediaService {
      */
     public void deleteMedia(String id) throws MediaNotFoundException {
         LOGGER.info("Media Delete Request with ID: " + id);
+        // Save state before deleting
+        MediaMementoService.getInstance().saveState(mediaRepository.findById(id));
         mediaRepository.delete(id);
     }
 
@@ -89,6 +168,8 @@ public class MediaService {
      */
     public Media updateMedia(Media media) throws MediaNotFoundException {
         LOGGER.info("Media Update Request: " + media.getTitle());
+        // Save the current state before updating
+        MediaMementoService.getInstance().saveState(mediaRepository.findById(media.getId()));
         return mediaRepository.update(media);
     }
 
@@ -132,6 +213,10 @@ public class MediaService {
             throw new LibraryException("The specified ID does not match a collection");
         }
 
+        // Save states before modifying
+        MediaMementoService.getInstance().saveState(collection);
+        MediaMementoService.getInstance().saveState(media);
+
         // Set media as unavailable when added to a collection
         media.setAvailable(false);
         mediaRepository.update(media);
@@ -160,6 +245,10 @@ public class MediaService {
         if (!(collection instanceof MediaCollection)) {
             throw new LibraryException("The specified ID does not match a collection");
         }
+
+        // Save states before modifying
+        MediaMementoService.getInstance().saveState(collection);
+        MediaMementoService.getInstance().saveState(media);
 
         // Set media as available when removed from a collection
         media.setAvailable(true);
