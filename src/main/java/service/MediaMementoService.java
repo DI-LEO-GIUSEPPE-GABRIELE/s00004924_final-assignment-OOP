@@ -1,9 +1,10 @@
-package memento;
+package service;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
+import memento.MediaMemento;
 import model.media.Media;
 
 // Memento service for saving and restoring Media object states

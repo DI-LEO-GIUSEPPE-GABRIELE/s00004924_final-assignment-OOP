@@ -38,7 +38,6 @@ This project implements a complete library management system that allows the man
 - Builder Pattern: Implemented in MediaBuilder to build complex media objects
 - Strategy Pattern: Implemented in SortingStrategy for interchangeable sorting algorithms
 - Observer Pattern: Implemented in MediaChangeSubject and MediaChangeObserver for change notifications
-- Chain of Responsibility: Implemented in MediaHandler to process requests in sequence
 - Adapter Pattern: Implemented in MediaAdapter for compatibility between different interfaces
 - Memento Pattern: Implemented in MediaMemento to save and restore state
 - Template Method: Implemented in MediaProcessor to define algorithm skeletons
@@ -60,18 +59,22 @@ This project implements a complete library management system that allows the man
 
 ## Project Structure
 
-- model: Contains data model classes
+- adapter: Contains adapter class
+- annotation: Contains custom annotations
+- builder: Contains builder class
+- exception: Contains custom exceptions
+- factory: Contains factory for object creation
+- ioc: Contains classes for dependency injection
+- iterator: Contains iterators for collections
+- memento: Contains memento class
+- model/media: Contains data model classes
+- observer: Contains observer classes
+- processor: Contains template method class
 - repository: Contains classes for data persistence
 - service: Contains services for application logic
-- factory: Contains factories for object creation
-- iterator: Contains iterators for collections
-- exception: Contains custom exceptions
+- strategy: Contains strategy classes
 - ui: Contains the user interface for console experience
 - util: Contains utility classes
-- validation: Contains classes for input validation
-- pattern: Contains design pattern implementations
-- advanced: Contains advanced features such as multithreading and reflection
-- annotation: Contains custom annotations
 - test: Contains test class
 
 ## Run

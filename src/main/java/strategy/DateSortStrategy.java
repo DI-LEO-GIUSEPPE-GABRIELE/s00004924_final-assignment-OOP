@@ -14,12 +14,16 @@ public class DateSortStrategy implements SortingStrategy {
     public List<Media> sort(List<Media> mediaList) {
         LOGGER.info("Sorting media by publication date (desc)");
 
-        // Sort the list in-place using a Comparator in reverse order
-        mediaList.sort(Comparator.comparing(Media::getPublicationDate).reversed());
+        // Using Stream API with lambda and Comparator to sort the list by publication
+        // date in
+        // descending order
+        List<Media> sortedList = mediaList.stream()
+                .sorted(Comparator.comparing(Media::getPublicationDate).reversed())
+                .collect(java.util.stream.Collectors.toList());
 
         LOGGER.info("Media sorted by publication date successfully (desc)");
 
-        return mediaList;
+        return sortedList;
     }
 
     @Override

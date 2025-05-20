@@ -233,7 +233,7 @@ public class UserInterfaceUI {
         // Apply sorting if requested
         if (sortChoice == 2) {
             SortingStrategy sortStrategy = new DateSortStrategy();
-            sortStrategy.sort(filteredMedia);
+            filteredMedia = sortStrategy.sort(filteredMedia);
             System.out.println("\nALL MEDIA (sorted by " + sortStrategy.getSortName() + "):");
         } else {
             System.out.println("\nALL MEDIA:");

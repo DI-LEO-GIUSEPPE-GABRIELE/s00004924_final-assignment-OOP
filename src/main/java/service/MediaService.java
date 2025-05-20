@@ -6,7 +6,6 @@ import model.media.Media;
 import model.media.MediaCollection;
 import repository.MediaRepository;
 import util.LoggerManager;
-import memento.MediaMementoService;
 import memento.MediaMemento;
 import observer.MediaChangeExecutor;
 import observer.MediaChangeObserver;

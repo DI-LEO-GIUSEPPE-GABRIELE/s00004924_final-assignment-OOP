@@ -20,13 +20,13 @@ adapter/MediaAdapter.class
 service/MediaService.class
 model/media/Book.class
 ui/UserInterfaceUI.class
+service/MediaMementoService.class
 model/media/MediaCollection.class
 util/ConcurrentMediaProcessor.class
 model/media/Magazine.class
 exception/LibraryException.class
 repository/Repository.class
 ioc/IoCContainer.class
-memento/MediaMementoService.class
 observer/LoggingMediaObserver.class
 annotation/Loggable$LogLevel.class
 annotation/Loggable.class
