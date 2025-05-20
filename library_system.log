@@ -401,3 +401,47 @@ May 20, 2025 12:31:06 PM service.MediaService findMediaByTitle
 INFO: Media search by title: uno
 May 20, 2025 12:31:15 PM main.java.Main main
 INFO: Library Management System closed
+May 20, 2025 1:32:02 PM main.java.Main main
+INFO: Starting the Library Management System
+May 20, 2025 1:32:02 PM ioc.IoCContainer <init>
+INFO: Initializing IoC Container
+May 20, 2025 1:32:02 PM repository.MediaRepository <init>
+INFO: Starting the repository for media
+May 20, 2025 1:32:02 PM java.io.ObjectInputFilter$Config traceFilter
+FINER: Builtin factory: null -> new: null
+May 20, 2025 1:32:02 PM repository.FileStorageManager loadMedia
+INFO: Media uploaded from files: data/media.dat, number of media: 4
+May 20, 2025 1:32:02 PM repository.MediaRepository loadMediaFromStorage
+INFO: Media loaded from file system: 4
+May 20, 2025 1:32:02 PM ioc.IoCContainer register
+INFO: Registered instance for class: repository.MediaRepository
+May 20, 2025 1:32:02 PM service.MediaService <init>
+INFO: Starting the media service
+May 20, 2025 1:32:02 PM ioc.IoCContainer register
+INFO: Registered instance for class: service.MediaService
+May 20, 2025 1:32:02 PM ioc.IoCContainer register
+INFO: Registered instance for class: java.util.Scanner
+May 20, 2025 1:32:02 PM ioc.IoCContainer injectDependencies
+INFO: Injected dependency into field: scanner of class: ui.UserInterfaceUI
+May 20, 2025 1:32:02 PM ioc.IoCContainer injectDependencies
+INFO: Injected dependency into field: mediaService of class: ui.UserInterfaceUI
+May 20, 2025 1:32:05 PM service.MediaService findAllMedia
+INFO: All media request
+May 20, 2025 1:32:32 PM service.MediaService saveMedia
+INFO: Media Save Request: quattro
+May 20, 2025 1:32:32 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 20, 2025 1:32:32 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 20, 2025 1:32:32 PM repository.MediaRepository save
+INFO: Media saved with ID: a221fb4d-076f-455a-8dce-83dc2a34a079
+May 20, 2025 1:32:32 PM ui.UserInterfaceUI addNewMagazine
+INFO: Magazine added successfully: a221fb4d-076f-455a-8dce-83dc2a34a079
+May 20, 2025 1:32:32 PM observer.LoggingMediaObserver onMediaAdded
+INFO: Media added: quattro (ID: a221fb4d-076f-455a-8dce-83dc2a34a079)
+May 20, 2025 1:32:38 PM service.MediaService findAllMedia
+INFO: All media request
+May 20, 2025 1:32:41 PM service.MediaService shutdown
+INFO: MediaService shutdown successfully
+May 20, 2025 1:32:41 PM main.java.Main main
+INFO: Library Management System closed

@@ -85,6 +85,7 @@ public class UserInterfaceUI {
 
         System.out.println("Thank you for using the Library Management System!");
         scanner.close();
+        mediaService.shutdown();
     }
 
     private void printWelcomeMessage() {
