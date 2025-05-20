@@ -141,3 +141,235 @@ May 20, 2025 10:17:43 AM service.MediaService findAllMedia
 INFO: All media request
 May 20, 2025 10:19:02 AM main.java.Main main
 INFO: Library Management System closed
+May 20, 2025 10:25:33 AM main.java.Main main
+INFO: Starting the Library Management System
+May 20, 2025 10:25:33 AM ioc.IoCContainer <init>
+INFO: Initializing IoC Container
+May 20, 2025 10:25:33 AM repository.MediaRepository <init>
+INFO: Starting the repository for media
+May 20, 2025 10:25:33 AM java.io.ObjectInputFilter$Config traceFilter
+FINER: Builtin factory: null -> new: null
+May 20, 2025 10:25:33 AM repository.FileStorageManager loadMedia
+INFO: Media uploaded from files: data/media.dat, number of media: 4
+May 20, 2025 10:25:33 AM repository.MediaRepository loadMediaFromStorage
+INFO: Media loaded from file system: 4
+May 20, 2025 10:25:33 AM ioc.IoCContainer register
+INFO: Registered instance for class: repository.MediaRepository
+May 20, 2025 10:25:33 AM service.MediaService <init>
+INFO: Starting the media service
+May 20, 2025 10:25:33 AM ioc.IoCContainer register
+INFO: Registered instance for class: service.MediaService
+May 20, 2025 10:25:33 AM ioc.IoCContainer register
+INFO: Registered instance for class: java.util.Scanner
+May 20, 2025 10:25:33 AM ioc.IoCContainer injectDependencies
+INFO: Injected dependency into field: scanner of class: ui.UserInterfaceUI
+May 20, 2025 10:25:33 AM ioc.IoCContainer injectDependencies
+INFO: Injected dependency into field: mediaService of class: ui.UserInterfaceUI
+May 20, 2025 10:25:38 AM service.MediaService findAllMedia
+INFO: All media request
+May 20, 2025 10:25:54 AM service.MediaService saveMedia
+INFO: Media Save Request: collezione
+May 20, 2025 10:25:54 AM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 20, 2025 10:25:54 AM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 20, 2025 10:25:54 AM repository.MediaRepository save
+INFO: Media saved with ID: 1a242124-ea2f-453f-85e0-9e224e79fcd5
+May 20, 2025 10:25:54 AM ui.UserInterfaceUI addNewCollection
+INFO: Collection added successfully: 1a242124-ea2f-453f-85e0-9e224e79fcd5
+May 20, 2025 10:25:54 AM observer.LoggingMediaObserver onMediaAdded
+INFO: Media added: collezione (ID: 1a242124-ea2f-453f-85e0-9e224e79fcd5)
+May 20, 2025 10:26:04 AM service.MediaService findAllMedia
+INFO: All media request
+May 20, 2025 10:26:25 AM service.MediaService restoreMediaChanges
+INFO: Restore Request for Media with ID: f901575b-65e4-4572-9cd6-5d6298ee39ca
+May 20, 2025 10:26:25 AM service.MediaService restoreMediaChanges
+WARNING: No previous state found for media with ID: f901575b-65e4-4572-9cd6-5d6298ee39ca
+May 20, 2025 10:26:57 AM service.MediaService findAllMedia
+INFO: All media request
+May 20, 2025 10:26:57 AM util.ConcurrentMediaProcessor <init>
+INFO: Created concurrent processor with 10 threads
+May 20, 2025 10:26:57 AM util.ConcurrentMediaProcessor processConcurrently
+INFO: Starting concurrent processing with custom function
+May 20, 2025 10:26:57 AM util.ConcurrentMediaProcessor processConcurrently
+INFO: Completed concurrent processing with custom function
+May 20, 2025 10:26:57 AM processor.ExportProcessor processMediaList
+INFO: Prepare to export in format: JSON
+May 20, 2025 10:26:57 AM processor.ExportProcessor exportToJSON
+INFO: Export completed successfully.
+May 20, 2025 10:26:57 AM util.ConcurrentMediaProcessor shutdown
+INFO: Shutting down concurrent processor
+May 20, 2025 10:26:57 AM util.ConcurrentMediaProcessor shutdown
+INFO: Concurrent processor shutdown successfully
+May 20, 2025 10:26:57 AM ui.UserInterfaceUI exportMedia
+INFO: Export completed successfully.
+May 20, 2025 10:27:14 AM service.MediaService findAllMedia
+INFO: All media request
+May 20, 2025 10:27:38 AM service.MediaService findAllMedia
+INFO: All media request
+May 20, 2025 10:27:57 AM service.MediaService findAllMedia
+INFO: All media request
+May 20, 2025 10:28:00 AM service.MediaService findAllMedia
+INFO: All media request
+May 20, 2025 10:28:06 AM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 20, 2025 10:28:06 AM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 20, 2025 10:28:06 AM repository.MediaRepository update
+INFO: Media updated with ID: 75f3dc95-5006-44f3-89a8-ba2a308b9b88
+May 20, 2025 10:28:06 AM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 20, 2025 10:28:06 AM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 20, 2025 10:28:06 AM repository.MediaRepository update
+INFO: Media updated with ID: 1a242124-ea2f-453f-85e0-9e224e79fcd5
+May 20, 2025 10:28:06 AM service.MediaService addMediaToCollection
+INFO: Media 75f3dc95-5006-44f3-89a8-ba2a308b9b88 added to collection 1a242124-ea2f-453f-85e0-9e224e79fcd5
+May 20, 2025 10:28:14 AM service.MediaService findAllMedia
+INFO: All media request
+May 20, 2025 10:28:34 AM service.MediaService restoreMediaChanges
+INFO: Restore Request for Media with ID: 75f3dc95-5006-44f3-89a8-ba2a308b9b88
+May 20, 2025 10:28:34 AM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 20, 2025 10:28:34 AM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 20, 2025 10:28:34 AM repository.MediaRepository update
+INFO: Media updated with ID: 75f3dc95-5006-44f3-89a8-ba2a308b9b88
+May 20, 2025 10:28:41 AM service.MediaService findAllMedia
+INFO: All media request
+May 20, 2025 10:28:49 AM service.MediaService findAllMedia
+INFO: All media request
+May 20, 2025 10:30:08 AM service.MediaService findMediaByTitle
+INFO: Media search by title: uno
+May 20, 2025 10:30:26 AM service.MediaService restoreMediaChanges
+INFO: Restore Request for Media with ID: 75f3dc95-5006-44f3-89a8-ba2a308b9b88
+May 20, 2025 10:30:26 AM service.MediaService restoreMediaChanges
+WARNING: No previous state found for media with ID: 75f3dc95-5006-44f3-89a8-ba2a308b9b88
+May 20, 2025 10:30:44 AM service.MediaService findMediaByTitle
+INFO: Media search by title: uno
+May 20, 2025 11:21:27 AM main.java.Main main
+INFO: Library Management System closed
+May 20, 2025 11:22:12 AM java.lang.Shutdown logRuntimeExit
+FINE: Runtime.exit() called with status: 130
+java.lang.Throwable: Runtime.exit(130)
+	at java.base/java.lang.Shutdown.logRuntimeExit(Shutdown.java:179)
+	at java.base/java.lang.Shutdown.exit(Shutdown.java:160)
+	at java.base/java.lang.Terminator$1.handle(Terminator.java:51)
+	at java.base/jdk.internal.misc.Signal$1.run(Signal.java:218)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+May 20, 2025 11:54:40 AM main.java.Main main
+INFO: Starting the Library Management System
+May 20, 2025 11:54:40 AM ioc.IoCContainer <init>
+INFO: Initializing IoC Container
+May 20, 2025 11:54:40 AM repository.MediaRepository <init>
+INFO: Starting the repository for media
+May 20, 2025 11:54:40 AM java.io.ObjectInputFilter$Config traceFilter
+FINER: Builtin factory: null -> new: null
+May 20, 2025 11:54:41 AM repository.FileStorageManager loadMedia
+INFO: Media uploaded from files: data/media.dat, number of media: 5
+May 20, 2025 11:54:41 AM repository.MediaRepository loadMediaFromStorage
+INFO: Media loaded from file system: 5
+May 20, 2025 11:54:41 AM ioc.IoCContainer register
+INFO: Registered instance for class: repository.MediaRepository
+May 20, 2025 11:54:41 AM service.MediaService <init>
+INFO: Starting the media service
+May 20, 2025 11:54:41 AM ioc.IoCContainer register
+INFO: Registered instance for class: service.MediaService
+May 20, 2025 11:54:41 AM ioc.IoCContainer register
+INFO: Registered instance for class: java.util.Scanner
+May 20, 2025 11:54:41 AM ioc.IoCContainer injectDependencies
+INFO: Injected dependency into field: scanner of class: ui.UserInterfaceUI
+May 20, 2025 11:54:41 AM ioc.IoCContainer injectDependencies
+INFO: Injected dependency into field: mediaService of class: ui.UserInterfaceUI
+May 20, 2025 11:54:44 AM service.MediaService findAllMedia
+INFO: All media request
+May 20, 2025 11:54:51 AM service.MediaService findMediaByTitle
+INFO: Media search by title: uno
+May 20, 2025 11:55:02 AM service.MediaService updateMedia
+INFO: Media Update Request: uno mod
+May 20, 2025 11:55:02 AM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 20, 2025 11:55:02 AM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 20, 2025 11:55:02 AM repository.MediaRepository update
+INFO: Media updated with ID: 75f3dc95-5006-44f3-89a8-ba2a308b9b88
+May 20, 2025 11:55:02 AM observer.LoggingMediaObserver onMediaUpdated
+INFO: Media updated: uno -> uno mod (ID: 75f3dc95-5006-44f3-89a8-ba2a308b9b88)
+May 20, 2025 11:55:14 AM service.MediaService findAllMedia
+INFO: All media request
+May 20, 2025 11:55:32 AM service.MediaService restoreMediaChanges
+INFO: Restore Request for Media with ID: 75f3dc95-5006-44f3-89a8-ba2a308b9b88
+May 20, 2025 11:55:32 AM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 20, 2025 11:55:32 AM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 20, 2025 11:55:32 AM repository.MediaRepository update
+INFO: Media updated with ID: 75f3dc95-5006-44f3-89a8-ba2a308b9b88
+May 20, 2025 11:55:36 AM service.MediaService findAllMedia
+INFO: All media request
+May 20, 2025 11:55:43 AM service.MediaService findMediaByTitle
+INFO: Media search by title: uno
+May 20, 2025 11:56:03 AM service.MediaService updateMedia
+INFO: Media Update Request: uno
+May 20, 2025 11:56:03 AM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 20, 2025 11:56:03 AM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 20, 2025 11:56:03 AM repository.MediaRepository update
+INFO: Media updated with ID: 75f3dc95-5006-44f3-89a8-ba2a308b9b88
+May 20, 2025 11:56:03 AM observer.LoggingMediaObserver onMediaUpdated
+INFO: Media updated: uno -> uno (ID: 75f3dc95-5006-44f3-89a8-ba2a308b9b88)
+May 20, 2025 11:56:09 AM service.MediaService findAllMedia
+INFO: All media request
+May 20, 2025 11:56:09 AM strategy.DateSortStrategy sort
+INFO: Sorting media by publication date (desc)
+May 20, 2025 11:56:09 AM strategy.DateSortStrategy sort
+INFO: Media sorted by publication date successfully (desc)
+May 20, 2025 11:56:38 AM service.MediaService findMediaByTitle
+INFO: Media search by title: uno
+May 20, 2025 11:59:42 AM service.MediaService findMediaByTitle
+INFO: Media search by title: uno
+May 20, 2025 11:59:56 AM service.MediaService restoreMediaChanges
+INFO: Restore Request for Media with ID: 75f3dc95-5006-44f3-89a8-ba2a308b9b88
+May 20, 2025 11:59:56 AM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 20, 2025 11:59:56 AM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 20, 2025 11:59:56 AM repository.MediaRepository update
+INFO: Media updated with ID: 75f3dc95-5006-44f3-89a8-ba2a308b9b88
+May 20, 2025 11:59:59 AM service.MediaService findAllMedia
+INFO: All media request
+May 20, 2025 12:00:24 PM service.MediaService findMediaByTitle
+INFO: Media search by title: quattro
+May 20, 2025 12:00:35 PM service.MediaService deleteMedia
+INFO: Media Delete Request with ID: 4a2c3353-f1e3-4652-84ee-841f0535ea73
+May 20, 2025 12:00:35 PM repository.FileStorageManager saveMedia
+INFO: Media saved to file: data/media.dat
+May 20, 2025 12:00:35 PM repository.MediaRepository saveMediaToStorage
+INFO: Media saved in file system
+May 20, 2025 12:00:35 PM repository.MediaRepository delete
+INFO: Media deleted with ID: 4a2c3353-f1e3-4652-84ee-841f0535ea73
+May 20, 2025 12:00:35 PM observer.LoggingMediaObserver onMediaRemoved
+INFO: Media removed: quattro (ID: 4a2c3353-f1e3-4652-84ee-841f0535ea73)
+May 20, 2025 12:00:44 PM service.MediaService findAllMedia
+INFO: All media request
+May 20, 2025 12:01:02 PM service.MediaService restoreMediaChanges
+INFO: Restore Request for Media with ID: 4a2c3353-f1e3-4652-84ee-841f0535ea73
+May 20, 2025 12:01:02 PM repository.MediaRepository findById
+WARNING: Media not found with ID: 4a2c3353-f1e3-4652-84ee-841f0535ea73
+May 20, 2025 12:01:02 PM service.MediaService restoreMediaChanges
+SEVERE: Error restoring media state: Media with ID Media not found with ID: 4a2c3353-f1e3-4652-84ee-841f0535ea73 not found
+May 20, 2025 12:02:57 PM service.MediaService findMediaByPublicationYear
+INFO: Search media by publication year: 2025
+May 20, 2025 12:04:31 PM main.java.Main main
+INFO: Library Management System closed
+May 20, 2025 12:04:35 PM java.lang.Shutdown logRuntimeExit
+FINE: Runtime.exit() called with status: 130
+java.lang.Throwable: Runtime.exit(130)
+	at java.base/java.lang.Shutdown.logRuntimeExit(Shutdown.java:179)
+	at java.base/java.lang.Shutdown.exit(Shutdown.java:160)
+	at java.base/java.lang.Terminator$1.handle(Terminator.java:51)
+	at java.base/jdk.internal.misc.Signal$1.run(Signal.java:218)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+

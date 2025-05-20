@@ -347,10 +347,12 @@ public class UserInterfaceUI {
         if (!onlyCollections) {
             System.out.println("1. Add to collection");
             System.out.println("2. Delete media or collection");
-            System.out.println("3. Rollback last changes");
+            System.out.println("3. Edit title");
+            System.out.println("4. Edit publication date");
+            System.out.println("5. Rollback last change");
         } else {
             System.out.println("1. Delete collection");
-            System.out.println("2. Rollback last changes");
+            System.out.println("2. Rollback last change");
         }
         System.out.println("0. Go back");
 
@@ -372,6 +374,20 @@ public class UserInterfaceUI {
                 }
                 break;
             case 3:
+                if (!onlyCollections) {
+                    editMediaTitle(results);
+                } else {
+                    System.out.println("Invalid option, try again.");
+                }
+                break;
+            case 4:
+                if (!onlyCollections) {
+                    editMediaPublicationDate(results);
+                } else {
+                    System.out.println("Invalid option, try again.");
+                }
+                break;
+            case 5:
                 if (!onlyCollections) {
                     rollbackMediaChanges(results);
                 } else {
@@ -539,6 +555,190 @@ public class UserInterfaceUI {
         } catch (Exception e) {
             System.out.println("Error rollbacking media: " + e.getMessage());
         }
+    }
+
+    /**
+     * Edit the title of a media
+     * 
+     * @param mediaList : The list of media to edit
+     * @throws LibraryException : If an error occurs during the edit process
+     */
+    private void editMediaTitle(List<Media> mediaList) throws LibraryException {
+        if (mediaList.isEmpty()) {
+            System.out.println("No media to edit.");
+            return;
+        }
+
+        System.out.println("\nSelect media to edit (1-" + mediaList.size() + ", 0 to cancel): ");
+
+        int index;
+        boolean validInput = false;
+
+        while (!validInput) {
+            index = readIntInput("") - 1;
+
+            if (index == -1) {
+                System.out.println("Action cancelled.");
+                return;
+            } else if (index < 0 || index >= mediaList.size()) {
+                System.out.println(
+                        "Invalid selection, enter a number between 1 and " + mediaList.size() + " or 0 to cancel.");
+            } else {
+                validInput = true;
+
+                Media mediaToEdit = mediaList.get(index);
+                System.out.println("Current title: " + mediaToEdit.getTitle());
+                String newTitle = readStringInput("Enter new title: ");
+
+                try {
+                    // Create a copy of the media with the new title
+                    Media updatedMedia = createUpdatedMediaWithTitle(mediaToEdit, newTitle);
+
+                    // Update the media
+                    Media result = mediaService.updateMedia(updatedMedia);
+                    System.out.println("Title updated successfully: " + result.getDetails());
+                } catch (Exception e) {
+                    System.out.println("Error updating title: " + e.getMessage());
+                    LOGGER.severe("Error updating title: " + e.getMessage());
+                }
+            }
+        }
+    }
+
+    /**
+     * Create a copy of the media with the new title
+     * 
+     * @param media    : The media to copy
+     * @param newTitle : The new title
+     * @return The updated media
+     * @throws Exception : If an error occurs during the creation process
+     */
+    private Media createUpdatedMediaWithTitle(Media media, String newTitle) throws Exception {
+        String mediaType = media.getClass().getSimpleName();
+        Media updatedMedia;
+
+        if (mediaType.equals("Book")) {
+            // Get current values using reflection for specific class methods and direct
+            // call for interface methods
+            String author = (String) media.getClass().getMethod("getAuthor").invoke(media);
+            LocalDate publicationDate = media.getPublicationDate();
+            String publisher = (String) media.getClass().getMethod("getPublisher").invoke(media);
+            int pages = (int) media.getClass().getMethod("getPages").invoke(media);
+
+            // Create a new instance with the updated title
+            updatedMedia = (Media) Class.forName("model.media.Book")
+                    .getConstructor(String.class, String.class, String.class, LocalDate.class, String.class, int.class)
+                    .newInstance(media.getId(), newTitle, author, publicationDate, publisher, pages);
+        } else if (mediaType.equals("Magazine")) {
+            // Get current values using reflection for specific class methods and direct
+            // call for interface methods
+            LocalDate publicationDate = media.getPublicationDate();
+            String publisher = (String) media.getClass().getMethod("getPublisher").invoke(media);
+            int issue = (int) media.getClass().getMethod("getIssue").invoke(media);
+
+            // Create a new instance with the updated title
+            updatedMedia = (Media) Class.forName("model.media.Magazine")
+                    .getConstructor(String.class, String.class, LocalDate.class, String.class, int.class)
+                    .newInstance(media.getId(), newTitle, publicationDate, publisher, issue);
+        } else {
+            throw new Exception("Unsupported media type for title update: " + mediaType);
+        }
+
+        // Preserve availability state
+        updatedMedia.setAvailable(media.isAvailable());
+        return updatedMedia;
+    }
+
+    /**
+     * Edit the publication date of a media
+     * 
+     * @param mediaList : The list of media to edit
+     * @throws LibraryException : If an error occurs during the edit process
+     */
+    private void editMediaPublicationDate(List<Media> mediaList) throws LibraryException {
+        if (mediaList.isEmpty()) {
+            System.out.println("No media to edit.");
+            return;
+        }
+
+        System.out.println("\nSelect media to edit (1-" + mediaList.size() + ", 0 to cancel): ");
+
+        int index;
+        boolean validInput = false;
+
+        while (!validInput) {
+            index = readIntInput("") - 1;
+
+            if (index == -1) {
+                System.out.println("Action cancelled.");
+                return;
+            } else if (index < 0 || index >= mediaList.size()) {
+                System.out.println(
+                        "Invalid selection, enter a number between 1 and " + mediaList.size() + " or 0 to cancel.");
+            } else {
+                validInput = true;
+
+                Media mediaToEdit = mediaList.get(index);
+                LocalDate currentDate = mediaToEdit.getPublicationDate();
+                System.out.println(
+                        "Current publication date: " + currentDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                LocalDate newDate = readDateInput("Enter new publication date (dd/MM/yyyy): ");
+
+                try {
+                    // Create a copy of the media with the new publication date
+                    Media updatedMedia = createUpdatedMediaWithPublicationDate(mediaToEdit, newDate);
+
+                    // Update the media
+                    Media result = mediaService.updateMedia(updatedMedia);
+                    System.out.println("Publication date updated successfully: " + result.getDetails());
+                } catch (Exception e) {
+                    System.out.println("Error updating publication date: " + e.getMessage());
+                    LOGGER.severe("Error updating publication date: " + e.getMessage());
+                }
+            }
+        }
+    }
+
+    /**
+     * Create a copy of the media with the new publication date
+     * 
+     * @param media              : The media to copy
+     * @param newPublicationDate : The new publication date
+     * @return The updated media
+     * @throws Exception : If an error occurs during the creation process
+     */
+    private Media createUpdatedMediaWithPublicationDate(Media media, LocalDate newPublicationDate) throws Exception {
+        String mediaType = media.getClass().getSimpleName();
+        Media updatedMedia;
+
+        if (mediaType.equals("Book")) {
+            // Get current values
+            String title = media.getTitle();
+            String author = (String) media.getClass().getMethod("getAuthor").invoke(media);
+            String publisher = (String) media.getClass().getMethod("getPublisher").invoke(media);
+            int pages = (int) media.getClass().getMethod("getPages").invoke(media);
+
+            // Create a new instance with the updated publication date
+            updatedMedia = (Media) Class.forName("model.media.Book")
+                    .getConstructor(String.class, String.class, String.class, LocalDate.class, String.class, int.class)
+                    .newInstance(media.getId(), title, author, newPublicationDate, publisher, pages);
+        } else if (mediaType.equals("Magazine")) {
+            // Get current values
+            String title = media.getTitle();
+            String publisher = (String) media.getClass().getMethod("getPublisher").invoke(media);
+            int issue = (int) media.getClass().getMethod("getIssue").invoke(media);
+
+            // Create a new instance with the updated publication date
+            updatedMedia = (Media) Class.forName("model.media.Magazine")
+                    .getConstructor(String.class, String.class, LocalDate.class, String.class, int.class)
+                    .newInstance(media.getId(), title, newPublicationDate, publisher, issue);
+        } else {
+            throw new Exception("Unsupported media type for publication date update: " + mediaType);
+        }
+
+        // Preserve availability state
+        updatedMedia.setAvailable(media.isAvailable());
+        return updatedMedia;
     }
 
     private List<Media> getAllCollections() throws LibraryException {
