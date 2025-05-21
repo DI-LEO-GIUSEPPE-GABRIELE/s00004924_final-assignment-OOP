@@ -85,7 +85,11 @@ To run the application, execute in the console:
 
 To run the tests, execute in the console:
 
-`mvn test` or `mvn -Dtest=MediaServiceJUnitTest testName` to run a specific test
+`mvn test` or `mvn -Dtest=MediaServiceJUnitTest#testName` to run a specific test (remember to clean first all data)
+
+To clean all data, execute in the console:
+
+`mvn clean -Dskip.tests`
 
 ## Requirements
 
