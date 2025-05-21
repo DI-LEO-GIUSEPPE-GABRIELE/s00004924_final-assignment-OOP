@@ -9878,3 +9878,61 @@ java.lang.Throwable: Runtime.exit(0)
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 
+May 21, 2025 2:29:28 PM main.java.Main main
+INFO: Starting the Library Management System
+May 21, 2025 2:29:28 PM ioc.IoCContainer <init>
+INFO: Initializing IoC Container
+May 21, 2025 2:29:28 PM repository.MediaRepository <init>
+INFO: Starting the repository for media
+May 21, 2025 2:29:28 PM java.io.ObjectInputFilter$Config traceFilter
+FINER: Builtin factory: null -> new: null
+May 21, 2025 2:29:28 PM repository.FileStorageManager loadMedia
+INFO: Media uploaded from files: data/media.dat, number of media: 167
+May 21, 2025 2:29:28 PM repository.MediaRepository loadMediaFromStorage
+INFO: Media loaded from file system: 167
+May 21, 2025 2:29:28 PM ioc.IoCContainer register
+INFO: Registered instance for class: repository.MediaRepository
+May 21, 2025 2:29:28 PM service.MediaService <init>
+INFO: Starting the media service
+May 21, 2025 2:29:28 PM ioc.IoCContainer register
+INFO: Registered instance for class: service.MediaService
+May 21, 2025 2:29:28 PM ioc.IoCContainer register
+INFO: Registered instance for class: java.util.Scanner
+May 21, 2025 2:29:28 PM ioc.IoCContainer injectDependencies
+INFO: Injected dependency into field: scanner of class: ui.UserInterfaceUI
+May 21, 2025 2:29:28 PM ioc.IoCContainer injectDependencies
+INFO: Injected dependency into field: mediaService of class: ui.UserInterfaceUI
+May 21, 2025 2:29:30 PM service.MediaService findAllMedia
+INFO: All media request
+May 21, 2025 3:21:35 PM service.MediaService shutdown
+INFO: MediaService shutdown successfully
+May 21, 2025 3:21:35 PM main.java.Main main
+INFO: Library Management System closed
+May 21, 2025 3:21:59 PM main.java.Main main
+INFO: Starting the Library Management System
+May 21, 2025 3:21:59 PM ioc.IoCContainer <init>
+INFO: Initializing IoC Container
+May 21, 2025 3:21:59 PM repository.MediaRepository <init>
+INFO: Starting the repository for media
+May 21, 2025 3:21:59 PM repository.FileStorageManager loadMedia
+INFO: Media file not found, a new file will be created on first save.
+May 21, 2025 3:21:59 PM repository.MediaRepository loadMediaFromStorage
+INFO: Media loaded from file system: 0
+May 21, 2025 3:21:59 PM ioc.IoCContainer register
+INFO: Registered instance for class: repository.MediaRepository
+May 21, 2025 3:21:59 PM service.MediaService <init>
+INFO: Starting the media service
+May 21, 2025 3:21:59 PM ioc.IoCContainer register
+INFO: Registered instance for class: service.MediaService
+May 21, 2025 3:21:59 PM ioc.IoCContainer register
+INFO: Registered instance for class: java.util.Scanner
+May 21, 2025 3:21:59 PM ioc.IoCContainer injectDependencies
+INFO: Injected dependency into field: scanner of class: ui.UserInterfaceUI
+May 21, 2025 3:21:59 PM ioc.IoCContainer injectDependencies
+INFO: Injected dependency into field: mediaService of class: ui.UserInterfaceUI
+May 21, 2025 3:22:03 PM service.MediaService findAllMedia
+INFO: All media request
+May 21, 2025 3:22:59 PM service.MediaService shutdown
+INFO: MediaService shutdown successfully
+May 21, 2025 3:22:59 PM main.java.Main main
+INFO: Library Management System closed

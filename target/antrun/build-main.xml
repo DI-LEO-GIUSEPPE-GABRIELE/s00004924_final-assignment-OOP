@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="maven-antrun-" default="main">
+  <target name="main">
+    <delete file="/Users/giuseppegabrieledileo/Desktop/My_Works/Laurea | Epicode/OOP-final-assignment/data/media.dat" />
+    <echo message="File data/media.dat deleted successfully" />
+  </target>
+</project>
