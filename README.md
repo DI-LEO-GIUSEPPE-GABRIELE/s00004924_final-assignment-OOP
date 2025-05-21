@@ -85,7 +85,9 @@ To run the application, execute in the console:
 
 To run the tests, execute in the console:
 
-`mvn test` or `mvn -Dtest=MediaServiceJUnitTest testName` to run a specific test
+`mvn test` or `mvn -Dtest=MediaServiceJUnitTest#testName` to run a specific test (remember to clean first all data and recompile)
+
+Questo comando eliminerà sia i file compilati che il file data/media.dat, rimuovendo tutti i dati salvati.
 
 ## Requirements
 
@@ -94,6 +96,6 @@ To run the tests, execute in the console:
 
 ## Compilation
 
-To compile the project files, in the console:
+To clean and compile the project files, in the console:
 
 `mvn clean compile`
