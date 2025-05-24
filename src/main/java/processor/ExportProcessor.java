@@ -40,7 +40,8 @@ public class ExportProcessor {
      */
     public boolean processMediaList(List<Media> mediaList, String mediaType) {
         if (mediaList == null || mediaList.isEmpty()) {
-            LOGGER.warning("Nessun media da esportare");
+            LOGGER.warning("No media available in the system.");
+            System.out.println("No media available in the system.");
             return false;
         }
 
@@ -102,36 +103,55 @@ public class ExportProcessor {
     }
 
     private boolean exportToWord(List<Media> mediaList, String mediaType) throws IOException {
-        XWPFDocument document = new XWPFDocument();
+        XWPFDocument document = null;
+        FileOutputStream out = null;
 
-        XWPFParagraph title = document.createParagraph();
-        XWPFRun titleRun = title.createRun();
-        titleRun.setText("Lists type: " + mediaType);
-        titleRun.setBold(true);
-        titleRun.setFontSize(16);
+        try {
+            document = new XWPFDocument();
 
-        // Every media is a paragraph
-        for (Media media : mediaList) {
-            XWPFParagraph paragraph = document.createParagraph();
-            XWPFRun run = paragraph.createRun();
-            run.setText("ID: " + media.getId());
-            run.addBreak();
-            run.setText("Title: " + media.getTitle());
-            run.addBreak();
-            run.setText("Publication date: " + media.getPublicationDate());
-            run.addBreak();
-            run.setText("Available: " + (media.isAvailable() ? "Yes" : "No"));
-            run.addBreak();
-            run.addBreak();
-        }
+            XWPFParagraph title = document.createParagraph();
+            XWPFRun titleRun = title.createRun();
+            titleRun.setText("Lists type: " + mediaType);
+            titleRun.setBold(true);
+            titleRun.setFontSize(16);
 
-        String filename = exportPath + "/" + mediaType + "_list.docx";
-        try (FileOutputStream out = new FileOutputStream(filename)) {
+            // Every media is a paragraph
+            for (Media media : mediaList) {
+                XWPFParagraph paragraph = document.createParagraph();
+                XWPFRun run = paragraph.createRun();
+                run.setText("ID: " + media.getId());
+                run.addBreak();
+                run.setText("Title: " + media.getTitle());
+                run.addBreak();
+                run.setText("Publication date: " + media.getPublicationDate());
+                run.addBreak();
+                run.setText("Available: " + (media.isAvailable() ? "Yes" : "No"));
+                run.addBreak();
+                run.addBreak();
+            }
+
+            String filename = exportPath + "/" + mediaType + "_list.docx";
+            out = new FileOutputStream(filename);
             document.write(out);
-            document.close();
-        }
 
-        LOGGER.info("Export completed successfully.");
-        return true;
+            LOGGER.info("Export completed successfully.");
+            System.out.println("File exported to: " + filename);
+            return true;
+        } catch (Exception e) {
+            LOGGER.severe("Error during Word export: " + e.getMessage());
+            System.out.println("Error during Word export: " + e.getMessage());
+            return false;
+        } finally {
+            try {
+                if (out != null) {
+                    out.close();
+                }
+                if (document != null) {
+                    document.close();
+                }
+            } catch (IOException e) {
+                LOGGER.severe("Error closing resources: " + e.getMessage());
+            }
+        }
     }
 }

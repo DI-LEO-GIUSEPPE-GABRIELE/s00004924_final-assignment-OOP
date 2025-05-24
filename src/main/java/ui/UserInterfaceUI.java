@@ -417,6 +417,24 @@ public class UserInterfaceUI {
             return;
         }
 
+        // Filter media to exclude collections
+        List<Media> filteredMediaList = new ArrayList<>();
+        for (Media media : mediaList) {
+            if (!(media instanceof MediaCollection)) {
+                filteredMediaList.add(media);
+            }
+        }
+
+        if (filteredMediaList.isEmpty()) {
+            System.out.println("No valid media to add (collections cannot be added to other collections).");
+            return;
+        }
+
+        System.out.println("\nLIST OF MEDIA (NO COLLECTION):");
+        for (int i = 0; i < filteredMediaList.size(); i++) {
+            System.out.println((i + 1) + ". " + filteredMediaList.get(i).getDetails());
+        }
+
         List<Media> collections = getAllCollections();
 
         if (collections.isEmpty()) {
@@ -447,7 +465,7 @@ public class UserInterfaceUI {
         }
 
         MediaCollection selectedCollection = (MediaCollection) collections.get(collectionIndex);
-        addToCollection(mediaList, selectedCollection);
+        addToCollection(filteredMediaList, selectedCollection);
     }
 
     private void deleteMedia(List<Media> mediaList) throws LibraryException {
