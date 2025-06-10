@@ -1,0 +1,28 @@
+Jun 10, 2025 11:57:29 AM main.java.Main main
+INFO: Starting the Library Management System
+Jun 10, 2025 11:57:29 AM ioc.IoCContainer <init>
+INFO: Initializing IoC Container
+Jun 10, 2025 11:57:29 AM repository.MediaRepository <init>
+INFO: Starting the repository for media
+Jun 10, 2025 11:57:29 AM repository.FileStorageManager loadMedia
+INFO: Media file not found, a new file will be created on first save.
+Jun 10, 2025 11:57:29 AM repository.MediaRepository loadMediaFromStorage
+INFO: Media loaded from file system: 0
+Jun 10, 2025 11:57:29 AM ioc.IoCContainer register
+INFO: Registered instance for class: repository.MediaRepository
+Jun 10, 2025 11:57:29 AM service.MediaService <init>
+INFO: Starting the media service
+Jun 10, 2025 11:57:29 AM ioc.IoCContainer register
+INFO: Registered instance for class: service.MediaService
+Jun 10, 2025 11:57:29 AM ioc.IoCContainer register
+INFO: Registered instance for class: java.util.Scanner
+Jun 10, 2025 11:57:29 AM ioc.IoCContainer injectDependencies
+INFO: Injected dependency into field: scanner of class: ui.UserInterfaceUI
+Jun 10, 2025 11:57:29 AM ioc.IoCContainer injectDependencies
+INFO: Injected dependency into field: mediaService of class: ui.UserInterfaceUI
+Jun 10, 2025 11:57:52 AM service.MediaService findMediaByTitle
+INFO: Media search by title: prova
+Jun 10, 2025 12:17:53 PM service.MediaService shutdown
+INFO: MediaService shutdown successfully
+Jun 10, 2025 12:17:53 PM main.java.Main main
+INFO: Library Management System closed

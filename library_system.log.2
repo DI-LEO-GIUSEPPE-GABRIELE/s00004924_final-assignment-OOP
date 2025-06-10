@@ -1,0 +1,31 @@
+Jun 10, 2025 12:01:55 PM main.java.Main main
+INFO: Starting the Library Management System
+Jun 10, 2025 12:01:55 PM ioc.IoCContainer <init>
+INFO: Initializing IoC Container
+Jun 10, 2025 12:01:55 PM repository.MediaRepository <init>
+INFO: Starting the repository for media
+Jun 10, 2025 12:01:55 PM repository.FileStorageManager loadMedia
+INFO: Media file not found, a new file will be created on first save.
+Jun 10, 2025 12:01:55 PM repository.MediaRepository loadMediaFromStorage
+INFO: Media loaded from file system: 0
+Jun 10, 2025 12:01:55 PM ioc.IoCContainer register
+INFO: Registered instance for class: repository.MediaRepository
+Jun 10, 2025 12:01:55 PM service.MediaService <init>
+INFO: Starting the media service
+Jun 10, 2025 12:01:55 PM ioc.IoCContainer register
+INFO: Registered instance for class: service.MediaService
+Jun 10, 2025 12:01:55 PM ioc.IoCContainer register
+INFO: Registered instance for class: java.util.Scanner
+Jun 10, 2025 12:01:55 PM ioc.IoCContainer injectDependencies
+INFO: Injected dependency into field: scanner of class: ui.UserInterfaceUI
+Jun 10, 2025 12:01:55 PM ioc.IoCContainer injectDependencies
+INFO: Injected dependency into field: mediaService of class: ui.UserInterfaceUI
+Jun 10, 2025 12:02:19 PM java.lang.Shutdown logRuntimeExit
+FINE: Runtime.exit() called with status: 143
+java.lang.Throwable: Runtime.exit(143)
+	at java.base/java.lang.Shutdown.logRuntimeExit(Shutdown.java:179)
+	at java.base/java.lang.Shutdown.exit(Shutdown.java:160)
+	at java.base/java.lang.Terminator$1.handle(Terminator.java:51)
+	at java.base/jdk.internal.misc.Signal$1.run(Signal.java:218)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+

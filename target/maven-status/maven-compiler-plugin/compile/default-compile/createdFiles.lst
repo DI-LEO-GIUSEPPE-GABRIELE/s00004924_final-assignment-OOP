@@ -28,7 +28,5 @@ exception/LibraryException.class
 repository/Repository.class
 ioc/IoCContainer.class
 observer/LoggingMediaObserver.class
-annotation/Loggable$LogLevel.class
-annotation/Loggable.class
 processor/ExportProcessor.class
 repository/MediaRepository.class
