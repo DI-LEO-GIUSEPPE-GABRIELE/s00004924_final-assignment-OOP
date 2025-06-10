@@ -34,7 +34,6 @@ This project implements a complete library management system that allows the man
 - Iterator Pattern: Implemented through the MediaIterator interface and the MediaCollectionIterator class
 - Singleton Pattern: Implemented in the MediaRepository, MediaService, and FileStorageManager classes
 - Exception Shielding: Implemented through the creation and nesting of custom exceptions
-- Abstract Factory: Implemented in MediaFactoryProvider to create families of related objects
 - Builder Pattern: Implemented in MediaBuilder to build complex media objects
 - Strategy Pattern: Implemented in SortingStrategy for interchangeable sorting algorithms
 - Observer Pattern: Implemented in MediaChangeSubject and MediaChangeObserver for change notifications
